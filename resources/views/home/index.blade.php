@@ -43,11 +43,62 @@
                         <a class="nav-link" href="#">CONTACTO</a>
                     </li>
 
-                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                    <li class="nav-item">
+                        <a class="btn btn-contacto" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                             INICIAR SESIÓN
                         </a>
                     </li>
+
+                    <!-- MODAL LOGIN -->
+                    <div class="modal fade" id="loginModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+
+                            <div class="modal-content login-modal">
+                                <div class="modal-header border-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                            <div class="modal-body p-4">
+
+                                <h2 class="text-center fw-bold mb-4">INICIAR SESIÓN</h2>
+
+                                
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">
+                                        <i class="fas fa-envelope me-2"></i>Correo electrónico
+                                    </label>
+                                        <input type="email" class="form-control login-input" placeholder="Ingresa tu correo electrónico">
+                                </div>
+
+                                
+                                <div class="mb-2">
+                                    <label class="form-label fw-bold">
+                                        <i class="fas fa-lock me-2"></i>Contraseña
+                                    </label>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control login-input" placeholder="Ingresa tu contraseña">
+                                        <i class="fas fa-eye position-absolute eye-icon"></i>
+                                    </div>
+                                </div>
+
+                                <p class="small text-muted mt-2">
+                                ¿Olvidaste tu contraseña? No te preocupes, pide un código verificador por 
+                                <a href="#" class="text-primary">correo</a> para cambiar tu contraseña.
+                                </p>
+
+                                
+                                <div class="d-grid my-3">
+                                <button class="btn login-btn">INGRESAR</button>
+                                </div>
+
+                            
+                                <div class="text-center">
+                                    <i class="fab fa-google google-icon"></i>
+                                    <i class="fab fa-facebook fs-4 mx-2 text-primary"></i>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </ul>
             </div>
