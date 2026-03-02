@@ -1,0 +1,320 @@
+/* =====================================================
+    RESET / BASE
+===================================================== */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =====================================================
+    HEADER / NAVBAR (DESKTOP)
+===================================================== */
+
+.navbar {
+    background-color: #0f1d3a !important;
+    padding: 8px 0;
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-right: 15px;
+    transition: all 0.1s ease;
+}
+
+.nav-link:hover {
+    background-color: transparent;
+    border: 2px solid #d1ac40;
+    border-radius: 8px;
+    color: #d1ac40;
+    transform: translateY(-3px);
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+/* =====================================================
+    HERO SECTION
+===================================================== */
+
+.hero {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 60px 0;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.4)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 2px 4px 6px rgba(0,0,0,0.6);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    margin-top: 10px;
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.6);
+}
+
+
+/* =====================================================
+    BOTONES HERO
+===================================================== */
+
+.btn-hero {
+    background-color: #173866;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: #d1ac40;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+/* =====================================================
+    SECCIÓN SERVICIOS / CARDS
+===================================================== */
+
+.card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-text {
+    font-size: 15px;
+}
+
+
+/* =====================================================
+    FOOTER
+===================================================== */
+
+footer {
+    background-color: #0f1d3a;
+}
+
+
+/* =====================================================
+    RESPONSIVE - TABLETS (≤ 992px)
+===================================================== */
+
+@media (max-width: 992px) {
+
+    #navbarMenu {
+        background-color: #0a1529;
+        padding: 25px 20px;
+        border-radius: 14px;
+        margin-top: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav-item {
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        margin-right: 0;
+        padding: 14px 0 !important;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+    }
+
+    .nav-link:hover {
+        background: rgba(255,255,255,0.06);
+        border-radius: 8px;
+        color: #e8b931;
+    }
+
+    .hero {
+        text-align: center;
+        min-height: 80vh;
+        padding: 70px 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .btn-hero {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+}
+
+/* =====================================================
+    RESPONSIVE - MÓVILES (≤ 576px)
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .hero {
+        min-height: 85vh;
+        padding: 80px 20px 40px 20px;
+        text-align: left;
+    }
+
+    .hero::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.4)
+        );
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        text-align: left;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .btn-hero {
+        width: 100%;
+        padding: 13px 20px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .d-grid.gap-3 {
+        gap: 12px !important;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+}
+
+/* =====================================================
+    PANTALLAS GRANDES (≥ 1200px)
+===================================================== */
+
+@media (min-width: 1200px) {
+
+    .hero {
+        min-height: 95vh;
+        padding: 100px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(3rem, 4vw, 4.5rem);
+        line-height: 1.1;
+    }
+
+    .hero p {
+        font-size: 1.4rem;
+        max-width: 600px;
+    }
+
+    .btn-hero {
+        padding: 16px 36px;
+        font-size: 17px;
+    }
+
+    .card-img-top {
+        height: 250px;
+    }
+}
+
+/* =====================================================
+    MONITORES EXTRA GRANDES (≥ 1400px)
+===================================================== */
+
+@media (min-width: 1400px) {
+
+    .hero {
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        max-width: 1200px;
+    }
+
+    .hero h1 {
+        font-size: 4.8rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+}
