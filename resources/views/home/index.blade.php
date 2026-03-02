@@ -43,7 +43,7 @@
                         <a class="nav-link" href="#">CONTACTO</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item mx-lg-3 my-2 my-lg-0">
                         <a class="btn btn-contacto" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                             INICIAR SESIÓN
                         </a>
