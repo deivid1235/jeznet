@@ -981,3 +981,57 @@ body {
         font-size: 1.5rem;
     }
 }
+<<<<<<< Updated upstream
+=======
+
+
+/* BENEFICIOS JEZNET*/
+
+.card-formulario {
+    border-radius: 18px;
+}
+
+
+.beneficio-item {
+    transition: all 0.3s ease;
+    padding: 12px;
+    border-radius: 14px;
+    cursor: pointer;
+
+    background: transparent;   
+    box-shadow: none;          
+}
+
+
+.beneficio-item .bg-white {
+    background: transparent !important;
+}
+
+
+.beneficio-item:hover {
+    background: linear-gradient(135deg, #E6C35B, #f4d878);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+
+.beneficio-item:hover h6,
+.beneficio-item:hover p {
+    color: #1a1a1a !important;
+
+}
+
+
+.icono-beneficio {
+    width: 55px;              
+    height: 55px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+
+.beneficio-item:hover .icono-beneficio {
+    transform: scale(1.15);
+}
+
+>>>>>>> Stashed changes

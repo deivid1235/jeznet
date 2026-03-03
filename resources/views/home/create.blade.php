@@ -45,168 +45,180 @@
     </nav>
 </header>
 
+
 <div class="min-h-screen flex items-center justify-center p-6">
     <section class="py-5" style="background:#f4f4f4;">
-    <div class="container">
-        <div class="row justify-content-center g-4">
+        <div class="container">
+            <div class="row justify-content-center g-4">
 
-            <!-- FORMULARIO -->
-            <div class="col-lg-6">
-                <div class="p-4 rounded-4 border bg-light h-100">
+                <!-- FORMULARIO -->
+                <div class="col-lg-6">
+                    <div class="p-4 rounded-4 border bg-light h-100">
 
-                    <h4 class="fw-bold mb-4">REGISTAR USUARIO</h4>
+                        <h4 class="fw-bold mb-4" style="font-size:1rem;">REGISTAR USUARIO</h4>
 
-                    <form>
+                        <form>
 
-                        <div class="mb-3">
-                            <label class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control rounded-3">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Correo electrónico</label>
+                                <input type="email" class="form-control form-control-sm rounded-3">
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control rounded-3">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Nombre</label>
+                                <input type="text" class="form-control form-control-sm rounded-3">
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Apellidos</label>
-                            <input type="text" class="form-control rounded-3">
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Apellidos</label>
+                                <input type="text" class="form-control form-control-sm rounded-3">
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Tipo de documento</label>
+                            <!-- Tipo de documento: combo -->
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Tipo de documento</label>
 
-                            <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-2">
-                                <input type="checkbox" class="form-check-input me-2"> DNI
+                                <select id="tipoDocumento" name="tipo_documento" class="form-select form-select-sm rounded-3" style="font-size:0.78rem;">
+                                    <option value="">-- Seleccione --</option>
+                                    <option value="DNI">DNI</option>
+                                    <option value="RUC">RUC</option>
+                                    <option value="CE">CD (Carnet extranjero)</option>
+                                </select>
+
+                                <div id="numeroDocumentoWrapper" class="mt-2" style="display:none;">
+                                    <label id="labelNumDoc" class="form-label" style="font-size:0.78rem;">Número de documento</label>
+                                    <input type="text" id="numeroDocumento" name="numero_documento"
+                                           class="form-control form-control-sm rounded-3"
+                                           placeholder="Ingresa el número">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Celular</label>
+                                <input type="text" class="form-control form-control-sm rounded-3">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" style="font-size:0.78rem;">Contraseña</label>
+                                <input type="password" class="form-control form-control-sm rounded-3">
                             </div>
 
                             <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-2">
-                                <input type="checkbox" class="form-check-input me-2"> RUC
+                                <div class="d-flex align-items-center">
+                                    <input type="checkbox" class="form-check-input me-2">
+                                    <span style="font-size:0.75rem;">Acepto los términos y condiciones de la empresa JEZNET</span>
+                                </div>
                             </div>
 
-                            <div class="bg-secondary bg-opacity-10 p-2 rounded-3">
-                                <input type="checkbox" class="form-check-input me-2"> CD (Carnet extranjero)
+                            <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <input type="checkbox" class="form-check-input me-2">
+                                    <span style="font-size:0.75rem;">Declaro que he leído y acepto términos y condiciones de JEZNET</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Celular</label>
-                            <input type="text" class="form-control rounded-3">
-                        </div>
+                           <div class="d-grid my-4">
+                                <button class="btn btn-hero w-100 rounded-pill fw-semibold py-1">
+                                    Registrar
+                                </button>
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Contraseña</label>
-                            <input type="password" class="form-control rounded-3">
-                        </div>
+                            <p class="text-center mt-3" style="font-size:0.78rem;">
+                                ¿Ya tienes cuenta?
+                                <a class="text-warning fw-semibold" href="{{ route('home', ['login' => 'true']) }}">
+                                    INICIAR SESIÓN
+                                </a>
+                            </p>
 
-                        <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-2">
-                            <input type="checkbox" class="form-check-input me-2">
-                            Acepto los términos y condiciones de la empresa JEZNET
-                        </div>
-
-                        <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-4">
-                            <input type="checkbox" class="form-check-input me-2">
-                            Declaro que he leído y acepto términos y condiciones de JEZNET
-                        </div>
-
-                        <button class="btn w-100 rounded-pill fw-semibold"
-                                style="background:#E6C35B;">
-                            Registrar
-                        </button>
-
-                        <p class="text-center mt-3 small">
-                            ¿Ya tienes cuenta?
-                            <a class="text-warning fw-semibold"
-                            
-                            
-                            
-                            href="{{ route('home', ['login' => 'true']) }}">
-                                INICIAR SESIÓN
-                            </a>
-                        </p>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            <!-- BENEFICIOS -->
-            <div class="col-lg-6">
-                <div class="p-4 rounded-4 border bg-white h-100">
+                <!-- BENEFICIOS -->
+                <div class="col-lg-6">
+                    <div class="card card-formulario border-0 shadow-sm h-100">
+                        <div class="card-body p-4 p-md-5">
 
-                    <h3 class="fw-bold mb-4">Beneficios JEZNET</h3>
+                            <h3 class="fw-bold mb-4 text-primary-brand">Beneficios JEZNET</h3>
 
-                    <div class="d-flex mb-4">
-                        <div class="me-3 fs-3 text-primary">⚙️</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Soluciones integrales</h6>
-                            <p class="small text-muted mb-0">
-                                Un solo proveedor para ingeniería, automatización y electricidad.
-                            </p>
+                            <!-- ITEM -->
+                            <div class="beneficio-item mb-4 d-flex align-items-start">
+                                <img src="{{ asset('iconos/soluciones.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand ">Soluciones integrales</h6>
+                                    <p class="small text-muted mb-0">
+                                        Un solo proveedor para ingeniería, automatización y electricidad.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="beneficio-item mb-4 d-flex align-items-start">
+                                <img src="{{ asset('iconos/energia.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand">Eficiencia energética</h6>
+                                    <p class="small text-muted mb-0">
+                                        Menor consumo eléctrico y reducción de huella de carbono.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="beneficio-item mb-4 d-flex align-items-start">
+                                <img src="{{ asset('iconos/tecnologia.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand">Tecnología avanzada</h6>
+                                    <p class="small text-muted mb-0">
+                                        PLC/SCADA y monitoreo en tiempo real para mayor control.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="beneficio-item mb-4 d-flex align-items-start">
+                                <img src="{{ asset('iconos/cumplimiento.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand">Cumplimiento garantizado</h6>
+                                    <p class="small text-muted mb-0">
+                                        Proyectos alineados con normas técnicas y ambientales.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="beneficio-item mb-4 d-flex align-items-start">
+                                <img src="{{ asset('iconos/dinero.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand">Optimización de costos</h6>
+                                    <p class="small text-muted mb-0">
+                                        Procesos más eficientes, menos desperdicio, mayor rentabilidad.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="beneficio-item d-flex align-items-start">
+                                <img src="{{ asset('iconos/herramientas.gif') }}" class="icono-beneficio me-3" style="width:50px; height:50px;">
+                                <div>
+                                    <h6 class="fw-bold mb-1 text-primary-brand">Soporte especializado</h6>
+                                    <p class="small text-muted mb-0">
+                                        Mantenimiento preventivo y continuidad operativa asegurada.
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                    <div class="d-flex mb-4">
-                        <div class="me-3 fs-3 text-warning">⚡</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Eficiencia energética</h6>
-                            <p class="small text-muted mb-0">
-                                Menor consumo eléctrico y reducción de huella de carbono.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mb-4">
-                        <div class="me-3 fs-3 text-primary">🛠️</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Tecnología avanzada</h6>
-                            <p class="small text-muted mb-0">
-                                PLC/SCADA y monitoreo en tiempo real para mayor control.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mb-4">
-                        <div class="me-3 fs-3 text-warning">🛡️</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Cumplimiento garantizado</h6>
-                            <p class="small text-muted mb-0">
-                                Proyectos alineados con normas técnicas y ambientales.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex mb-4">
-                        <div class="me-3 fs-3 text-primary">💰</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Optimización de costos</h6>
-                            <p class="small text-muted mb-0">
-                                Procesos más eficientes, menos desperdicio, mayor rentabilidad.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex">
-                        <div class="me-3 fs-3 text-warning">🔧</div>
-                        <div>
-                            <h6 class="fw-bold mb-1">Soporte especializado</h6>
-                            <p class="small text-muted mb-0">
-                                Mantenimiento preventivo y continuidad operativa asegurada.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 </div>
 
 
 
+<<<<<<< Updated upstream
 <footer class="jeznet-footer text-white pt-5 pb-3">
+=======
+
+<footer class="jeznet-footer text-white pt-5">
+>>>>>>> Stashed changes
     <div class="container">
 
         <div class="row gy-5">
@@ -298,5 +310,37 @@
 
     </div>
 </footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const select  = document.getElementById('tipoDocumento');
+        const wrapper = document.getElementById('numeroDocumentoWrapper');
+        const label   = document.getElementById('labelNumDoc');
+        const input   = document.getElementById('numeroDocumento');
+
+        const config = {
+            'DNI': { label: 'Número de DNI',              placeholder: 'Ingresa tus 8 dígitos',   maxlength: 8  },
+            'RUC': { label: 'Número de RUC',              placeholder: 'Ingresa tus 11 dígitos',  maxlength: 11 },
+            'CE':  { label: 'Número de Carnet extranjero', placeholder: 'Ingresa el número',      maxlength: 12 },
+        };
+
+        select.addEventListener('change', function () {
+            const val = this.value;
+            if (val && config[val]) {
+                label.textContent     = config[val].label;
+                input.placeholder     = config[val].placeholder;
+                input.maxLength       = config[val].maxlength;
+                input.value           = '';
+                wrapper.style.display = 'block';
+                input.focus();
+            } else {
+                wrapper.style.display = 'none';
+                input.value           = '';
+            }
+        });
+    });
+</script>
+
 
 @endsection
