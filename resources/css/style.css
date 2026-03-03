@@ -759,27 +759,102 @@ body {
 /* =====================================================
     FOOTER
 ===================================================== */
-footer,
 .jeznet-footer {
-    background-color: #0f1d3a;
+    background-color: #081423;
+    position: relative;
 }
 
 .jeznet-footer h6 {
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    font-size: 0.95rem;
 }
 
 .footer-links li {
-    margin-bottom: 8px;
-    font-size: 14px;
-    opacity: .85;
-    cursor: pointer;
-    transition: all .3s ease;
+    margin-bottom: 12px;
 }
 
-.footer-links li:hover {
-    opacity: 1;
-    padding-left: 5px;
-    color: #e8b931 !important; 
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+    transform: translateX(6px);
+}
+
+.footer-contact li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #ffffff;
+}
+
+.text-gold {
+    color: #d4af37;
+}
+
+.social-link-footer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.social-link-footer:hover {
+    background-color: #d4af37;
+    color: #0f1d3a;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
+}
+
+.hover-gold:hover {
+    color: #d4af37 !important;
+}
+
+.link-reclamaciones {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+}
+
+.link-reclamaciones .txt-linea-1,
+.link-reclamaciones .txt-linea-2 {
+    transition: all 0.3s ease;
+}
+
+.link-reclamaciones:hover .txt-linea-1 {
+    color: #d4af37 !important;
+}
+
+.link-reclamaciones:hover .txt-linea-2 {
+    color: #f5c542 !important;
+}
+
+.link-reclamaciones img {
+    transition: transform 0.3s ease;
 }
 
 /* =====================================================

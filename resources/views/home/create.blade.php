@@ -206,68 +206,94 @@
 
 
 
-<footer class="jeznet-footer text-white pt-5">
+<footer class="jeznet-footer text-white pt-5 pb-3">
     <div class="container">
 
-        <div class="row gy-4">
+        <div class="row gy-5">
 
-           
-            <div class="col-lg-4">
-                <img src="{{ asset('images/logo/logo_jeznet.svg') }}" width="179" class="mb-3">
-
-                <p class="small text-light opacity-75">
+            <div class="col-lg-4 pe-lg-5">
+                <img src="{{ asset('images/logo/logo_jeznet.svg') }}" width="179" class="mb-4" alt="Jeznet Logo">
+                
+                <p class="small text-light opacity-75 mb-4" style="line-height: 1.7;">
                     Ingeniería, sostenibilidad y tecnología al servicio del crecimiento 
                     industrial responsable del Perú y la región.
                 </p>
 
-                <div class="mt-3">
-                    <small  class="d-block text-info fw-semibold">Libro de Reclamaciones</small>
-                    <img src="{{ asset('iconos/libroReclamaciones.png') }}" width="70">
+                <div class="mt-4">
+                    <a href="#" class="link-reclamaciones text-decoration-none d-inline-flex align-items-center gap-3">
+                        <div class="img-wrapper">
+                            <img src="{{ asset('iconos/libroReclamaciones.png') }}" alt="Libro de Reclamaciones" width="70">
+                        </div>
+                        <div class="text-start text-wrapper">
+                            <span class="d-block text-white fw-bold small lh-1 mb-1 txt-linea-1">Libro de</span>
+                            <span class="d-block text-gold fw-semibold small lh-1 txt-linea-2">Reclamaciones</span>
+                        </div>
+                    </a>
                 </div>
             </div>
 
-         
             <div class="col-lg-3">
-                <h6 class="fw-bold mb-3">Servicios</h6>
+                <h6 class="fw-bold mb-4 text-uppercase">Servicios</h6>
                 <ul class="list-unstyled footer-links">
-                    <li>I+D Sostenible</li>
-                    <li>Tratamiento de Aguas</li>
-                    <li>Automatización</li>
-                    <li>Proyectos Eléctricos</li>
+                    <li><a href="#">I+D Sostenible</a></li>
+                    <li><a href="#">Tratamiento de Aguas</a></li>
+                    <li><a href="#">Automatización</a></li>
+                    <li><a href="#">Proyectos Eléctricos</a></li>
                 </ul>
             </div>
 
-    
             <div class="col-lg-3">
-                <h6 class="fw-bold mb-3">Más</h6>
+                <h6 class="fw-bold mb-4 text-uppercase">Más</h6>
                 <ul class="list-unstyled footer-links">
-                    <li>Telecomunicaciones</li>
-                    <li>Metalmecánica</li>
-                    <li>Obras Civiles</li>
-                    <li>Metodología</li>
+                    <li><a href="#">Telecomunicaciones</a></li>
+                    <li><a href="#">Metalmecánica</a></li>
+                    <li><a href="#">Obras Civiles</a></li>
+                    <li><a href="#metodologia">Metodología</a></li>
                 </ul>
             </div>
 
-            
             <div class="col-lg-2">
-                <h6 class="fw-bold mb-3">Contacto</h6>
-                <p class="small mb-1">jeznet@empresa.com</p>
-                <p class="small">+51 938 237 575</p>
+                <h6 class="fw-bold mb-4 text-uppercase">Contacto</h6>
+                
+                <ul class="list-unstyled footer-contact mb-4">
+                    <li>
+                        <i class="fas fa-envelope me-2 text-gold"></i>
+                        <a href="mailto:jeznet@empresa.com">jeznet@empresa.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt me-2 text-gold"></i>
+                        <a href="https://wa.me/51938237575" target="_blank">+51 938 237 575</a>
+                    </li>
+                </ul>
 
-                <div class="d-flex gap-3 mt-3 fs-5">
-                    <i class="fab fa-whatsapp"></i>
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-linkedin"></i>
+                <div class="social-footer d-flex gap-3">
+                    <a href="https://wa.me/51938237575" target="_blank" class="social-link-footer" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp fs-5"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-link-footer" aria-label="Facebook">
+                        <i class="fab fa-facebook-f fs-5"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-link-footer" aria-label="Instagram">
+                        <i class="fab fa-instagram fs-5"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-link-footer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in fs-5"></i>
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        <hr class="border-light opacity-25 my-4">
+        <hr class="border-light opacity-10 my-4 mt-5">
 
-        <div class="text-center small pb-3 opacity-75">
-            © 2024 JEZNET Soluciones Integrales Sostenibles. Todos los derechos reservados.
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small opacity-75">
+            <div class="mb-2 mb-md-0">
+                © 2024 JEZNET Soluciones Integrales Sostenibles. Todos los derechos reservados.
+            </div>
+            <div class="d-flex gap-3">
+                <a href="#" class="text-light text-decoration-none hover-gold">Políticas de Privacidad</a>
+                <a href="#" class="text-light text-decoration-none hover-gold">Términos de Servicio</a>
+            </div>
         </div>
 
     </div>
