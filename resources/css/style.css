@@ -137,7 +137,6 @@ body {
     background-color: #f5f3f0;
 }
 
-/* HEADER */
 .soluciones-header {
     display: flex;
     align-items: center;
@@ -164,7 +163,6 @@ body {
     color: #3b4a63;
 }
 
-/* GRID */
 .grid-soluciones {
     display: grid;
     grid-template-columns: 1fr;
@@ -181,21 +179,25 @@ body {
     .grid-soluciones {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    /* Última tarjeta ocupa toda la fila */
+    .grid-soluciones .card-solucion:last-child {
+        grid-column: 1 / -1;
+    }
 }
 
-/* CARDS */
 .card-solucion {
-    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 30px;
     background: #e9edf4;
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.card-solucion h5 {
+.card-solucion h5,
+.card-solucion h4 {
     margin-bottom: 10px;
     font-weight: 700;
     color: #0f1d3a;
@@ -207,28 +209,21 @@ body {
     color: #4a5568;
 }
 
-/* HOVER */
 .card-solucion:not(.card-wide):hover {
     transform: translateY(-6px);
     background: #e8cf6a;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
-.card-solucion:hover .icono {
+.card-solucion:not(.card-wide):hover .icono {
     background: #f0e4b7;
     color: #cfa80f;
     transform: scale(1.05);
 }
 
-/* CARD WIDE */
 .card-wide {
     grid-column: 1 / -1;
     background: #dfe5ef;
-}
-
-.card-wide h4 {
-    font-weight: 700;
-    color: #0f1d3a;
 }
 
 .card-wide ul {
@@ -236,7 +231,6 @@ body {
     color: #3f4c63;
 }
 
-/* ICONOS */
 .icono {
     width: 55px;
     height: 55px;

@@ -145,7 +145,7 @@
             </div>
 
             <!-- Card amplia -->
-            <div class="card-solucion card-wide">
+            <div class="card-solucion">
                 <div class="icono icono-grande">
                     <i class="bi bi-building"></i>
                 </div>
