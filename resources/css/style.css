@@ -499,3 +499,66 @@ footer {
 .footer-links li:hover{
     color:#e8b931 !important; 
 }
+
+/*Login*/
+
+.login-modal{
+    background: #f5f5f5;
+    border-radius: 20px;
+    border: none;
+}
+
+
+.login-modal h2{
+    letter-spacing: 2px;
+}
+
+
+.login-input{
+    border: none;
+    border-bottom: 2px solid #cfcfcf;
+    border-radius: 0;
+    background: transparent;
+    padding-left: 0;
+}
+
+.login-input:focus{
+    box-shadow: none;
+    border-bottom: 2px solid #d4af37;
+}
+
+
+.login-icon{
+    color: #1f3b73;
+    font-size: 20px;
+}
+
+
+.password-eye{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+
+.login-btn{
+    background-color: #d4af37;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    transition: .3s;
+}
+
+.login-btn:hover{
+    background-color: #c29b2c;
+}
+
+
+.social-icons a{
+    margin: 0 10px;
+}

@@ -69,7 +69,7 @@
                     </p>
 
                     <div class="d-grid gap-3 d-sm-flex w-100 justify-content-sm-center justify-content-lg-end">
-                        <a href="#" class="btn btn-hero">IR A LA TIENDA</a>
+                        <a href="" class="btn btn-hero">IR A LA TIENDA</a>
                         <a href="#" class="btn btn-hero">VER SERVICIOS</a>
                     </div>
 
@@ -172,65 +172,112 @@
     </div>
 </section>
 
+<!-- Model de Login -->
 
-<!-- =========================
-    MODAL LOGIN
-========================= -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content login-modal">
+        <div class="modal-content login-modal p-4">
 
-            <div class="modal-header border-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+            <button type="button" class="btn-close position-absolute" style="top:15px; right:15px;" data-bs-dismiss="modal"></button>
 
-            <div class="modal-body p-4">
+            <div class="modal-body">
+                <h2 class="text-center fw-bold mb-5">INICIAR SESIÓN</h2>
 
-                <h2 class="text-center fw-bold mb-4">INICIAR SESIÓN</h2>
-
-                <div class="mb-3">
-                    <label class="form-label fw-bold">
-                        <i class="fas fa-envelope me-2"></i>Correo electrónico
+                
+                <div class="mb-4">
+                    <label class="form-label fw-semibold d-flex align-items-center gap-2">
+                        <i class="fas fa-envelope-circle-check login-icon"></i>
+                        Correo electrónico
                     </label>
-                    <input type="email" class="form-control login-input" placeholder="Ingresa tu correo electrónico">
+                    <input type="email" class="form-control login-input"
+                        placeholder="Ingresa tu correo electrónico">
                 </div>
 
+               
                 <div class="mb-2">
-                    <label class="form-label fw-bold">
-                        <i class="fas fa-lock me-2"></i>Contraseña
+                    <label class="form-label fw-semibold d-flex align-items-center gap-2">
+                        <i class="fas fa-lock login-icon"></i>
+                        Contraseña
                     </label>
 
                     <div class="position-relative">
-                        <input 
-                            type="password"
+                        <input type="password"
                             id="password"
                             class="form-control login-input"
-                            placeholder="Ingresa tu contraseña"
-                        >
+                            placeholder="Ingresa tu contraseña">
 
-                        <i 
-                            id="togglePassword"
-                            class="fas fa-eye position-absolute"
-                            style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;"
-                        ></i>
+                        <i id="togglePassword"
+                            class="fas fa-eye password-eye"></i>
                     </div>
                 </div>
 
-                <div class="d-grid my-3">
+           
+                <p class="small text-muted mt-3">
+                    ¿Olvidaste tu contraseña? No te preocupes, pide un código
+                    verificador por 
+                    <a href="#" class="fw-semibold text-primary" data-bs-toggle="modal" data-bs-target="#recoverModal" data-bs-dismiss="modal">
+                    correo
+                    </a>
+                    para cambiar tu contraseña.
+                </p>
+
+               
+                <div class="d-grid my-4">
                     <button class="btn login-btn">INGRESAR</button>
                 </div>
 
-                <div class="text-center">
-                    <a href="#" class="mx-2">
-                        <img src="{{ asset('iconos/google.png') }}" width="23" alt="Google">
-                    </a>
-
-                    <a href="#" class="mx-2">
-                        <img src="{{ asset('iconos/facebook.png') }}" width="26" alt="Facebook">
-                    </a>
+                
+                <div class="text-center social-icons">
+                    <a href="#"><img src="{{ asset('iconos/google.png') }}" width="25"></a>
+                    <a href="#"><img src="{{ asset('iconos/facebook.png') }}" width="25"></a>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
 
+
+
+<div class="modal fade" id="recoverModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content login-modal p-4">
+
+            <button type="button" class="btn-close position-absolute" style="top:15px; right:15px;" data-bs-dismiss="modal"></button>
+            
+            <div class="modal-body text-center">
+
+                <h2 class="fw-bold mb-4">RECUPERAR<br>CONTRASEÑA</h2>
+
+                <p class="text-muted mb-4">
+                    Ingrese su correo electrónico y le enviaremos
+                    instrucciones para restablecer su contraseña
+                </p>
+
+                <div class="mb-4 text-start">
+                    <label class="form-label fw-semibold d-flex align-items-center gap-2">
+                        <i class="fas fa-envelope login-icon"></i>
+                        Correo electrónico
+                    </label>
+
+                    <input type="email"
+                        class="form-control login-input"
+                        placeholder="Ingresa tu correo electrónico">
+                </div>
+
+                <div class="d-grid mb-4">
+                    <button class="btn login-btn">
+                        ENVIAR LINK
+                    </button>
+                </div>
+
+                <a href="#"
+                   class="text-warning fw-semibold"
+                   data-bs-toggle="modal"
+                   data-bs-target="#loginModal"
+                   data-bs-dismiss="modal">
+                   ← Regresar a login
+                </a>
 
             </div>
         </div>
