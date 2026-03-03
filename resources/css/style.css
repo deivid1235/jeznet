@@ -1,7 +1,6 @@
 /* =====================================================
     RESET / BASE
 ===================================================== */
-
 html {
     scroll-behavior: smooth;
 }
@@ -12,11 +11,9 @@ body {
     padding: 0;
 }
 
-
 /* =====================================================
     HEADER / NAVBAR
 ===================================================== */
-
 .navbar {
     background-color: #0f1d3a !important;
     padding: 8px 0;
@@ -59,11 +56,170 @@ body {
     box-shadow: none;
 }
 
+/* =====================================================
+    BOTONES GLOBALES
+===================================================== */
+.btn-hero {
+    background-color: #173866;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: #d1ac40;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 18px;
+}
 
 /* =====================================================
-    HERO SECTION
+    MODALES / LOGIN
 ===================================================== */
+.login-modal {
+    background: #f5f5f5;
+    border-radius: 20px;
+    border: none;
+    padding: 1.5rem;
+}
 
+.login-modal h2 {
+    letter-spacing: 2px;
+}
+
+.login-input {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    background: transparent;
+    padding-left: 0;
+}
+
+.login-input:focus {
+    box-shadow: none;
+    border-color: #d4af37;
+    border-bottom: 2px solid #d4af37;
+}
+
+.login-icon {
+    color: #1f3b73;
+    font-size: 20px;
+}
+
+.password-eye {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.eye-icon {
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+.login-btn {
+    background-color: #d4af37;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 12px;
+    border: none;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background-color: #c19b2e;
+}
+
+/* Redes Sociales Login */
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons-simple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.social-link:hover {
+    opacity: 0.7; 
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+}
+
+.google-btn {
+    background: #DB4437;
+    color: white;
+}
+
+/* Enlaces del Login */
+.link-catalogo {
+    color: #1f3b73;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.link-catalogo:hover {
+    color: #e6bf24;
+    transform: translateX(4px);
+}
+
+.login-modal .link-catalogo:hover {
+    color: #d4af37;
+    transform: translateX(-4px);
+}
+
+.link-correo {
+    color: #123262;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-correo:hover {
+    color: #D4AF37;
+    text-decoration: none;
+}
+
+/* =====================================================
+    SECCIÓN: HERO
+===================================================== */
 .hero {
     background: url('/images/industrial.jpg') center/cover no-repeat;
     min-height: 90vh;
@@ -105,36 +261,12 @@ body {
     text-shadow: 1px 2px 8px rgba(0,0,0,0.6);
 }
 
-
 /* =====================================================
-    BOTONES HERO
-===================================================== */
-
-.btn-hero {
-    background-color: #173866;
-    color: #ffffff;
-    border-radius: 8px;
-    padding: 14px 32px;
-    font-weight: 700;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.btn-hero:hover {
-    background-color: #d1ac40;
-    color: #ffffff;
-    border-radius: 8px;
-    padding: 14px 32px;
-    font-weight: 700;
-    font-size: 18px;
-}
-
-
-/* =====================================================
-    SECCIÓN SERVICIOS / CARDS
+    SECCIÓN: SERVICIOS
 ===================================================== */
 .section-soluciones {
     background-color: #f5f3f0;
+    border-top: 2px solid #bcbcbc7e;
 }
 
 .soluciones-header {
@@ -155,6 +287,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     color: #0f1d3a;
+    letter-spacing: -0.5px;
 }
 
 .subtitulo-seccion {
@@ -163,29 +296,30 @@ body {
     color: #3b4a63;
 }
 
-.grid-soluciones {
+/* GRID INTELIGENTE SERVICIOS */
+.section-soluciones .grid-soluciones {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
 }
 
-@media (min-width: 768px) {
-    .grid-soluciones {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* 3 por fila */
+.section-soluciones .card-solucion {
+    grid-column: span 4;
 }
 
-@media (min-width: 1200px) {
-    .grid-soluciones {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Última tarjeta ocupa toda la fila */
-    .grid-soluciones .card-solucion:last-child {
-        grid-column: 1 / -1;
-    }
+/* Si sobra 1 */
+.section-soluciones .card-solucion:last-child:nth-child(3n+1) {
+    grid-column: span 12;
 }
 
+/* Si sobran 2 */
+.section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
+.section-soluciones .card-solucion:last-child:nth-child(3n+2) {
+    grid-column: span 6;
+}
+
+/* TARJETAS SERVICIOS */
 .card-solucion {
     display: flex;
     flex-direction: column;
@@ -193,7 +327,7 @@ body {
     background: #e9edf4;
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .card-solucion h5,
@@ -209,128 +343,320 @@ body {
     color: #4a5568;
 }
 
-.card-solucion:not(.card-wide):hover {
+/* Hover Tarjetas Servicios */
+.card-solucion:hover {
     transform: translateY(-6px);
     background: #e8cf6a;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
-.card-solucion:not(.card-wide):hover .icono {
+.card-solucion:hover .icono {
     background: #f0e4b7;
     color: #cfa80f;
     transform: scale(1.05);
 }
 
-.card-wide {
-    grid-column: 1 / -1;
-    background: #dfe5ef;
-}
-
-.card-wide ul {
-    padding-left: 18px;
-    color: #3f4c63;
-}
-
+/* Iconos Servicios */
 .icono {
     width: 55px;
     height: 55px;
     margin-bottom: 18px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 1.5rem;
     color: #0f1d3a;
     background: rgba(15, 29, 58, 0.08);
     border-radius: 14px;
-
     transition: all 0.3s ease;
 }
 
-.icono-grande {
-    width: 65px;
-    height: 65px;
-    font-size: 1.8rem;
+/* =====================================================
+    SECCIÓN: SERVICIOS DESTACADOS
+===================================================== */
+.servicios-destacados {
+    background-color: #f5f3f0;
+    border-top: 1px solid rgba(188, 188, 188, 0.5);
+    border-bottom: 1px solid rgba(188, 188, 188, 0.5);
+}
+
+/* GRID SERVICIOS DESTACADOS */
+.servicios-destacados .grid-soluciones {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* TARJETAS BASE DESTACADOS */
+.card-destacado {
+    display: flex;
+    flex-direction: column;
+    background: #e9edf4;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.card-destacado:hover {
+    background: #e8cf6a;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(15, 29, 58, 0.15);
+}
+
+/* BADGES DE CATEGORÍA */
+.badge-categoria {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(15, 29, 58, 0.1);
+    color: #0f1d3a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.card-destacado:hover .badge-categoria {
+    background-color: #eee3b4;
+    color: #cba920;
+}
+
+/* TÍTULOS DESTACADOS */
+.card-destacado h4 {
+    color: #0f1d3a !important;
+    line-height: 1.3;
+}
+
+/* LISTA MEJORADA */
+.lista-destacada {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.lista-destacada li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Viñeta personalizada */
+.lista-destacada li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: #0f1d3a;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-destacado:hover .lista-destacada li {
+    color: #0f1d3a;
+}
+
+/* FOOTER TARJETA DESTACADA */
+.card-footer {
+    font-weight: 600;
+    background: #ccd4e0;
+    color: #0f1d3a;
+    transition: all 0.4s ease;
+}
+
+.card-destacado:hover .card-footer {
+    background: #bc9b23;
+    color: #f2efe1;
+}
+
+/* TIEMPO */
+.tiempo-estimado {
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+}
+
+/* ICONO DEL FOOTER TARJETA */
+.icon-link {
+    color: inherit;
+    display: inline-flex;
+    transition: transform 0.3s ease;
+}
+
+.card-destacado:hover .icon-link {
+    transform: translate(3px, -3px) scale(1.1);
 }
 
 /* =====================================================
-    LOGIN / MODAL
+    SECCIÓN: METODOLOGÍA
 ===================================================== */
+.section-metodologia {
+    background: linear-gradient(135deg,#081423,#1a2f4f);
+    color: white;
+}
 
-.login-modal {
+.tag-metodologia {
+    color: #d4af37;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.titulo-metodologia {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.titulo-metodologia span {
+    color: #d4af37;
+}
+
+.descripcion-metodologia {
+    color: #bfc7d5;
+    margin-top: 20px;
+}
+
+.img-metodologia {
+    margin-top: 40px;
+}
+
+.item-metodo {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.numero {
+    font-size: 60px;
+    font-weight: 700;
+    color: #ffffff40;
+    min-width: 80px;
+}
+
+.numero.dorado {
+    color: #d4af37;
+}
+
+.badge-metodo {
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 4px 14px;
     border-radius: 20px;
-    background: #f5f5f5;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
-.login-input {
-    border: none;
-    border-bottom: 2px solid #ccc;
-    border-radius: 0;
-    background: transparent;
+.item-metodo h5 {
+    font-weight: 600;
 }
 
-.login-input:focus {
-    box-shadow: none;
-    border-color: #d4af37;
+.item-metodo p {
+    color: #bfc7d5;
+    margin-bottom: 0;
 }
 
-.login-btn {
-    background-color: #d4af37;
-    color: white;
-    font-weight: bold;
-    border-radius: 12px;
-    padding: 10px;
+.linea-divisora {
+    height: 1px;
+    background: #ffffff20;
+    margin: 30px 0;
 }
 
-.login-btn:hover {
-    background-color: #c19b2e;
+/* Hover Metodología */
+.item-metodo:hover h5 {
+    color: #d4af37;
 }
 
-.eye-icon {
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-    color: #555;
+.item-metodo:hover .numero {
+    color: #d4af37;
 }
 
-.social-btn {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+.item-metodo:hover .badge-metodo {
+    background: #d4af37;
+    color: #0b1d33;
 }
 
-.google-btn {
-    background: #DB4437;
-    color: white;
+.item-metodo:hover p {
+    color: #ffffff;
 }
-
-.social-btn:hover {
-    transform: scale(1.1);
-}
-
 
 /* =====================================================
     FOOTER
 ===================================================== */
-
-footer {
+footer,
+.jeznet-footer {
     background-color: #0f1d3a;
 }
 
+.jeznet-footer h6 {
+    letter-spacing: 1px;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: .85;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.footer-links li:hover {
+    opacity: 1;
+    padding-left: 5px;
+    color: #e8b931 !important; 
+}
 
 /* =====================================================
-    RESPONSIVE - TABLETS (≤ 992px)
+    RESPONSIVE (MEDIA QUERIES)
 ===================================================== */
 
-@media (max-width: 992px) {
+/* MÓVILES (≤ 576px) */
+@media (max-width: 576px) {
+    .hero {
+        min-height: 85vh;
+        padding: 80px 20px 40px 20px;
+        text-align: left;
+    }
 
+    .hero::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.4)
+        );
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        text-align: left;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .btn-hero {
+        width: 100%;
+        padding: 13px 20px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+}
+
+/* TABLETS (≤ 992px) */
+@media (max-width: 992px) {
     #navbarMenu {
         background-color: #0a1529;
         padding: 25px 20px;
@@ -373,59 +699,8 @@ footer {
     }
 }
 
-
-/* =====================================================
-    RESPONSIVE - MÓVILES (≤ 576px)
-===================================================== */
-
-@media (max-width: 576px) {
-
-    .hero {
-        min-height: 85vh;
-        padding: 80px 20px 40px 20px;
-        text-align: left;
-    }
-
-    .hero::before {
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.65),
-            rgba(0, 0, 0, 0.4)
-        );
-    }
-
-    .hero h1 {
-        font-size: 1.9rem;
-        line-height: 1.2;
-        letter-spacing: 1px;
-        text-align: left;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-        text-align: left;
-    }
-
-    .btn-hero {
-        width: 100%;
-        padding: 13px 20px;
-        font-size: 14px;
-        border-radius: 10px;
-    }
-
-    .navbar-brand img {
-        height: 40px;
-    }
-}
-
-
-/* =====================================================
-    PANTALLAS GRANDES (≥ 1200px)
-===================================================== */
-
+/* PANTALLAS GRANDES (≥ 1200px) */
 @media (min-width: 1200px) {
-
     .hero {
         min-height: 95vh;
         padding: 100px 0;
@@ -441,13 +716,8 @@ footer {
     }
 }
 
-
-/* =====================================================
-    MONITORES EXTRA GRANDES (≥ 1400px)
-===================================================== */
-
+/* MONITORES EXTRA GRANDES (≥ 1400px) */
 @media (min-width: 1400px) {
-
     .hero {
         min-height: 100vh;
     }
@@ -464,199 +734,3 @@ footer {
         font-size: 1.5rem;
     }
 }
-
-/*Descripcion*/
-
-.jeznet-footer{
-    background-color: #0f1d3a;
-}
-
-.footer-links li{
-    margin-bottom: 8px;
-    font-size: 14px;
-    opacity: .85;
-    cursor: pointer;
-    transition: .3s;
-}
-
-.footer-links li:hover{
-    opacity: 1;
-    padding-left: 5px;
-}
-
-.jeznet-footer h6{
-    letter-spacing: 1px;
-}
-
-.footer-links li{
-    margin-bottom: 8px;
-    font-size: 14px;
-    opacity: .85;
-    cursor: pointer;
-    transition: all .3s ease;
-}
-
-.footer-links li:hover{
-    color:#e8b931 !important; 
-}
-
-/*Login*/
-
-.login-modal{
-    background: #f5f5f5;
-    border-radius: 20px;
-    border: none;
-}
-
-
-.login-modal h2{
-    letter-spacing: 2px;
-}
-
-
-.login-input{
-    border: none;
-    border-bottom: 2px solid #cfcfcf;
-    border-radius: 0;
-    background: transparent;
-    padding-left: 0;
-}
-
-.login-input:focus{
-    box-shadow: none;
-    border-bottom: 2px solid #d4af37;
-}
-
-
-.login-icon{
-    color: #1f3b73;
-    font-size: 20px;
-}
-
-
-.password-eye{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #6c757d;
-}
-
-
-.login-btn{
-    background-color: #d4af37;
-    border: none;
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 600;
-    color: white;
-    transition: .3s;
-}
-
-.login-btn:hover{
-    background-color: #c29b2c;
-}
-
-
-.social-icons a{
-    margin: 0 10px;
-}
-
-/*Metodología*/
-.section-metodologia{
-    background: linear-gradient(135deg,#081423,#1a2f4f);
-    color: white;
-}
-
-.tag-metodologia{
-    color: #d4af37;
-    font-weight: 600;
-    letter-spacing: 1px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.titulo-metodologia{
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-.titulo-metodologia span{
-    color: #d4af37;
-}
-
-.descripcion-metodologia{
-    color: #bfc7d5;
-    margin-top: 20px;
-}
-
-.img-metodologia{
-    margin-top: 40px;
-}
-
-.item-metodo{
-    display: flex;
-    gap: 25px;
-    align-items: flex-start;
-}
-
-.numero{
-    font-size: 60px;
-    font-weight: 700;
-    color: #ffffff40;
-    min-width: 80px;
-}
-
-.numero.dorado{
-    color: #d4af37;
-}
-
-.badge-metodo{
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.item-metodo h5{
-    font-weight: 600;
-}
-
-.item-metodo p{
-    color: #bfc7d5;
-    margin-bottom: 0;
-}
-
-.linea-divisora{
-    height: 1px;
-    background: #ffffff20;
-    margin: 30px 0;
-}
-
-
-.item-metodo{
-    transition: all .3s ease;
-    cursor: pointer;
-}
-
-.item-metodo:hover h5{
-    color: #d4af37;
-}
-
-.item-metodo:hover .numero{
-    color: #d4af37;
-}
-
-.item-metodo:hover .badge-metodo{
-    background: #d4af37;
-    color: #0b1d33;
-}
-
-.item-metodo:hover p{
-    color: #ffffff;
-}
-
