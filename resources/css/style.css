@@ -133,26 +133,132 @@ body {
 /* =====================================================
     SECCIÓN SERVICIOS / CARDS
 ===================================================== */
+.section-soluciones {
+    background-color: #f5f3f0;
+}
 
-.card {
+/* HEADER */
+.soluciones-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.linea-vertical {
+    width: 6px;
+    height: 60px;
+    background: #0f1d3a;
+    border-radius: 6px;
+}
+
+.titulo-seccion {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f1d3a;
+}
+
+.subtitulo-seccion {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #3b4a63;
+}
+
+/* GRID */
+.grid-soluciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .grid-soluciones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid-soluciones {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CARDS */
+.card-solucion {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #e9edf4;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    border-radius: 12px;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+.card-solucion h5 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #0f1d3a;
 }
 
-.card-img-top {
-    height: 220px;
-    object-fit: cover;
+.card-solucion p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #4a5568;
 }
 
-.card-text {
-    font-size: 15px;
+/* HOVER */
+.card-solucion:not(.card-wide):hover {
+    transform: translateY(-6px);
+    background: #e8cf6a;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
+.card-solucion:hover .icono {
+    background: #f0e4b7;
+    color: #cfa80f;
+    transform: scale(1.05);
+}
+
+/* CARD WIDE */
+.card-wide {
+    grid-column: 1 / -1;
+    background: #dfe5ef;
+}
+
+.card-wide h4 {
+    font-weight: 700;
+    color: #0f1d3a;
+}
+
+.card-wide ul {
+    padding-left: 18px;
+    color: #3f4c63;
+}
+
+/* ICONOS */
+.icono {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5rem;
+    color: #0f1d3a;
+    background: rgba(15, 29, 58, 0.08);
+    border-radius: 14px;
+
+    transition: all 0.3s ease;
+}
+
+.icono-grande {
+    width: 65px;
+    height: 65px;
+    font-size: 1.8rem;
+}
 
 /* =====================================================
     LOGIN / MODAL

@@ -83,40 +83,90 @@
 <!-- =========================
     SERVICIOS
 ========================= -->
-<section class="py-5 bg-light">
+<section class="section-soluciones py-5">
     <div class="container">
 
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Nuestros Servicios</h2>
-            <p class="text-muted">
-                Soluciones industriales modernas y sostenibles.
-            </p>
+        <div class="soluciones-header mb-5">
+        <div class="linea-vertical"></div>
+        <div>
+            <h2 class="titulo-seccion">Nuestras Soluciones</h2>
+            <p class="subtitulo-seccion">Ingeniería multidisciplinaria y sostenible</p>
+        </div>
         </div>
 
-        <div class="row g-4">
-            @for ($i = 1; $i <= 6; $i++)
-                <div class="col-md-4">
-                    <div class="card shadow-sm h-100 border-0 rounded-3">
-                        <img src="{{ asset('images/industrial.jpg') }}" 
-                                class="card-img-top rounded-top-3" 
-                                alt="Servicio Industrial">
+        <div class="grid-soluciones">
 
-                        <div class="card-body">
-                            <p class="card-text">
-                                Servicio industrial profesional con tecnología avanzada.
-                            </p>
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+                <h5>Investigación y Desarrollo (I+D)</h5>
+                <p>Proyectos sostenibles y economía circular.</p>
+            </div>
 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary">Ver</button>
-                                    <button class="btn btn-sm btn-outline-secondary">Cotizar</button>
-                                </div>
-                                <small class="text-muted">Activo</small>
-                            </div>
-                        </div>
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-droplet-half"></i>
+                </div>
+                <h5>Gestión de Aguas Sostenibles</h5>
+                <p>PTARI, potabilización y eficiencia hídrica.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-cpu"></i>
+                </div>
+                <h5>Instrumentación y Automatización</h5>
+                <p>PLC/SCADA y modernización de plantas.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-lightning-charge"></i>
+                </div>
+                <h5>Proyectos Eléctricos</h5>
+                <p>Media/Baja tensión y eficiencia energética.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-wifi"></i>
+                </div>
+                <h5>Telecomunicaciones e IT</h5>
+                <p>Data Centers, fibra óptica y ciberseguridad.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-tools"></i>
+                </div>
+                <h5>Metalmecánica Estructural</h5>
+                <p>Estructuras, soldadura sanitaria e infraestructura.</p>
+            </div>
+
+            <!-- Card amplia -->
+            <div class="card-solucion card-wide">
+                <div class="icono icono-grande">
+                    <i class="bi bi-building"></i>
+                </div>
+                <h4>Obras Civiles e Infraestructura</h4>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Infraestructura industrial y cimentaciones especiales</li>
+                            <li>Edificaciones y plantas de procesamiento</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Saneamiento y movimiento de tierras</li>
+                            <li>Gestión de proyectos PMO / ISO / OSHA</li>
+                        </ul>
                     </div>
                 </div>
-            @endfor
+            </div>
+
         </div>
 
     </div>
