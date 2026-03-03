@@ -25,7 +25,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#">METODOLOGÍA</a>
+                        <a class="nav-link" href="#metodologia">METODOLOGÍA</a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
@@ -238,13 +238,14 @@
 </div>
 
 
+<!-- RECUPERAR CONTRASEÑA<  -->
 
 <div class="modal fade" id="recoverModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content login-modal p-4">
 
             <button type="button" class="btn-close position-absolute" style="top:15px; right:15px;" data-bs-dismiss="modal"></button>
-            
+
             <div class="modal-body text-center">
 
                 <h2 class="fw-bold mb-4">RECUPERAR<br>CONTRASEÑA</h2>
@@ -283,6 +284,170 @@
         </div>
     </div>
 </div>
+
+<!-- Metodología <  -->
+
+<section  id="metodologia" class="section-metodologia py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <span class="tag-metodologia" >Metodología</span>
+                <h2 class="titulo-metodologia">
+                    Cómo <span>Trabajamos</span>
+                </h2>
+
+                <p class="descripcion-metodologia">
+                    Cada proyecto sigue una metodología rigurosa que garantiza 
+                    resultados medibles, cumplimiento normativo y la máxima 
+                    eficiencia operativa para su empresa.
+                </p>
+
+                <img src="{{ asset('images/trabajanos.jpg') }}" class="img-fluid img-metodologia">
+            </div>
+
+           
+            <div class="col-lg-7">
+
+                <div class="item-metodo">
+                    <div class="numero">01</div>
+                    <div>
+                        <span class="badge-metodo">ANÁLISIS</span>
+                        <h5>Diagnóstico Integral</h5>
+                        <p>Levantamiento detallado de sus necesidades técnicas, operativas, energéticas y ambientales.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">02</div>
+                    <div>
+                        <span class="badge-metodo">INGENIERÍA</span>
+                        <h5>Diseño y Planificación</h5>
+                        <p>Elaboración de ingeniería conceptual y de detalle con expedientes técnicos.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">03</div>
+                    <div>
+                        <span class="badge-metodo">EJECUCIÓN</span>
+                        <h5>Implementación Controlada</h5>
+                        <p>Montaje y puesta en marcha bajo estándares ISO y OSHA.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">04</div>
+                    <div>
+                        <span class="badge-metodo">SOPORTE</span>
+                        <h5>Mantenimiento y Continuidad</h5>
+                        <p>Planes de mantenimiento preventivo y correctivo para maximizar su inversión.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section-soluciones py-5">
+    <div class="container">
+
+        <div class="soluciones-header mb-5">
+        <div class="linea-vertical"></div>
+        <div>
+            <h2 class="titulo-seccion">Nuestras Soluciones</h2>
+            <p class="subtitulo-seccion">Ingeniería multidisciplinaria y sostenible</p>
+        </div>
+        </div>
+
+        <div class="grid-soluciones">
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+                <h5>Investigación y Desarrollo (I+D)</h5>
+                <p>Proyectos sostenibles y economía circular.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-droplet-half"></i>
+                </div>
+                <h5>Gestión de Aguas Sostenibles</h5>
+                <p>PTARI, potabilización y eficiencia hídrica.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-cpu"></i>
+                </div>
+                <h5>Instrumentación y Automatización</h5>
+                <p>PLC/SCADA y modernización de plantas.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-lightning-charge"></i>
+                </div>
+                <h5>Proyectos Eléctricos</h5>
+                <p>Media/Baja tensión y eficiencia energética.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-wifi"></i>
+                </div>
+                <h5>Telecomunicaciones e IT</h5>
+                <p>Data Centers, fibra óptica y ciberseguridad.</p>
+            </div>
+
+            <div class="card-solucion">
+                <div class="icono">
+                    <i class="bi bi-tools"></i>
+                </div>
+                <h5>Metalmecánica Estructural</h5>
+                <p>Estructuras, soldadura sanitaria e infraestructura.</p>
+            </div>
+
+            <!-- Card amplia -->
+            <div class="card-solucion">
+                <div class="icono icono-grande">
+                    <i class="bi bi-building"></i>
+                </div>
+                <h4>Obras Civiles e Infraestructura</h4>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Infraestructura industrial y cimentaciones especiales</li>
+                            <li>Edificaciones y plantas de procesamiento</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Saneamiento y movimiento de tierras</li>
+                            <li>Gestión de proyectos PMO / ISO / OSHA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 
 
 <footer class="jeznet-footer text-white pt-5">
