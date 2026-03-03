@@ -492,21 +492,34 @@ body {
     SECCIÓN: METODOLOGÍA
 ===================================================== */
 .section-metodologia {
-    background: linear-gradient(135deg,#081423,#1a2f4f);
+    background: linear-gradient(135deg, #081423, #1a2f4f);
     color: white;
 }
 
 .tag-metodologia {
     color: #d4af37;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.tag-metodologia::before {
+    content: "";
     display: inline-block;
-    margin-bottom: 10px;
+    width: 35px;
+    height: 2px;
+    background-color: #d4af37;
+    margin-right: 12px;
 }
 
 .titulo-metodologia {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
 }
 
 .titulo-metodologia span {
@@ -515,73 +528,301 @@ body {
 
 .descripcion-metodologia {
     color: #bfc7d5;
+    font-size: 1rem;
+    line-height: 1.6;
     margin-top: 20px;
 }
 
-.img-metodologia {
-    margin-top: 40px;
+/* === IMAGEN 3D PREMIUM === */
+.contenedor-imagen-3d {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 400px;
 }
 
+/* La imagen principal */
+.img-metodologia-3d {
+    position: relative;
+    z-index: 2;
+    max-height: 450px;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.6));
+    animation: flotar3D 6s ease-in-out infinite;
+}
+
+.resplandor-fondo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(8, 20, 35, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulsarLuz 4s ease-in-out infinite;
+}
+
+/* === ITEMS DE LA LISTA === */
 .item-metodo {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     align-items: flex-start;
-    transition: all .3s ease;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
 }
 
 .numero {
-    font-size: 60px;
-    font-weight: 700;
-    color: #ffffff40;
+    font-size: 4.5rem;
+    font-weight: 300; 
+    color: #ffffff; 
     min-width: 80px;
-}
-
-.numero.dorado {
-    color: #d4af37;
+    line-height: 0.8;
+    transition: all 0.4s ease;
 }
 
 .badge-metodo {
     border: 1px solid #d4af37;
     color: #d4af37;
-    padding: 4px 14px;
+    padding: 4px 16px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
     display: inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .item-metodo h5 {
     font-weight: 600;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
 }
 
 .item-metodo p {
-    color: #bfc7d5;
+    color: #8c9cb3; 
+    font-size: 0.9rem;
     margin-bottom: 0;
+    line-height: 1.6;
+    transition: color 0.3s ease;
 }
 
 .linea-divisora {
     height: 1px;
-    background: #ffffff20;
-    margin: 30px 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 15%, rgba(255,255,255,0.15) 85%, rgba(255,255,255,0) 100%);
+    margin: 5px 0;
 }
 
-/* Hover Metodología */
+/* === EFECTOS HOVER === */
+.item-metodo:hover {
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateX(12px);
+    border-left: 4px solid #d4af37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
 .item-metodo:hover h5 {
     color: #d4af37;
 }
 
+.item-metodo:hover p {
+    color: #e2e8f0;
+}
+
 .item-metodo:hover .numero {
     color: #d4af37;
+    transform: scale(1.05);
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
 .item-metodo:hover .badge-metodo {
-    background: #d4af37;
-    color: #0b1d33;
+    background-color: rgba(212, 175, 55, 0.1);
 }
 
-.item-metodo:hover p {
-    color: #ffffff;
+/* === ANIMACIONES KEYFRAMES === */
+@keyframes flotar3D {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulsarLuz {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+    SECCIÓN: CONTÁCTENOS
+===================================================== */
+.section-contacto {
+    background-color: #f5f3f0;
+}
+
+.tag-contacto {
+    color: #0f1d3a;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.tag-contacto::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 2px;
+    background-color: #0f1d3a;
+    margin-right: 12px;
+}
+
+.titulo-contacto {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f1d3a;
+}
+
+/* Color específico para la palabra "proyecto" */
+.text-primary-brand {
+    color: #173866; 
+}
+
+.descripcion-contacto {
+    color: #4a5568;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* === FORMULARIO BLANCO === */
+.card-formulario {
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-formulario:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+}
+
+.input-contacto {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+}
+
+.input-contacto:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* Opciones tipo Radio (Barras grises) */
+.opcion-radio {
+    background-color: #e6e9ed;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.opcion-radio:hover {
+    background-color: #d8dce2;
+}
+
+.opcion-radio .form-check-input {
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.opcion-radio .form-check-label {
+    cursor: pointer;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Botón Submit del Formulario */
+.btn-submit-contacto {
+    background-color: #e8cf6a;
+    color: #0f1d3a;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-submit-contacto:hover {
+    background-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+/* === TARJETA DERECHA (WHATSAPP) === */
+.card-whatsapp {
+    background: linear-gradient(145deg, #081423, #132440);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(8, 20, 35, 0.2);
+    transition: transform 0.4s ease;
+}
+
+.card-whatsapp:hover {
+    transform: scale(1.02);
+}
+
+.badge-respuesta {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    display: block;
+}
+
+.titulo-whatsapp {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.descripcion-whatsapp {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Botón Blanco de WhatsApp */
+.btn-whatsapp {
+    background-color: white;
+    border-radius: 12px;
+    padding: 12px 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn-whatsapp:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* =====================================================

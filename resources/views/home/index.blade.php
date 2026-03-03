@@ -33,7 +33,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#">CONTACTO</a>
+                        <a class="nav-link" href="#contactenos">CONTACTO</a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
@@ -69,8 +69,8 @@
                     </p>
 
                     <div class="d-grid gap-3 d-sm-flex w-100 justify-content-sm-center justify-content-lg-end">
-                        <a href="" class="btn btn-hero">IR A LA TIENDA</a>
-                        <a href="#" class="btn btn-hero">VER SERVICIOS</a>
+                        <a href="#" class="btn btn-hero">IR A LA TIENDA</a>
+                        <a href="#servicios" class="btn btn-hero">VER SERVICIOS</a>
                     </div>
 
                 </div>
@@ -279,6 +279,82 @@
     </div>
 </section>
 
+<!-- =========================
+    METODOLOGÍA
+========================== -->
+<section  id="metodologia" class="section-metodologia py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-5 mb-5 mb-lg-0 position-relative">
+                <span class="tag-metodologia">Metodología</span>
+                <h2 class="titulo-metodologia">
+                    Cómo <br><span>Trabajamos</span>
+                </h2>
+
+                <p class="descripcion-metodologia">
+                    Cada proyecto sigue una metodología rigurosa que garantiza 
+                    resultados medibles, cumplimiento normativo y la máxima 
+                    eficiencia operativa para su empresa.
+                </p>
+
+                <div class="contenedor-imagen-3d mt-5">
+                    <div class="resplandor-fondo"></div>
+                    
+                    <img src="{{ asset('images/trabajanos.svg') }}" alt="Ilustración Metodología 3D" class="img-fluid img-metodologia-3d">
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+
+                <div class="item-metodo">
+                    <div class="numero">01</div>
+                    <div>
+                        <span class="badge-metodo">ANÁLISIS</span>
+                        <h5>Diagnóstico Integral</h5>
+                        <p>Levantamiento detallado de sus necesidades técnicas, operativas, energéticas y ambientales.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">02</div>
+                    <div>
+                        <span class="badge-metodo">INGENIERÍA</span>
+                        <h5>Diseño y Planificación</h5>
+                        <p>Elaboración de ingeniería conceptual y de detalle con expedientes técnicos.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">03</div>
+                    <div>
+                        <span class="badge-metodo">EJECUCIÓN</span>
+                        <h5>Implementación Controlada</h5>
+                        <p>Montaje y puesta en marcha bajo estándares ISO y OSHA.</p>
+                    </div>
+                </div>
+
+                <div class="linea-divisora"></div>
+
+                <div class="item-metodo">
+                    <div class="numero">04</div>
+                    <div>
+                        <span class="badge-metodo">SOPORTE</span>
+                        <h5>Mantenimiento y Continuidad</h5>
+                        <p>Planes de mantenimiento preventivo y correctivo para maximizar su inversión.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <!-- MODEL LOGIN -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -400,78 +476,104 @@
     </div>
 </div>
 
+
 <!-- =========================
-    METODOLOGÍA
+    CONTACTENOS
 ========================== -->
-<section  id="metodologia" class="section-metodologia py-5">
-    <div class="container">
-        <div class="row align-items-center">
+<section id="contactenos" class="section-contacto py-5">
+    <div class="container py-lg-4">
+        <div class="row align-items-stretch gy-5">
 
-            <div class="col-lg-5 mb-5 mb-lg-0">
-                <span class="tag-metodologia" >Metodología</span>
-                <h2 class="titulo-metodologia">
-                    Cómo <span>Trabajamos</span>
-                </h2>
+            <div class="col-lg-6 pe-lg-5">
+                
+                <div class="contacto-header mb-4">
+                    <span class="tag-contacto">Contáctenos</span>
+                    <h2 class="titulo-contacto">
+                        ¿Tiene un <br><span class="text-primary-brand">proyecto</span> <br>en mente?
+                    </h2>
+                    <p class="descripcion-contacto mt-3">
+                        Envíenos los requerimientos técnicos preliminares.
+                        Nos especializamos en soluciones que combinan
+                        ingeniería, sostenibilidad y tecnología.
+                    </p>
+                </div>
 
-                <p class="descripcion-metodologia">
-                    Cada proyecto sigue una metodología rigurosa que garantiza 
-                    resultados medibles, cumplimiento normativo y la máxima 
-                    eficiencia operativa para su empresa.
-                </p>
+                <div class="card card-formulario border-0 shadow-sm">
+                    <div class="card-body p-4 p-md-5">
+                        <form action="#" method="POST">
+                            
+                            <div class="mb-3">
+                                <label class="form-label fw-bold small">Nombre</label>
+                                <input type="text" class="form-control input-contacto" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small">Empresa</label>
+                                <input type="text" class="form-control input-contacto" required>
+                            </div>
 
-                <img src="{{ asset('images/trabajanos.jpg') }}" class="img-fluid img-metodologia">
+                            <label class="form-label fw-bold small mb-3">Tipo de Consulta</label>
+
+                            <div class="opcion-radio mb-2">
+                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta1" checked>
+                                <label class="form-check-label w-100" for="consulta1">
+                                    Solicitud de Propuesta (RFP)
+                                </label>
+                            </div>
+
+                            <div class="opcion-radio mb-2">
+                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta2">
+                                <label class="form-check-label w-100" for="consulta2">
+                                    Viabilidad Técnica
+                                </label>
+                            </div>
+
+                            <div class="opcion-radio mb-4">
+                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta3">
+                                <label class="form-check-label w-100" for="consulta3">
+                                    Soporte Técnico
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-submit-contacto w-100 fw-bold">
+                                CONTACTAR INGENIERÍA
+                            </button>
+                            
+                            <p class="text-center text-muted mt-3 mb-0" style="font-size: 0.65rem;">
+                                No se compartirá el nombre de tu perfil. Nunca envíes tus contraseñas.
+                            </p>
+                            
+                        </form>
+                    </div>
+                </div>
+
             </div>
 
-
-            <div class="col-lg-7">
-
-                <div class="item-metodo">
-                    <div class="numero">01</div>
+            <div class="col-lg-6 d-flex">
+                <div class="card card-whatsapp text-white w-100 border-0 p-4 p-md-5 d-flex flex-column justify-content-center">
+                    
                     <div>
-                        <span class="badge-metodo">ANÁLISIS</span>
-                        <h5>Diagnóstico Integral</h5>
-                        <p>Levantamiento detallado de sus necesidades técnicas, operativas, energéticas y ambientales.</p>
+                        <span class="badge-respuesta mb-3">RESPUESTA INMEDIATA</span>
+                        <h3 class="titulo-whatsapp mb-4">HABLEMOS DE SU<br>PROYECTO</h3>
+                        
+                        <p class="descripcion-whatsapp mb-5">
+                            Cuéntenos sus necesidades y le presentamos
+                            una propuesta técnica integral sin costo.
+                            Atendemos a nivel nacional.
+                        </p>
+
+                        <a href="https://wa.me/51938237575" target="_blank" class="btn btn-whatsapp d-inline-flex align-items-center gap-2">
+                            <i class="fab fa-whatsapp fs-4 text-success"></i>
+                            <span class="fw-bold text-dark">Escribir por WhatsApp</span>
+                        </a>
                     </div>
+
                 </div>
-
-                <div class="linea-divisora"></div>
-
-                <div class="item-metodo">
-                    <div class="numero">02</div>
-                    <div>
-                        <span class="badge-metodo">INGENIERÍA</span>
-                        <h5>Diseño y Planificación</h5>
-                        <p>Elaboración de ingeniería conceptual y de detalle con expedientes técnicos.</p>
-                    </div>
-                </div>
-
-                <div class="linea-divisora"></div>
-
-                <div class="item-metodo">
-                    <div class="numero">03</div>
-                    <div>
-                        <span class="badge-metodo">EJECUCIÓN</span>
-                        <h5>Implementación Controlada</h5>
-                        <p>Montaje y puesta en marcha bajo estándares ISO y OSHA.</p>
-                    </div>
-                </div>
-
-                <div class="linea-divisora"></div>
-
-                <div class="item-metodo">
-                    <div class="numero">04</div>
-                    <div>
-                        <span class="badge-metodo">SOPORTE</span>
-                        <h5>Mantenimiento y Continuidad</h5>
-                        <p>Planes de mantenimiento preventivo y correctivo para maximizar su inversión.</p>
-                    </div>
-                </div>
-
             </div>
+
         </div>
     </div>
 </section>
-
 
 
 <footer class="jeznet-footer text-white pt-5">
