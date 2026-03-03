@@ -172,17 +172,6 @@
     </div>
 </section>
 
-<!-- =========================
-    FOOTER
-========================= -->
-<footer class="text-white py-4">
-    <div class="container text-center">
-        <p class="mb-1">© {{ date('Y') }} JEZNET - Ingeniería Industrial</p>
-        <small class="text-secondary">
-            Todos los derechos reservados. Diseñado por JEZNET.
-        </small>
-    </div>
-</footer>
 
 <!-- =========================
     MODAL LOGIN
@@ -247,5 +236,73 @@
         </div>
     </div>
 </div>
+
+
+<footer class="jeznet-footer text-white pt-5">
+    <div class="container">
+
+        <div class="row gy-4">
+
+           
+            <div class="col-lg-4">
+                <img src="{{ asset('images/logo/logo_jeznet.svg') }}" width="179" class="mb-3">
+
+                <p class="small text-light opacity-75">
+                    Ingeniería, sostenibilidad y tecnología al servicio del crecimiento 
+                    industrial responsable del Perú y la región.
+                </p>
+
+                <div class="mt-3">
+                    <small  class="d-block text-info fw-semibold">Libro de Reclamaciones</small>
+                    <img src="{{ asset('iconos/libroReclamaciones.png') }}" width="70">
+                </div>
+            </div>
+
+         
+            <div class="col-lg-3">
+                <h6 class="fw-bold mb-3">Servicios</h6>
+                <ul class="list-unstyled footer-links">
+                    <li>I+D Sostenible</li>
+                    <li>Tratamiento de Aguas</li>
+                    <li>Automatización</li>
+                    <li>Proyectos Eléctricos</li>
+                </ul>
+            </div>
+
+    
+            <div class="col-lg-3">
+                <h6 class="fw-bold mb-3">Más</h6>
+                <ul class="list-unstyled footer-links">
+                    <li>Telecomunicaciones</li>
+                    <li>Metalmecánica</li>
+                    <li>Obras Civiles</li>
+                    <li>Metodología</li>
+                </ul>
+            </div>
+
+            
+            <div class="col-lg-2">
+                <h6 class="fw-bold mb-3">Contacto</h6>
+                <p class="small mb-1">jeznet@empresa.com</p>
+                <p class="small">+51 938 237 575</p>
+
+                <div class="d-flex gap-3 mt-3 fs-5">
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="border-light opacity-25 my-4">
+
+        <div class="text-center small pb-3 opacity-75">
+            © 2024 JEZNET Soluciones Integrales Sostenibles. Todos los derechos reservados.
+        </div>
+
+    </div>
+</footer>
 
 @endsection

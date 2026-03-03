@@ -464,3 +464,38 @@ footer {
         font-size: 1.5rem;
     }
 }
+
+/*Descripcion*/
+
+.jeznet-footer{
+    background-color: #0f1d3a;
+}
+
+.footer-links li{
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: .85;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.footer-links li:hover{
+    opacity: 1;
+    padding-left: 5px;
+}
+
+.jeznet-footer h6{
+    letter-spacing: 1px;
+}
+
+.footer-links li{
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: .85;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.footer-links li:hover{
+    color:#e8b931 !important; 
+}
