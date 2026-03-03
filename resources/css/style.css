@@ -981,9 +981,6 @@ body {
         font-size: 1.5rem;
     }
 }
-<<<<<<< Updated upstream
-=======
-
 
 /* BENEFICIOS JEZNET*/
 
@@ -1034,4 +1031,107 @@ body {
     transform: scale(1.15);
 }
 
->>>>>>> Stashed changes
+/* =====================================================
+    PÁGINA: LIBRO DE RECLAMACIONES
+===================================================== */
+.bg-light-gray {
+    background-color: #f8f9fa;
+}
+
+.title-reclamaciones {
+    color: #0f1d3a;
+    font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+}
+
+.reclamaciones-card {
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e9ecef !important;
+}
+
+.subtitle-reclamaciones {
+    color: #0f1d3a;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-label {
+    color: #475569;
+}
+
+.input-reclamaciones {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    color: #334155;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.input-reclamaciones:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    outline: none;
+}
+
+.input-readonly {
+    background-color: #f1f5f9;
+    color: #64748b;
+    font-weight: 600;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
+
+select.input-reclamaciones {
+    appearance: form-select;
+}
+
+.radio-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.radio-bar {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #334155;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+
+.radio-bar:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.radio-bar input[type="radio"] {
+    cursor: pointer;
+    accent-color: #d4af37;
+    width: 18px;
+    height: 18px;
+}
+
+.legal-text p {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    text-align: justify;
+}

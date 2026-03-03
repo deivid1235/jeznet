@@ -211,14 +211,7 @@
     </section>
 </div>
 
-
-
-<<<<<<< Updated upstream
 <footer class="jeznet-footer text-white pt-5 pb-3">
-=======
-
-<footer class="jeznet-footer text-white pt-5">
->>>>>>> Stashed changes
     <div class="container">
 
         <div class="row gy-5">
@@ -232,7 +225,7 @@
                 </p>
 
                 <div class="mt-4">
-                    <a href="#" class="link-reclamaciones text-decoration-none d-inline-flex align-items-center gap-3">
+                    <a href="{{ route('libroReclamaciones') }}" class="link-reclamaciones text-decoration-none d-inline-flex align-items-center gap-3">
                         <div class="img-wrapper">
                             <img src="{{ asset('iconos/libroReclamaciones.png') }}" alt="Libro de Reclamaciones" width="70">
                         </div>
@@ -260,7 +253,7 @@
                     <li><a href="#">Telecomunicaciones</a></li>
                     <li><a href="#">Metalmecánica</a></li>
                     <li><a href="#">Obras Civiles</a></li>
-                    <li><a href="#metodologia">Metodología</a></li>
+                    <li><a href="{{ route('home') }}#metodologia">Metodología</a></li>
                 </ul>
             </div>
 
@@ -310,7 +303,6 @@
 
     </div>
 </footer>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
