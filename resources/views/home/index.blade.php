@@ -146,6 +146,7 @@
                     <i class="bi bi-tools"></i>
                 </div>
                 <h5>Obras Civiles e Infraestructura</h5>
+
                 <div class="row mt-3">
                     <div class="col-md-6">
                         <ul>
@@ -167,67 +168,97 @@
     </div>
 </section>
 
-<section class="section-destacados py-5">
+<section class="servicios-destacados py-5">
     <div class="container">
 
-        <div class="d-flex justify-content-between align-items-start mb-5 flex-wrap">
-            <div class="d-flex align-items-start gap-3">
-                <div class="linea-azul"></div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-5">
+            <div class="soluciones-header d-flex align-items-center">
+                <div class="linea-vertical me-3"></div>
                 <div>
-                    <h2 class="titulo-destacados">Servicios Destacados</h2>
-                    <p class="subtitulo-destacados">Desde I+D hasta ejecución de obras</p>
+                    <h2 class="titulo-seccion fw-bold mb-1">Servicios Destacados</h2>
+                    <p class="subtitulo-seccion mb-0 text-muted">Soluciones estratégicas de alto impacto</p>
                 </div>
             </div>
-            <a href="#" class="ver-catalogo">VER CATALOGO →</a>
+
+            <a href="#" class="link-catalogo mt-3 mt-md-0 d-flex align-items-center">
+                VER CATÁLOGO
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-2" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </a>
         </div>
 
-        <div class="row g-4">
+        <div class="grid-soluciones">
 
-            <div class="col-lg-4">
-                <div class="card-destacado azul">
-                    <h4>I+D Sostenible</h4>
-                    <h5>Ingeniería de Economía Circular</h5>
-                    <ul>
+            <div class="card card-destacado h-100 border-0 rounded-4 overflow-hidden position-relative">
+                <div class="card-body p-4 p-xl-5 flex-grow-1">
+                    <div class="mb-4">
+                        <span class="badge-categoria">I+D Sostenible</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-4">Ingeniería de Economía Circular</h4>
+                    
+                    <ul class="lista-destacada">
                         <li>Análisis de procesos</li>
                         <li>Reingeniería de residuos</li>
                         <li>Viabilidad técnica-ambiental</li>
                     </ul>
-                    <div class="footer-card">
-                        <span>3-5 Semanas</span>
-                        <span class="flecha">➜</span>
-                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center px-4 py-3 border-0">
+                    <span class="tiempo-estimado">3-5 Semanas</span>
+                    <a href="#" class="icon-link stretched-link" aria-label="Ver más detalles">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M22 2 11 13"/>
+                            <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="card-destacado azul">
-                    <h4>Aguas</h4>
-                    <h5>Gestión Integral del Recurso Hídrico</h5>
-                    <ul>
+            <div class="card card-destacado h-100 border-0 rounded-4 overflow-hidden position-relative">
+                <div class="card-body p-4 p-xl-5 flex-grow-1">
+                    <div class="mb-4">
+                        <span class="badge-categoria">Aguas</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-4">Gestión Integral del Recurso Hídrico</h4>
+                    
+                    <ul class="lista-destacada">
                         <li>Diseño PTARI</li>
                         <li>Monitoreo inteligente (IoT)</li>
                         <li>Cumplimiento LMP/ECA</li>
                     </ul>
-                    <div class="footer-card">
-                        <span>Por Proyecto</span>
-                        <span class="flecha">➜</span>
-                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center px-4 py-3 border-0">
+                    <span class="tiempo-estimado">Por Proyecto</span>
+                    <a href="#" class="icon-link stretched-link" aria-label="Ver más detalles">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M22 2 11 13"/>
+                            <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="card-destacado azul">
-                    <h4>Automatización</h4>
-                    <h5>Automatización y Control Industrial</h5>
-                    <ul>
+            <div class="card card-destacado h-100 border-0 rounded-4 overflow-hidden position-relative">
+                <div class="card-body p-4 p-xl-5 flex-grow-1">
+                    <div class="mb-4">
+                        <span class="badge-categoria">Automatización</span>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-4">Automatización y Control Industrial</h4>
+                    
+                    <ul class="lista-destacada">
                         <li>Migración de PLC</li>
                         <li>Actualización SCADA</li>
                         <li>Instrumentación de campo</li>
                     </ul>
-                    <div class="footer-card">
-                        <span>2-8 Semanas</span>
-                        <span class="flecha">➜</span>
-                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center px-4 py-3 border-0">
+                    <span class="tiempo-estimado">2-8 Semanas</span>
+                    <a href="#" class="icon-link stretched-link" aria-label="Ver más detalles">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M22 2 11 13"/>
+                            <path d="m22 2-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -305,7 +336,9 @@
     </div>
 </section>
 
+<section class="section-historial py-5">
 
+</section>
 
 <section id="contactenos" class="section-contacto py-5">
     <div class="container py-lg-4">
@@ -398,8 +431,6 @@
     </div>
 </section>
 
-
-
 <footer class="jeznet-footer text-white pt-5">
     <div class="container">
 
@@ -459,7 +490,6 @@
 
     </div>
 </footer>
-
 
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -570,8 +600,6 @@
         </div>
     </div>
 </div>
-
-
 
 @if(request('login') == 'true')
 <script>
