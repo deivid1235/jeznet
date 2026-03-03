@@ -18,7 +18,7 @@
                 <ul class="navbar-nav ms-auto align-items-center">
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#">SERVICIOS</a>
+                        <a class="nav-link" href="{{ route('home') }}#servicios">SERVICIOS</a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
@@ -30,7 +30,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#">CONTACTO</a>
+                        <a class="nav-link" href="{{ route('home') }}#contactenos">CONTACTO</a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
