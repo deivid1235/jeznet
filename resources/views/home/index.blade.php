@@ -367,37 +367,22 @@
                                 <input type="text" class="form-control input-contacto" required>
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-3">
                                 <label class="form-label fw-bold small">Empresa</label>
                                 <input type="text" class="form-control input-contacto" required>
                             </div>
 
-                            <label class="form-label fw-bold small mb-3">Tipo de Consulta</label>
+                            <label for="tipoConsultaSelect" class="form-label fw-bold small mb-2">Tipo de Consulta</label>
 
-                            <div class="opcion-radio mb-2">
-                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta1" checked>
-                                <label class="form-check-label w-100" for="consulta1">
-                                    Solicitud de Propuesta (RFP)
-                                </label>
+                            <select class="form-select input-contacto" id="tipoConsultaSelect" name="tipoConsulta">
+                                <option value="rfp" selected>Solicitud de Propuesta (RFP)</option>
+                                <option value="viabilidad">Viabilidad Técnica</option>
+                                <option value="soporte">Soporte Técnico</option>
+                            </select>
+
+                            <div class="d-grid my-4">
+                                <button class="btn btn-hero">CONTACTAR INGENIERÍA</button>
                             </div>
-
-                            <div class="opcion-radio mb-2">
-                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta2">
-                                <label class="form-check-label w-100" for="consulta2">
-                                    Viabilidad Técnica
-                                </label>
-                            </div>
-
-                            <div class="opcion-radio mb-4">
-                                <input class="form-check-input" type="radio" name="tipoConsulta" id="consulta3">
-                                <label class="form-check-label w-100" for="consulta3">
-                                    Soporte Técnico
-                                </label>
-                            </div>
-
-                            <button type="submit" class="btn btn-submit-contacto w-100 fw-bold">
-                                CONTACTAR INGENIERÍA
-                            </button>
 
                             <p class="text-center text-muted mt-3 mb-0" style="font-size: 0.65rem;">
                                 No se compartirá el nombre de tu perfil. Nunca envíes tus contraseñas.
@@ -409,7 +394,7 @@
 
             </div>
 
-            <div class="col-lg-6 d-flex">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
                 <div class="card card-whatsapp text-white w-100 border-0 p-4 p-md-5 d-flex flex-column justify-content-center">
                     <div>
                         <span class="badge-respuesta mb-3">RESPUESTA INMEDIATA</span>
