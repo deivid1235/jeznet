@@ -1,7 +1,6 @@
 /* =====================================================
     RESET / BASE
 ===================================================== */
-
 html {
     scroll-behavior: smooth;
 }
@@ -12,11 +11,9 @@ body {
     padding: 0;
 }
 
-
 /* =====================================================
     HEADER / NAVBAR
 ===================================================== */
-
 .navbar {
     background-color: #0f1d3a !important;
     padding: 8px 0;
@@ -59,11 +56,170 @@ body {
     box-shadow: none;
 }
 
+/* =====================================================
+    BOTONES GLOBALES
+===================================================== */
+.btn-hero {
+    background-color: #173866;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: #d1ac40;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 18px;
+}
 
 /* =====================================================
-    HERO SECTION
+    MODALES / LOGIN
 ===================================================== */
+.login-modal {
+    background: #f5f5f5;
+    border-radius: 20px;
+    border: none;
+    padding: 1.5rem;
+}
 
+.login-modal h2 {
+    letter-spacing: 2px;
+}
+
+.login-input {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    background: transparent;
+    padding-left: 0;
+}
+
+.login-input:focus {
+    box-shadow: none;
+    border-color: #d4af37;
+    border-bottom: 2px solid #d4af37;
+}
+
+.login-icon {
+    color: #1f3b73;
+    font-size: 20px;
+}
+
+.password-eye {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.eye-icon {
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #555;
+}
+
+.login-btn {
+    background-color: #d4af37;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 12px;
+    border: none;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background-color: #c19b2e;
+}
+
+/* Redes Sociales Login */
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons-simple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.social-link:hover {
+    opacity: 0.7; 
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+}
+
+.google-btn {
+    background: #DB4437;
+    color: white;
+}
+
+/* Enlaces del Login */
+.link-catalogo {
+    color: #1f3b73;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.link-catalogo:hover {
+    color: #e6bf24;
+    transform: translateX(4px);
+}
+
+.login-modal .link-catalogo:hover {
+    color: #d4af37;
+    transform: translateX(-4px);
+}
+
+.link-correo {
+    color: #123262;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-correo:hover {
+    color: #D4AF37;
+    text-decoration: none;
+}
+
+/* =====================================================
+    SECCIÓN: HERO
+===================================================== */
 .hero {
     background: url('/images/industrial.jpg') center/cover no-repeat;
     min-height: 90vh;
@@ -105,36 +261,12 @@ body {
     text-shadow: 1px 2px 8px rgba(0,0,0,0.6);
 }
 
-
 /* =====================================================
-    BOTONES HERO
-===================================================== */
-
-.btn-hero {
-    background-color: #173866;
-    color: #ffffff;
-    border-radius: 8px;
-    padding: 14px 32px;
-    font-weight: 700;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.btn-hero:hover {
-    background-color: #d1ac40;
-    color: #ffffff;
-    border-radius: 8px;
-    padding: 14px 32px;
-    font-weight: 700;
-    font-size: 18px;
-}
-
-
-/* =====================================================
-    SECCIÓN SERVICIOS / CARDS
+    SECCIÓN: SERVICIOS
 ===================================================== */
 .section-soluciones {
     background-color: #f5f3f0;
+    border-top: 2px solid #bcbcbc7e;
 }
 
 .soluciones-header {
@@ -155,6 +287,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     color: #0f1d3a;
+    letter-spacing: -0.5px;
 }
 
 .subtitulo-seccion {
@@ -163,29 +296,30 @@ body {
     color: #3b4a63;
 }
 
-.grid-soluciones {
+/* GRID INTELIGENTE SERVICIOS */
+.section-soluciones .grid-soluciones {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
 }
 
-@media (min-width: 768px) {
-    .grid-soluciones {
-        grid-template-columns: repeat(2, 1fr);
-    }
+/* 3 por fila */
+.section-soluciones .card-solucion {
+    grid-column: span 4;
 }
 
-@media (min-width: 1200px) {
-    .grid-soluciones {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Última tarjeta ocupa toda la fila */
-    .grid-soluciones .card-solucion:last-child {
-        grid-column: 1 / -1;
-    }
+/* Si sobra 1 */
+.section-soluciones .card-solucion:last-child:nth-child(3n+1) {
+    grid-column: span 12;
 }
 
+/* Si sobran 2 */
+.section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
+.section-soluciones .card-solucion:last-child:nth-child(3n+2) {
+    grid-column: span 6;
+}
+
+/* TARJETAS SERVICIOS */
 .card-solucion {
     display: flex;
     flex-direction: column;
@@ -193,7 +327,7 @@ body {
     background: #e9edf4;
     border-radius: 18px;
     border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .card-solucion h5,
@@ -209,128 +343,561 @@ body {
     color: #4a5568;
 }
 
-.card-solucion:not(.card-wide):hover {
+/* Hover Tarjetas Servicios */
+.card-solucion:hover {
     transform: translateY(-6px);
     background: #e8cf6a;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
-.card-solucion:not(.card-wide):hover .icono {
+.card-solucion:hover .icono {
     background: #f0e4b7;
     color: #cfa80f;
     transform: scale(1.05);
 }
 
-.card-wide {
-    grid-column: 1 / -1;
-    background: #dfe5ef;
-}
-
-.card-wide ul {
-    padding-left: 18px;
-    color: #3f4c63;
-}
-
+/* Iconos Servicios */
 .icono {
     width: 55px;
     height: 55px;
     margin-bottom: 18px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 1.5rem;
     color: #0f1d3a;
     background: rgba(15, 29, 58, 0.08);
     border-radius: 14px;
-
     transition: all 0.3s ease;
 }
 
-.icono-grande {
-    width: 65px;
-    height: 65px;
-    font-size: 1.8rem;
+/* =====================================================
+    SECCIÓN: SERVICIOS DESTACADOS
+===================================================== */
+.servicios-destacados {
+    background-color: #f5f3f0;
+    border-top: 1px solid rgba(188, 188, 188, 0.5);
+    border-bottom: 1px solid rgba(188, 188, 188, 0.5);
+}
+
+/* GRID SERVICIOS DESTACADOS */
+.servicios-destacados .grid-soluciones {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* TARJETAS BASE DESTACADOS */
+.card-destacado {
+    display: flex;
+    flex-direction: column;
+    background: #e9edf4;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.card-destacado:hover {
+    background: #e8cf6a;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(15, 29, 58, 0.15);
+}
+
+/* BADGES DE CATEGORÍA */
+.badge-categoria {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(15, 29, 58, 0.1);
+    color: #0f1d3a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.card-destacado:hover .badge-categoria {
+    background-color: #eee3b4;
+    color: #cba920;
+}
+
+/* TÍTULOS DESTACADOS */
+.card-destacado h4 {
+    color: #0f1d3a !important;
+    line-height: 1.3;
+}
+
+/* LISTA MEJORADA */
+.lista-destacada {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.lista-destacada li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Viñeta personalizada */
+.lista-destacada li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: #0f1d3a;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-destacado:hover .lista-destacada li {
+    color: #0f1d3a;
+}
+
+/* FOOTER TARJETA DESTACADA */
+.card-footer {
+    font-weight: 600;
+    background: #ccd4e0;
+    color: #0f1d3a;
+    transition: all 0.4s ease;
+}
+
+.card-destacado:hover .card-footer {
+    background: #bc9b23;
+    color: #f2efe1;
+}
+
+/* TIEMPO */
+.tiempo-estimado {
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+}
+
+/* ICONO DEL FOOTER TARJETA */
+.icon-link {
+    color: inherit;
+    display: inline-flex;
+    transition: transform 0.3s ease;
+}
+
+.card-destacado:hover .icon-link {
+    transform: translate(3px, -3px) scale(1.1);
 }
 
 /* =====================================================
-    LOGIN / MODAL
+    SECCIÓN: METODOLOGÍA
 ===================================================== */
-
-.login-modal {
-    border-radius: 20px;
-    background: #f5f5f5;
-}
-
-.login-input {
-    border: none;
-    border-bottom: 2px solid #ccc;
-    border-radius: 0;
-    background: transparent;
-}
-
-.login-input:focus {
-    box-shadow: none;
-    border-color: #d4af37;
-}
-
-.login-btn {
-    background-color: #d4af37;
+.section-metodologia {
+    background: linear-gradient(135deg, #081423, #1a2f4f);
     color: white;
-    font-weight: bold;
-    border-radius: 12px;
-    padding: 10px;
 }
 
-.login-btn:hover {
-    background-color: #c19b2e;
-}
-
-.eye-icon {
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-    color: #555;
-}
-
-.social-btn {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+.tag-metodologia {
+    color: #d4af37;
+    font-weight: 500;
+    letter-spacing: 1px;
     display: inline-flex;
     align-items: center;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.tag-metodologia::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 2px;
+    background-color: #d4af37;
+    margin-right: 12px;
+}
+
+.titulo-metodologia {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.titulo-metodologia span {
+    color: #d4af37;
+}
+
+.descripcion-metodologia {
+    color: #bfc7d5;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* === IMAGEN 3D PREMIUM === */
+.contenedor-imagen-3d {
+    position: relative;
+    display: flex;
     justify-content: center;
-    margin: 5px;
+    align-items: center;
+    width: 100%;
+    min-height: 400px;
+}
+
+/* La imagen principal */
+.img-metodologia-3d {
+    position: relative;
+    z-index: 2;
+    max-height: 450px;
+    object-fit: contain;
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.6));
+    animation: flotar3D 6s ease-in-out infinite;
+}
+
+.resplandor-fondo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(8, 20, 35, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulsarLuz 4s ease-in-out infinite;
+}
+
+/* === ITEMS DE LA LISTA === */
+.item-metodo {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid transparent;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.google-btn {
-    background: #DB4437;
-    color: white;
+.numero {
+    font-size: 4.5rem;
+    font-weight: 300; 
+    color: #ffffff; 
+    min-width: 80px;
+    line-height: 0.8;
+    transition: all 0.4s ease;
 }
 
-.social-btn:hover {
-    transform: scale(1.1);
+.badge-metodo {
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
+.item-metodo h5 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.item-metodo p {
+    color: #8c9cb3; 
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.linea-divisora {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 15%, rgba(255,255,255,0.15) 85%, rgba(255,255,255,0) 100%);
+    margin: 5px 0;
+}
+
+/* === EFECTOS HOVER === */
+.item-metodo:hover {
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateX(12px);
+    border-left: 4px solid #d4af37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.item-metodo:hover h5 {
+    color: #d4af37;
+}
+
+.item-metodo:hover p {
+    color: #e2e8f0;
+}
+
+.item-metodo:hover .numero {
+    color: #d4af37;
+    transform: scale(1.05);
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+}
+
+.item-metodo:hover .badge-metodo {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* === ANIMACIONES KEYFRAMES === */
+@keyframes flotar3D {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulsarLuz {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+    SECCIÓN: CONTÁCTENOS
+===================================================== */
+.section-contacto {
+    background-color: #f5f3f0;
+}
+
+.tag-contacto {
+    color: #0f1d3a;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.tag-contacto::before {
+    content: "";
+    display: inline-block;
+    width: 35px;
+    height: 2px;
+    background-color: #0f1d3a;
+    margin-right: 12px;
+}
+
+.titulo-contacto {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f1d3a;
+}
+
+/* Color específico para la palabra "proyecto" */
+.text-primary-brand {
+    color: #173866; 
+}
+
+.descripcion-contacto {
+    color: #4a5568;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* === FORMULARIO BLANCO === */
+.card-formulario {
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-formulario:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+}
+
+.input-contacto {
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+}
+
+.input-contacto:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* Opciones tipo Radio (Barras grises) */
+.opcion-radio {
+    background-color: #e6e9ed;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.opcion-radio:hover {
+    background-color: #d8dce2;
+}
+
+.opcion-radio .form-check-input {
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.opcion-radio .form-check-label {
+    cursor: pointer;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Botón Submit del Formulario */
+.btn-submit-contacto {
+    background-color: #e8cf6a;
+    color: #0f1d3a;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-submit-contacto:hover {
+    background-color: #d4af37;
+    transform: translateY(-2px);
+}
+
+/* === TARJETA DERECHA (WHATSAPP) === */
+.card-whatsapp {
+    background: linear-gradient(145deg, #081423, #132440);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(8, 20, 35, 0.2);
+    transition: transform 0.4s ease;
+}
+
+.card-whatsapp:hover {
+    transform: scale(1.02);
+}
+
+.badge-respuesta {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    display: block;
+}
+
+.titulo-whatsapp {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.descripcion-whatsapp {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Botón Blanco de WhatsApp */
+.btn-whatsapp {
+    background-color: white;
+    border-radius: 12px;
+    padding: 12px 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.btn-whatsapp:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 
 /* =====================================================
     FOOTER
 ===================================================== */
-
-footer {
+footer,
+.jeznet-footer {
     background-color: #0f1d3a;
 }
 
+.jeznet-footer h6 {
+    letter-spacing: 1px;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    opacity: .85;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.footer-links li:hover {
+    opacity: 1;
+    padding-left: 5px;
+    color: #e8b931 !important; 
+}
 
 /* =====================================================
-    RESPONSIVE - TABLETS (≤ 992px)
+    RESPONSIVE (MEDIA QUERIES)
 ===================================================== */
 
-@media (max-width: 992px) {
+/* MÓVILES (≤ 576px) */
+@media (max-width: 576px) {
+    .hero {
+        min-height: 85vh;
+        padding: 80px 20px 40px 20px;
+        text-align: left;
+    }
 
+    .hero::before {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.4)
+        );
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        letter-spacing: 1px;
+        text-align: left;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .btn-hero {
+        width: 100%;
+        padding: 13px 20px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+}
+
+/* TABLETS (≤ 992px) */
+@media (max-width: 992px) {
     #navbarMenu {
         background-color: #0a1529;
         padding: 25px 20px;
@@ -373,59 +940,8 @@ footer {
     }
 }
 
-
-/* =====================================================
-    RESPONSIVE - MÓVILES (≤ 576px)
-===================================================== */
-
-@media (max-width: 576px) {
-
-    .hero {
-        min-height: 85vh;
-        padding: 80px 20px 40px 20px;
-        text-align: left;
-    }
-
-    .hero::before {
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.65),
-            rgba(0, 0, 0, 0.4)
-        );
-    }
-
-    .hero h1 {
-        font-size: 1.9rem;
-        line-height: 1.2;
-        letter-spacing: 1px;
-        text-align: left;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-        text-align: left;
-    }
-
-    .btn-hero {
-        width: 100%;
-        padding: 13px 20px;
-        font-size: 14px;
-        border-radius: 10px;
-    }
-
-    .navbar-brand img {
-        height: 40px;
-    }
-}
-
-
-/* =====================================================
-    PANTALLAS GRANDES (≥ 1200px)
-===================================================== */
-
+/* PANTALLAS GRANDES (≥ 1200px) */
 @media (min-width: 1200px) {
-
     .hero {
         min-height: 95vh;
         padding: 100px 0;
@@ -441,13 +957,8 @@ footer {
     }
 }
 
-
-/* =====================================================
-    MONITORES EXTRA GRANDES (≥ 1400px)
-===================================================== */
-
+/* MONITORES EXTRA GRANDES (≥ 1400px) */
 @media (min-width: 1400px) {
-
     .hero {
         min-height: 100vh;
     }
@@ -463,6 +974,7 @@ footer {
     .hero p {
         font-size: 1.5rem;
     }
+<<<<<<< HEAD
 }
 
 /*Descripcion*/
@@ -857,3 +1369,6 @@ footer {
     color: white !important;
     border-color: #91b1e5 !important;
 }
+=======
+}
+>>>>>>> d04da791cd18dc6ccf53f10d67f8a8edc9c69540
