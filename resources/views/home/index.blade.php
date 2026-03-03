@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a class="nav-link" href="#loginModal" data-bs-toggle="modal" data-bs-target="#loginModal">
                             INICIAR SESIÓN
                         </a>
                     </li>
@@ -219,6 +219,12 @@
                     correo
                     </a>
                     para cambiar tu contraseña.
+                    <br>
+                    <div class="text-center">
+                        <a href="{{ route('register') }}" class="fw-semibold text-primary">
+                            Registrar cuenta
+                        </a>
+                    </div>
                 </p>
 
                
@@ -567,5 +573,15 @@
 
     </div>
 </footer>
+
+@if(request('login') == 'true')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+    });
+</script>
+@endif
+
 
 @endsection
