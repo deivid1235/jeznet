@@ -660,3 +660,200 @@ footer {
     color: #ffffff;
 }
 
+
+/* Servicios*/
+.section-destacados{
+    background:#f4f4f4;
+}
+
+.linea-azul{
+    width:6px;
+    height:60px;
+    background:#1f3b73;
+}
+
+.titulo-destacados{
+    font-size:40px;
+    font-weight:800;
+    margin:0;
+}
+
+.subtitulo-destacados{
+    font-size:20px;
+    color:#1f3b73;
+}
+
+.ver-catalogo{
+    color:#d4af37;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.ver-catalogo:hover{
+    text-decoration:underline;
+}
+
+.card-destacado{
+    border-radius:15px;
+    padding:30px;
+    background:#e9edf5;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    min-height:330px;
+    transition:.3s;
+}
+
+.card-destacado h4{
+    font-weight:700;
+    opacity:.6;
+}
+
+.card-destacado h5{
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.card-destacado ul{
+    padding-left:18px;
+}
+
+.card-destacado ul li{
+    margin-bottom:6px;
+}
+
+
+.card-destacado.amarillo{
+    background:#e3c969;
+}
+
+.card-destacado.azul{
+    background:#cfd8e6;
+}
+
+
+.footer-card{
+    background:rgba(0,0,0,0.2);
+    padding:12px 20px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.card-destacado.amarillo .footer-card{
+    background:#7a6726;
+    color:white;
+}
+
+.card-destacado.azul .footer-card{
+    background:#6a88a6;
+    color:white;
+}
+
+.flecha{
+    font-size:20px;
+}
+
+
+.card-destacado:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card-destacado{
+    transition: all .3s ease;
+}
+
+
+.card-destacado:hover{
+    background: #e8cf6a !important;
+    color: #000;
+}
+
+
+.card-destacado:hover h4,
+.card-destacado:hover h5,
+.card-destacado:hover ul li{
+    color: #000;
+}
+
+
+.card-destacado:hover .footer-card{
+    background: #e8cf6a;
+    color: #fff;
+}
+
+
+
+.section-historial{
+    background:#f5f5f5;
+}
+
+.linea-azul{
+    width:6px;
+    height:50px;
+    background:#1f3b73;
+}
+
+.titulo-historial{
+    font-size:42px;
+    font-weight:800;
+    margin:0;
+}
+
+
+.tabla-historial{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.tabla-historial thead{
+    background:#78a0e0;
+}
+
+.tabla-historial th{
+    padding:18px;
+    font-weight:700;
+}
+
+.tabla-historial td{
+    padding:18px;
+}
+
+.tabla-historial tbody tr{
+    border-top:1px solid #e5e5e5;
+}
+
+
+.badge-estado{
+    background:#d4e9d7;
+    color:#1b6b2c;
+    padding:6px 14px;
+    border-radius:20px;
+    font-weight:600;
+    display:inline-block;
+}
+
+
+.tabla-historial tbody tr:hover{
+    background:#85aeec;
+}
+
+
+.tabla-historial thead th{
+    color:#1f2a44;
+    font-weight:700;
+    border-bottom:none;
+}
+
+.table.tabla-historial thead th{
+    background-color: #91b1e5 !important;
+    color: white !important;
+    border-color: #91b1e5 !important;
+}

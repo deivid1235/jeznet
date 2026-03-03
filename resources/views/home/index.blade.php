@@ -285,6 +285,85 @@
     </div>
 </div>
 
+
+<!-- Servicios Destacados -->
+<section class="section-destacados py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-start mb-5 flex-wrap">
+            
+            <div class="d-flex align-items-start gap-3">
+                <div class="linea-azul"></div>
+                <div>
+                    <h2 class="titulo-destacados">Servicios Destacados</h2>
+                    <p class="subtitulo-destacados">Desde I+D hasta ejecución de obras</p>
+                </div>
+            </div>
+
+            <a href="#" class="ver-catalogo">VER CATALOGO →</a>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card-destacado azul">
+                    <h4>I+D Sostenible</h4>
+                    <h5>Ingeniería de Economía Circular</h5>
+
+                    <ul>
+                        <li>Análisis de procesos</li>
+                        <li>Reingeniería de residuos</li>
+                        <li>Viabilidad técnica-ambiental</li>
+                    </ul>
+
+                    <div class="footer-card">
+                        <span>3-5 Semanas</span>
+                        <span class="flecha">➜</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card-destacado azul">
+                    <h4>Aguas</h4>
+                    <h5>Gestión Integral del Recurso Hídrico</h5>
+
+                    <ul>
+                        <li>Diseño PTARI</li>
+                        <li>Monitoreo inteligente (IoT)</li>
+                        <li>Cumplimiento LMP/ECA</li>
+                    </ul>
+
+                    <div class="footer-card">
+                        <span>Por Proyecto</span>
+                        <span class="flecha">➜</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card-destacado azul">
+                    <h4>Automatización</h4>
+                    <h5>Gestión Integral del Recurso Hídrico</h5>
+
+                    <ul>
+                        <li>Migración de PLC</li>
+                        <li>Actualización SCADA</li>
+                        <li>Instrumentación de campo</li>
+                    </ul>
+
+                    <div class="footer-card">
+                        <span>2-8 Semanas</span>
+                        <span class="flecha">➜</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
 <!-- Metodología <  -->
 
 <section  id="metodologia" class="section-metodologia py-5">
@@ -357,97 +436,69 @@
 </section>
 
 
-
-
-<section class="section-soluciones py-5">
+<section class="section-historial py-5">
     <div class="container">
 
-        <div class="soluciones-header mb-5">
-        <div class="linea-vertical"></div>
-        <div>
-            <h2 class="titulo-seccion">Nuestras Soluciones</h2>
-            <p class="subtitulo-seccion">Ingeniería multidisciplinaria y sostenible</p>
-        </div>
+        <!-- HEADER -->
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <div class="linea-azul"></div>
+            <h2 class="titulo-historial">Historial de Proyectos</h2>
         </div>
 
-        <div class="grid-soluciones">
+        <!-- TABLA -->
+        <div class="table-responsive">
+            <table class="table tabla-historial align-middle">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Tipo de Proyecto</th>
+                        <th>Año</th>
+                        <th>Estado</th>
+                        <th class="text-center">Ficha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AgroTech Norte</td>
+                        <td>Planta de Tratamiento (PTARI)</td>
+                        <td>2023</td>
+                        <td>
+                            <span class="badge-estado">✔ Operativo</span>
+                        </td>
+                        <td class="text-center">
+                            📋
+                        </td>
+                    </tr>
 
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-lightbulb"></i>
-                </div>
-                <h5>Investigación y Desarrollo (I+D)</h5>
-                <p>Proyectos sostenibles y economía circular.</p>
-            </div>
+                    <tr>
+                        <td>FarmaCorp</td>
+                        <td>Red de Tuberías Sanitarias</td>
+                        <td>2024</td>
+                        <td>
+                            <span class="badge-estado">✔ En Ejecución</span>
+                        </td>
+                        <td class="text-center">
+                            📋
+                        </td>
+                    </tr>
 
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-droplet-half"></i>
-                </div>
-                <h5>Gestión de Aguas Sostenibles</h5>
-                <p>PTARI, potabilización y eficiencia hídrica.</p>
-            </div>
-
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-cpu"></i>
-                </div>
-                <h5>Instrumentación y Automatización</h5>
-                <p>PLC/SCADA y modernización de plantas.</p>
-            </div>
-
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-lightning-charge"></i>
-                </div>
-                <h5>Proyectos Eléctricos</h5>
-                <p>Media/Baja tensión y eficiencia energética.</p>
-            </div>
-
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-wifi"></i>
-                </div>
-                <h5>Telecomunicaciones e IT</h5>
-                <p>Data Centers, fibra óptica y ciberseguridad.</p>
-            </div>
-
-            <div class="card-solucion">
-                <div class="icono">
-                    <i class="bi bi-tools"></i>
-                </div>
-                <h5>Metalmecánica Estructural</h5>
-                <p>Estructuras, soldadura sanitaria e infraestructura.</p>
-            </div>
-
-            <!-- Card amplia -->
-            <div class="card-solucion">
-                <div class="icono icono-grande">
-                    <i class="bi bi-building"></i>
-                </div>
-                <h4>Obras Civiles e Infraestructura</h4>
-
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <ul>
-                            <li>Infraestructura industrial y cimentaciones especiales</li>
-                            <li>Edificaciones y plantas de procesamiento</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul>
-                            <li>Saneamiento y movimiento de tierras</li>
-                            <li>Gestión de proyectos PMO / ISO / OSHA</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+                    <tr>
+                        <td>Industrial Paper</td>
+                        <td>Subestación Media Tensión</td>
+                        <td>2023</td>
+                        <td>
+                            <span class="badge-estado">✔ Entregado</span>
+                        </td>
+                        <td class="text-center">
+                            📋
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
 </section>
-
 
 
 <footer class="jeznet-footer text-white pt-5">
