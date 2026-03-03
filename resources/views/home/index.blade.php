@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="es" data-bs-theme="light">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JEZNET - Soluciones Industriales</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+@extends('layouts.app')
 
-    @vite(['resources/css/style.css','resources/js/app.js'])
-</head>
-
-<body>
+@section('content')
 
 <!-- =========================
     NAVBAR
@@ -147,7 +135,7 @@
 </footer>
 
 <!-- =========================
-    MODAL LOGIN (FUERA DEL NAV)
+    MODAL LOGIN
 ========================= -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -172,33 +160,42 @@
                     <label class="form-label fw-bold">
                         <i class="fas fa-lock me-2"></i>Contraseña
                     </label>
+
                     <div class="position-relative">
-                        <input type="password" class="form-control login-input" placeholder="Ingresa tu contraseña">
-                        <i class="fas fa-eye position-absolute eye-icon"></i>
+                        <input 
+                            type="password"
+                            id="password"
+                            class="form-control login-input"
+                            placeholder="Ingresa tu contraseña"
+                        >
+
+                        <i 
+                            id="togglePassword"
+                            class="fas fa-eye position-absolute"
+                            style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;"
+                        ></i>
                     </div>
                 </div>
-
-                <p class="small text-muted mt-2">
-                    ¿Olvidaste tu contraseña? No te preocupes, pide un código verificador por 
-                    <a href="#" class="text-primary">correo</a>.
-                </p>
 
                 <div class="d-grid my-3">
                     <button class="btn login-btn">INGRESAR</button>
                 </div>
 
                 <div class="text-center">
-                    <i class="fab fa-google fs-4 text-danger"></i>
-                    <i class="fab fa-facebook fs-4 mx-2 text-primary"></i>
+                    <a href="#" class="mx-2">
+                        <img src="{{ asset('iconos/google.png') }}" width="23" alt="Google">
+                    </a>
+
+                    <a href="#" class="mx-2">
+                        <img src="{{ asset('iconos/facebook.png') }}" width="26" alt="Facebook">
+                    </a>
                 </div>
+
+
 
             </div>
         </div>
     </div>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+@endsection
