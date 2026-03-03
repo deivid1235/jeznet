@@ -116,7 +116,11 @@
 
                         <p class="text-center mt-3 small">
                             ¿Ya tienes cuenta?
-                            <a class="text-warning fw-semibold" href="{{ route('home', ['login' => 'true']) }}">
+                            <a class="text-warning fw-semibold"
+                            
+                            
+                            
+                            href="{{ route('home', ['login' => 'true']) }}">
                                 INICIAR SESIÓN
                             </a>
                         </p>
