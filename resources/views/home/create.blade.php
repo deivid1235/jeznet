@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                       <a class="nav-link" href="{{ route('home') }}#metodologia">METODOLOGÍA</a>
+                        <a class="nav-link" href="{{ route('home') }}#metodologia">METODOLOGÍA</a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">

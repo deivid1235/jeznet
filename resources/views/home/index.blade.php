@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
@@ -46,8 +44,6 @@
     </nav>
 </header>
 
-
-
 <section class="hero" style="background-image: url('{{ asset('images/industrial.jpg') }}');">
     <div class="container hero-content">
         <div class="row">
@@ -76,8 +72,6 @@
         </div>
     </div>
 </section>
-
-
 
 <section id="servicios" class="section-soluciones py-5">
     <div class="container">
@@ -173,8 +167,6 @@
     </div>
 </section>
 
-
-
 <section class="section-destacados py-5">
     <div class="container">
 
@@ -242,8 +234,6 @@
         </div>
     </div>
 </section>
-
-
 
 <section id="metodologia" class="section-metodologia py-5">
     <div class="container">
@@ -510,7 +500,7 @@
                 </div>
 
                 <div class="text-center mb-3">
-                    <a href="{{ route('register') }}" class="fw-semibold text-primary">
+                    <a href="{{ route('register') }}" class="fw-semibold link-correo">
                         Registrar cuenta
                     </a>
                 </div>
@@ -537,8 +527,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div class="modal fade" id="recoverModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
