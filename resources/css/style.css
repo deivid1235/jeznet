@@ -652,6 +652,10 @@ body {
         opacity: 1;
     }
 }
+/* =====================================================
+    SECCIÓN: HISTORIAL
+===================================================== */
+
 
 /* =====================================================
     SECCIÓN: CONTÁCTENOS
@@ -988,7 +992,6 @@ body {
     border-radius: 18px;
 }
 
-
 .beneficio-item {
     transition: all 0.3s ease;
     padding: 12px;
@@ -998,7 +1001,6 @@ body {
     background: transparent;   
     box-shadow: none;          
 }
-
 
 .beneficio-item .bg-white {
     background: transparent !important;
@@ -1018,14 +1020,12 @@ body {
 
 }
 
-
 .icono-beneficio {
     width: 55px;              
     height: 55px;
     object-fit: contain;
     transition: 0.3s ease;
 }
-
 
 .beneficio-item:hover .icono-beneficio {
     transform: scale(1.15);
