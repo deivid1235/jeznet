@@ -87,7 +87,7 @@
 
                                 <div id="numeroDocumentoWrapper" class="mt-2" style="display:none;">
                                     <label id="labelNumDoc" class="form-label" style="font-size:0.78rem;">Número de documento</label>
-                                    <input type="text" id="numeroDocumento" name="numero_documento"
+                                    <input type="number" min="0" id="numeroDocumento" name="numero_documento"
                                            class="form-control form-control-sm rounded-3"
                                            placeholder="Ingresa el número">
                                 </div>
