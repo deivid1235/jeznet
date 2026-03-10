@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-<<<<<<< HEAD
-
-=======
 document.addEventListener('DOMContentLoaded', function () {
     const select  = document.getElementById('tipoDocumento');
     const wrapper = document.getElementById('numeroDocumentoWrapper');
@@ -47,4 +44,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
->>>>>>> b1406887b9d1d22e8998663975aada6ed6d3a045
+
+// libro de reclamaciones
