@@ -150,7 +150,7 @@
                 © 2024 JEZNET Soluciones Integrales Sostenibles. Todos los derechos reservados.
             </div>
             <div class="d-flex gap-3">
-                <a href="#" class="text-light text-decoration-none hover-gold">Políticas de Privacidad</a>
+                <a href="{{ route('politicaPrivacidad') }}" class="text-light text-decoration-none hover-gold">Políticas de Privacidad</a>
                 <a href="#" class="text-light text-decoration-none hover-gold">Términos de Servicio</a>
             </div>
         </div>
