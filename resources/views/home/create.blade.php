@@ -79,7 +79,7 @@
                                 <label class="form-label" style="font-size:0.78rem;">Tipo de documento</label>
 
                                 <select id="tipoDocumento" name="tipo_documento" class="form-select form-select-sm rounded-3" style="font-size:0.78rem;">
-                                    <option value="">-- Seleccione --</option>
+                                    <option value="" selected disabled>--- Seleccione ---</option>
                                     <option value="DNI">DNI</option>
                                     <option value="RUC">RUC</option>
                                     <option value="CE">CD (Carnet extranjero)</option>
@@ -303,36 +303,5 @@
 
     </div>
 </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const select  = document.getElementById('tipoDocumento');
-        const wrapper = document.getElementById('numeroDocumentoWrapper');
-        const label   = document.getElementById('labelNumDoc');
-        const input   = document.getElementById('numeroDocumento');
-
-        const config = {
-            'DNI': { label: 'Número de DNI',              placeholder: 'Ingresa tus 8 dígitos',   maxlength: 8  },
-            'RUC': { label: 'Número de RUC',              placeholder: 'Ingresa tus 11 dígitos',  maxlength: 11 },
-            'CE':  { label: 'Número de Carnet extranjero', placeholder: 'Ingresa el número',      maxlength: 12 },
-        };
-
-        select.addEventListener('change', function () {
-            const val = this.value;
-            if (val && config[val]) {
-                label.textContent     = config[val].label;
-                input.placeholder     = config[val].placeholder;
-                input.maxLength       = config[val].maxlength;
-                input.value           = '';
-                wrapper.style.display = 'block';
-                input.focus();
-            } else {
-                wrapper.style.display = 'none';
-                input.value           = '';
-            }
-        });
-    });
-</script>
-
 
 @endsection
