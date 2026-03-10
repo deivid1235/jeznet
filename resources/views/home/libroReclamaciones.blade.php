@@ -17,7 +17,37 @@
                 <div class="card reclamaciones-card border-0 shadow-sm">
                     <div class="card-body p-4 p-md-5">
                         
-                        <form action="#" method="POST">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show mb-5 shadow-sm" role="alert" style="border-left: 5px solid #198754; background-color: #d1e7dd; color: #0f5132;">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">¡Registro Exitoso!</h6>
+                                        <span class="small">{{ session('success') }}</span>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show mb-5 shadow-sm" role="alert" style="border-left: 5px solid #dc3545; background-color: #f8d7da; color: #842029;">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-exclamation-triangle fs-3 me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Ocurrió un problema</h6>
+                                        <ul class="mb-0 mt-1 small">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('libroReclamaciones.store') }}" method="POST">
                             @csrf
                             <p class="text-end small text-danger mb-4">* Campos obligatorios</p>
 
@@ -94,15 +124,21 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="departamento" class="form-label small fw-semibold">Departamento <span class="text-danger">*</span></label>
-                                    <input type="text" id="departamento" name="departamento" class="form-control input-reclamaciones" required>
+                                    <select id="departamento" name="departamento" class="form-select input-reclamaciones" required>
+                                        <option value="" selected disabled>Seleccione un departamento...</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="provincia" class="form-label small fw-semibold">Provincia <span class="text-danger">*</span></label>
-                                    <input type="text" id="provincia" name="provincia" class="form-control input-reclamaciones" required>
+                                    <select id="provincia" name="provincia" class="form-select input-reclamaciones" required disabled>
+                                        <option value="" selected disabled>Seleccione una provincia...</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="distrito" class="form-label small fw-semibold">Distrito <span class="text-danger">*</span></label>
-                                    <input type="text" id="distrito" name="distrito" class="form-control input-reclamaciones" required>
+                                    <select id="distrito" name="distrito" class="form-select input-reclamaciones" required disabled>
+                                        <option value="" selected disabled>Seleccione un distrito...</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -155,6 +191,19 @@
                             <div class="mb-5">
                                 <label for="pedidoConcreto" class="form-label small fw-semibold">Pedido concreto del cliente <span class="text-danger">*</span></label>
                                 <textarea id="pedidoConcreto" name="pedidoConcreto" class="form-control input-reclamaciones" rows="3" required></textarea>
+                            </div>
+
+                            <div class="row mb-4 mt-3">
+                                <div class="col-md-12">
+                                    <div class="d-flex align-items-start">
+                                        <input class="form-check-input flex-shrink-0 mt-1 me-2" type="checkbox" value="1" id="aceptoPoliticas" name="aceptoPoliticas" required style="cursor: pointer; border-color: #cbd5e1;">
+                                        <label class="form-check-label text-secondary" for="aceptoPoliticas" style="font-size: 0.85rem; line-height: 1.5; cursor: pointer;">
+                                            Declaro bajo juramento que la información proporcionada es verdadera y acepto la 
+                                            <a href="{{ route('politicaPrivacidad') }}" target="_blank" class="text-decoration-none" style="color: #0f1d3a; font-weight: 600;">Política de Privacidad</a> 
+                                            para el tratamiento de mis datos personales conforme a la Ley N° 29733. <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="d-grid my-4 col-md-6 mx-auto">

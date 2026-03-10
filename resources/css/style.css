@@ -1093,7 +1093,38 @@ body {
 }
 
 select.input-reclamaciones {
-    appearance: form-select;
+    cursor: pointer;
+    background-color: #f8fafc;
+    font-weight: 500;
+}
+
+select.input-reclamaciones:not(:disabled):hover {
+    background-color: #ffffff;
+    border-color: #94a3b8;
+}
+
+select.input-reclamaciones:not(:disabled):focus {
+    background-color: #ffffff;
+    border-color: #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+}
+
+select.input-reclamaciones:disabled {
+    background-color: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    border-color: #cbd5e1;
+    opacity: 0.8;
+}
+
+select.input-reclamaciones option {
+    color: #0f1d3a;
+    background-color: #ffffff;
+    font-weight: normal;
+}
+
+select.input-reclamaciones option[value=""][disabled] {
+    color: #64748b;
 }
 
 .radio-bar-container {
