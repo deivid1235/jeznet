@@ -7,6 +7,4 @@ Table clientes {
     tipo_documento varchar(20) [not null]
     numero_documento varchar(20) [not null, unique]
     celular varchar(20)
-    created_at timestamp
-    updated_at timestamp
 }

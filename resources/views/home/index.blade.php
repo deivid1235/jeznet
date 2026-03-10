@@ -337,7 +337,8 @@
 </section>
 
 <section class="section-historial py-5">
-
+    <h1>Historial de proyectos</h1>
+    
 </section>
 
 <section id="contactenos" class="section-contacto py-5">
