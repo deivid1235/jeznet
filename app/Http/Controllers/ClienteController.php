@@ -13,6 +13,9 @@ class ClienteController extends Controller
     public function index()
     {
         //
+        $cliente = Cliente::all();
+        return view('home.create.index', compact('clientes'));
+        
     }
 
     /**
@@ -21,6 +24,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -29,6 +33,27 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'correo' => 'required|max:255|unique:clientes,correo',
+            'nombre' => 'required|max:255',
+            'apellidos' => 'required|max:255',
+            'password' => 'required|max:255',
+            'tipo_documento' => 'required|max:255',
+            'numero_documento' => 'required|max:255|unique:clientes,numero_documento',
+            'celular' => 'nullable|max:255',
+        ]);
+        $cliente =new Cliente();
+        $cliente->correo = $request->correo;
+        $cliente->nombre = $request->nombre;
+        $cliente->apellidos = $request->apellidos;
+        $cliente->password = bcrypt($request->password);
+        $cliente->tipo_documento = $request->tipo_documento;
+        $cliente->numero_documento = $request->numero_documento;
+        $cliente->celular = $request->celular;
+        $cliente->save();
+        return redirect()->route('admin.clientes.index')
+        ->with('mensaje', 'El cliente se ha creado correctamente.')
+        ->with('icono', 'success');
     }
 
     /**
