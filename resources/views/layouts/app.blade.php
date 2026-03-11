@@ -16,6 +16,8 @@
     @vite(['resources/css/style.css','resources/js/app.js'])
 </head>
 
+
+
 <body>
 
 <header>
@@ -158,6 +160,8 @@
     </div>
 </footer>
 
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     @if(session('mensaje'))
@@ -173,9 +177,6 @@ document.addEventListener("DOMContentLoaded", function() {
     @endif
 });
 </script>
-
-
-
 
 </body>
 </html>

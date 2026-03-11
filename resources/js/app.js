@@ -244,3 +244,7 @@ document.querySelectorAll("input, select").forEach(element => {
     element.addEventListener("input", validarFormulario);
 });
 
+
+
+
+
