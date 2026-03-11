@@ -1008,16 +1008,9 @@ body {
 }
 
 
-.beneficio-item:hover {
-    background: linear-gradient(135deg, #E6C35B, #f4d878);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
-}
-
-
 .beneficio-item:hover h6,
 .beneficio-item:hover p {
-    color: #1a1a1a !important;
+    color: #d4af37 !important;
 
 }
 

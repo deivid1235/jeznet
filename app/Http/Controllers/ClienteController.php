@@ -50,11 +50,13 @@ class ClienteController extends Controller
         $cliente->tipo_documento = $request->tipo_documento;
         $cliente->numero_documento = $request->numero_documento;
         $cliente->celular = $request->celular;
+
         $cliente->save();
-        return redirect()->route('admin.clientes.index')
+        return redirect()->back()
         ->with('mensaje', 'El cliente se ha creado correctamente.')
         ->with('icono', 'success');
     }
+    
 
     /**
      * Display the specified resource.

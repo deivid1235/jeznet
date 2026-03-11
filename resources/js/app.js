@@ -208,3 +208,39 @@ document.addEventListener('DOMContentLoaded', function() {
         btnSubmit.disabled = true;
     });
 });
+
+
+
+function validarFormulario() {
+
+    let correo = document.getElementById("correo").value.trim();
+    let nombre = document.getElementById("nombre").value.trim();
+    let apellidos = document.getElementById("apellidos").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let tipoDocumento = document.getElementById("tipoDocumento").value;
+    let numeroDocumento = document.getElementById("numeroDocumento").value.trim();
+    let check1 = document.getElementById("check1").checked;
+    let check2 = document.getElementById("check2").checked;
+
+    let boton = document.getElementById("btnRegistrar");
+
+    if (
+        correo !== "" &&
+        nombre !== "" &&
+        apellidos !== "" &&
+        password !== "" &&
+        tipoDocumento !== "" &&
+        numeroDocumento !== "" &&
+        check1 &&
+        check2
+    ) {
+        boton.disabled = false;
+    } else {
+        boton.disabled = true;
+    }
+}
+
+document.querySelectorAll("input, select").forEach(element => {
+    element.addEventListener("input", validarFormulario);
+});
+

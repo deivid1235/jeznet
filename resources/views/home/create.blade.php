@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="min-h-screen flex items-center justify-center p-6">
     <section class="py-5" style="background:#f4f4f4;">
         <div class="container">
@@ -13,80 +14,98 @@
 
                         <h4 class="fw-bold mb-4" style="font-size:1rem;">REGISTAR USUARIO</h4>
 
-                        <form>
+                        <form action="{{ route('home.create.store') }}" method="POST">
+                            @csrf
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Correo electrónico</label>
-                                <input type="email" class="form-control form-control-sm rounded-3">
+                                <input type="email" name="correo" id="correo" class="form-control form-control-sm rounded-3">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Nombre</label>
-                                <input type="text" class="form-control form-control-sm rounded-3">
+                                <input type="text" name="nombre" id="nombre" class="form-control form-control-sm rounded-3">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Apellidos</label>
-                                <input type="text" class="form-control form-control-sm rounded-3">
+                                <input type="text" name="apellidos" id="apellidos" class="form-control form-control-sm rounded-3">
                             </div>
 
-                            <!-- Tipo de documento: combo -->
+                            <!-- Tipo de documento -->
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Tipo de documento</label>
 
-                                <select id="tipoDocumento" name="tipo_documento" class="form-select form-select-sm rounded-3" style="font-size:0.78rem;">
+                                <select id="tipoDocumento" name="tipo_documento"
+                                    class="form-select form-select-sm rounded-3"
+                                    style="font-size:0.78rem;">
+
                                     <option value="" selected disabled>--- Seleccione ---</option>
                                     <option value="DNI">DNI</option>
                                     <option value="RUC">RUC</option>
-                                    <option value="CE">CD (Carnet extranjero)</option>
+                                    <option value="CE">CE (Carnet extranjero)</option>
+
                                 </select>
 
                                 <div id="numeroDocumentoWrapper" class="mt-2" style="display:none;">
-                                    <label id="labelNumDoc" class="form-label" style="font-size:0.78rem;">Número de documento</label>
-                                    <input type="number" min="0" id="numeroDocumento" name="numero_documento"
-                                           class="form-control form-control-sm rounded-3"
-                                           placeholder="Ingresa el número">
+                                    <label id="labelNumDoc" class="form-label" style="font-size:0.78rem;">
+                                        Número de documento
+                                    </label>
+
+                                    <input type="number"
+                                        min="0"
+                                        id="numeroDocumento"
+                                        name="numero_documento"
+                                        class="form-control form-control-sm rounded-3"
+                                        placeholder="Ingresa el número">
                                 </div>
+
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Celular</label>
-                                <input type="text" class="form-control form-control-sm rounded-3">
+                                <input type="text" name="celular" id="celular" class="form-control form-control-sm rounded-3">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Contraseña</label>
-                                <input type="password" class="form-control form-control-sm rounded-3">
+                                <input type="password" name="password" id="password" class="form-control form-control-sm rounded-3">
                             </div>
 
                             <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-2">
                                 <div class="d-flex align-items-center">
-                                    <input type="checkbox" class="form-check-input me-2">
-                                    <span style="font-size:0.75rem;">Acepto los términos y condiciones de la empresa JEZNET</span>
+                                    <input type="checkbox" id="check1" class="form-check-input me-2">
+                                    <span style="font-size:0.75rem;">
+                                        Acepto los términos y condiciones de la empresa JEZNET
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-4">
                                 <div class="d-flex align-items-center">
-                                    <input type="checkbox" class="form-check-input me-2">
-                                    <span style="font-size:0.75rem;">Declaro que he leído y acepto términos y condiciones de JEZNET</span>
+                                    <input type="checkbox" id="check2" class="form-check-input me-2">
+                                    <span style="font-size:0.75rem;">
+                                        Declaro que he leído y acepto términos y condiciones de JEZNET
+                                    </span>
                                 </div>
                             </div>
 
-                           <div class="d-grid my-4">
-                                <button class="btn btn-hero w-100 rounded-pill fw-semibold py-1">
+                            <div class="d-grid my-4">
+                                <button type="submit"  id="btnRegistrar" class="btn btn-hero w-100 rounded-pill fw-semibold py-1" disabled>
                                     Registrar
                                 </button>
                             </div>
 
                             <p class="text-center mt-3" style="font-size:0.78rem;">
                                 ¿Ya tienes cuenta?
-                                <a class="text-warning fw-semibold" href="{{ route('home', ['login' => 'true']) }}">
+                                <a class="text-warning fw-semibold"
+                                    href="{{ route('home', ['login' => 'true']) }}">
                                     INICIAR SESIÓN
                                 </a>
                             </p>
 
                         </form>
+
                     </div>
                 </div>
 

@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @vite(['resources/css/style.css','resources/js/app.js'])
 </head>
@@ -157,6 +157,25 @@
 
     </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    @if(session('mensaje'))
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        text: "{{ session('mensaje') }}",
+        showConfirmButton: false,
+        width: '420px',
+        padding: '2em',
+        timer: 2500
+    });
+    @endif
+});
+</script>
+
+
+
 
 </body>
 </html>
