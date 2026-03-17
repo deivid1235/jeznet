@@ -1,0 +1,60 @@
+[33maf5151a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: pull: Fast-forward
+[33mb0e7596[m HEAD@{1}: reset: moving to HEAD
+[33mb0e7596[m HEAD@{2}: commit: dashboard
+[33mcc3c8ff[m HEAD@{3}: pull: Fast-forward
+[33mcaf5202[m HEAD@{4}: reset: moving to HEAD
+[33mcaf5202[m HEAD@{5}: pull: Fast-forward
+[33m93e25b5[m HEAD@{6}: commit: Libro de reclamaciones && Politica y privacidad
+[33m9243421[m HEAD@{7}: commit: Libro de reclamaciones && Politica y privacidad
+[33me55a548[m HEAD@{8}: pull: Fast-forward
+[33m7bb7683[m HEAD@{9}: commit: Logo de la empresa
+[33m30a7568[m HEAD@{10}: commit: header y footer
+[33m83ee83a[m HEAD@{11}: commit: logotipo
+[33m57b76fa[m HEAD@{12}: pull: Fast-forward
+[33mb140688[m HEAD@{13}: commit: logotipo
+[33m29bd868[m HEAD@{14}: pull: Fast-forward
+[33md01ec5c[m HEAD@{15}: commit: Seccion de HISTORIAL
+[33m4bce9bf[m HEAD@{16}: commit: Seccion de HISTORIAL
+[33m3add795[m HEAD@{17}: commit: Libro de Reclamaciones
+[33m2cb0619[m HEAD@{18}: commit: Libro de Reclamaciones
+[33m9d9a468[m HEAD@{19}: pull: Fast-forward
+[33m4f2f045[m HEAD@{20}: reset: moving to 4f2f045
+[33m9d9a468[m HEAD@{21}: reset: moving to HEAD
+[33m9d9a468[m HEAD@{22}: pull: Fast-forward
+[33m4f2f045[m HEAD@{23}: reset: moving to HEAD
+[33m4f2f045[m HEAD@{24}: commit: footer
+[33m31549b5[m HEAD@{25}: commit: Seccion de Contactenos
+[33m4b652c5[m HEAD@{26}: commit: Seccion de Contactenos
+[33mfc9bfd1[m HEAD@{27}: commit: ultima
+[33m25a6327[m HEAD@{28}: commit: Style Ordenado
+[33m43e450b[m HEAD@{29}: pull: Fast-forward
+[33md04da79[m HEAD@{30}: reset: moving to d04da79
+[33md35664f[m HEAD@{31}: pull: Fast-forward
+[33md04da79[m HEAD@{32}: reset: moving to d04da79
+[33md35664f[m HEAD@{33}: reset: moving to origin/main
+[33md35664f[m HEAD@{34}: pull: Fast-forward
+[33md04da79[m HEAD@{35}: reset: moving to HEAD
+[33md04da79[m HEAD@{36}: commit: Soluciones y Soluciones destacadas
+[33m6954cb8[m HEAD@{37}: commit: Soluciones y Soluciones destacadas
+[33ma64f421[m HEAD@{38}: pull: Fast-forward
+[33m8da36e6[m HEAD@{39}: pull: Fast-forward
+[33mb09b1b4[m HEAD@{40}: reset: moving to HEAD
+[33mb09b1b4[m HEAD@{41}: commit: Nuestros Servicios
+[33mc2cf81f[m HEAD@{42}: commit: Nuestros Servicios
+[33m9cd8bf1[m HEAD@{43}: pull: Fast-forward
+[33m2393b40[m HEAD@{44}: reset: moving to HEAD
+[33m2393b40[m HEAD@{45}: commit: Ordenado los stylos
+[33m6eb1554[m HEAD@{46}: pull: Fast-forward
+[33m0b772b2[m HEAD@{47}: pull: Fast-forward
+[33m0376d16[m HEAD@{48}: commit: Estilos modificados del index de style
+[33m19f5b0b[m HEAD@{49}: commit: Estilos modificados del index de style
+[33m59d8ad6[m HEAD@{50}: commit: Estilos modificados del index de home_index
+[33md6dd4e5[m HEAD@{51}: commit: npm run start
+[33m977c463[m HEAD@{52}: pull: Fast-forward
+[33mee4fab5[m HEAD@{53}: pull: Fast-forward
+[33m056cf30[m HEAD@{54}: commit: home.blade.php
+[33mb273a83[m HEAD@{55}: commit: Soy Nores
+[33m62d34bc[m HEAD@{56}: commit: Soy Nores
+[33mcda9b40[m HEAD@{57}: commit: Soy Nores
+[33m9b08ac4[m HEAD@{58}: commit: Soy Nores
+[33me4f5e50[m HEAD@{59}: clone: from https://github.com/deivid1235/jeznet.git
