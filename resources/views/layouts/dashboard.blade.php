@@ -20,20 +20,21 @@
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-[240px] bg-jez-navy flex flex-col transition-transform duration-300 transform -translate-x-full lg:translate-x-0 lg:static lg:inset-0 shadow-2xl">
         
         {{-- Logo --}}
-        <div class="flex items-center gap-3 p-4 border-b border-[#1E3050] shrink-0">
-            <img src="{{ asset('iconos/logotipo.svg') }}" alt="Logo" class="w-10 h-10">
-            <div class="leading-none">
-                <span class="text-xl font-black text-white tracking-wide">JEZ</span><span class="text-xl font-black text-jez-gold tracking-wide">NET</span>
-                <p class="text-xxs text-jez-text-dim tracking-widest uppercase mt-1">Soluciones sostenibles</p>
-            </div>
+        <div class="flex items-center gap-3 p-3 border-b border-[#1E3050] shrink-0">
+            <img src="{{ asset('images/logo/logo_jeznet.svg') }}" alt="Logo" class="w-60 h-10">
         </div>
 
         {{-- Navegación --}}
-        <nav class="flex-1 overflow-y-auto sidebar-scroll p-3 space-y-1">
+        <nav class="flex-1 flex flex-col justify-evenly overflow-y-auto sidebar-scroll p-2">
             
             {{-- DASHBOARD --}}
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-jez-navy bg-jez-gold font-bold transition-colors">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-jez-navy bg-jez-gold font-bold transition-colors">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
                 <span class="text-xs uppercase tracking-wide">DASHBOARD</span>
             </a>
 
@@ -48,11 +49,628 @@
                 </button>
                 
                 {{-- Contenido del submenú --}}
-                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-black/20 rounded-b-lg">
-                    <ul class="py-1">
-                        <li><a href="#" class="block px-11 py-2 text-xs text-jez-text-dim hover:text-white hover:bg-jez-gold/10 border-l-2 border-transparent hover:border-jez-gold transition-colors">Todos los proyectos</a></li>
-                        <li><a href="#" class="block px-11 py-2 text-xs text-jez-text-dim hover:text-white hover:bg-jez-gold/10 border-l-2 border-transparent hover:border-jez-gold transition-colors">En ejecución</a></li>
-                        <li><a href="#" class="block px-11 py-2 text-xs text-jez-gold bg-jez-gold/10 border-l-2 border-jez-gold transition-colors">Finalizados</a></li>
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- ÁREAS TÉCTICAS (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- REPORTES & CONTROL (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- COMERCIAL & FINANZAS (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- CLIENTES (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- OPERACIONES (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {{-- INCIDENCIAS & SOPORTE (Con submenú) --}}
+            <div>
+                <button onclick="toggleSubmenu('submenu-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                    <div class="flex items-center gap-3 text-left">
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                    </div>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                
+                {{-- Contenido del submenú --}}
+                <div id="submenu-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+                    <ul class="flex flex-col py-2">
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
+                                    <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 3"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M8 12l3 3 5-6"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
+                            </a>
+                        </li>
+
+                        <div class="mx-5 my-1 border-b border-white/40"></div>
+
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v10"/>
+                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
+                                </svg>
+                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -100,7 +718,7 @@
 
             <div class="flex items-center gap-3">
                 <div class="hidden md:flex items-center gap-2 bg-white px-3 py-1.5 rounded-md shadow-sm">
-                    <img src="{{ asset('iconos/sunat-logo.png') }}" alt="SUNAT" class="h-5">
+                    <img src="{{ asset('iconos/sunat-logo.svg') }}" alt="SUNAT" class="h-5">
                     <div class="flex flex-col leading-none">
                         <span class="text-[9px] font-bold text-gray-800">MODO: DEMO</span>
                         <span class="text-[9px] font-bold text-gray-500">CONECTADO A SUNAT</span>
