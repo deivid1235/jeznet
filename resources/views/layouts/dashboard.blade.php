@@ -725,26 +725,48 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col leading-none bg-[#d1dfef] px-3 py-1.5 rounded-md">
-                    <span class="text-[10px] font-bold text-jez-navy">ADMINISTRADOR:</span>
-                    <span class="text-[10px] text-gray-800">admin@gmail.com</span>
+                <div class="flex flex-col leading-none bg-[#d1dfef] px-3 py-1.5 rounded-md max-w-[150px] truncate">
+                    <span class="text-[10px] font-bold text-jez-navy uppercase truncate" title="{{ auth()->user()->name ?? 'Usuario' }}">
+                        {{ auth()->user()->name ?? 'Usuario' }}
+                    </span>
+                    <span class="text-[10px] text-gray-800 truncate" title="{{ auth()->user()->email ?? 'correo@invitado.com' }}">
+                        {{ auth()->user()->email ?? 'correo@invitado.com' }}
+                    </span>
                 </div>
 
                 <div class="relative">
-                    <button onclick="toggleProfileMenu()" class="p-1 border border-white/30 rounded-full hover:bg-white/10 transition-colors text-white">
-                        <svg class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <button onclick="toggleProfileMenu()" class="flex items-center justify-center w-9 h-9 rounded-full bg-jez-navy-hover border border-jez-gold/50 text-jez-gold hover:bg-jez-gold hover:text-jez-navy transition-all duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/20">
+                        <i class="fa-solid fa-user text-sm"></i>
                     </button>
                     
-                    <div id="profileDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50 transform origin-top-right transition-all">
-                        {{-- Formulario de Logout de Laravel --}}
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 font-semibold">
-                            <i class="fa-solid fa-right-from-bracket mr-2"></i> Cerrar Sesión
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                            @csrf
-                        </form>
+                    <div id="profileDropdown" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl hidden z-50 border border-gray-100 overflow-hidden">
+                        
+                        <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
+                            <p class="text-sm font-bold text-jez-navy truncate" title="{{ auth()->user()->name ?? 'Administrador' }}">
+                                {{ auth()->user()->name ?? 'Administrador' }}
+                            </p>
+                        </div>
+
+                        <div class="border-t border-gray-100"></div>
+
+                        <div class="bg-gray-50 border-t border-gray-200">
+                            <a href="{{ route('logout') }}" 
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
+                            class="group flex items-center justify-between px-4 py-3 text-[11px] font-black uppercase tracking-widest text-gray-600 hover:bg-red-600 hover:text-white transition-all duration-200 border-l-4 border-transparent hover:border-red-900">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-power-off text-red-500 group-hover:text-white transition-colors text-sm"></i> 
+                                    <span>Cerrar Sesión</span>
+                                </div>
+                                <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                    <polyline points="13 5 20 12 13 19"></polyline>
+                                </svg>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                @csrf
+                            </form>
+                        </div>
                     </div>
-                </div>
+</div>
             </div>
         </header>
 
