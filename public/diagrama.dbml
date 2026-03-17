@@ -35,21 +35,21 @@ Table reclamos {
 }
 
 Table proyectos{
-    id              bigint [primary key, increment, note: 'ID único autoincrementable']
+    id              bigint [primary key, increment]
     nombre          varchar
     descripcion     text
     ubicacion       varchar
-    estado          varchar [ note: 'En ejecución, Finalizado, Planificado, Cancelado']
-    costo           varchar
-    avance          int
-    clientes_id     int [ref: > clientes.id]
-    areas_id        int [ref: > areas.id]
+    estado          enum('En ejecución', 'Finalizado', 'Planificado', 'Cancelado')
+    costo           decimal(10,2)
+    avance          tinyint unsigned
+    clientes_id     bigint [ref: > clientes.id]
+    areas_id        bigint [ref: > areas.id]
 }
 
 Table areas{
-    id              bigint [primary key, increment, note: 'ID único autoincrementable']
-    nombre          varchar unique
+    id              bigint [primary key, increment]
+    nombre          varchar [unique]
     descripcion     text
-    entregables     varchar
-    proceso_trabajo varchar
+    entregables     text
+    proceso_trabajo text
 }
