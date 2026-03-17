@@ -1,35 +1,55 @@
 Table clientes {
-    id int [pk, increment] // Primary Key
-    correo varchar(100) [not null, unique]
-    nombre varchar(100) [not null]
-    apellidos varchar(100) [not null]
-    password varchar(255) [not null]
-    tipo_documento varchar(20) [not null]
-    numero_documento varchar(20) [not null, unique]
-    celular varchar(20)
+    id                  int [pk, increment] // Primary Key
+    correo              varchar(100) [not null, unique]
+    nombre              varchar(100) [not null]
+    apellidos           varchar(100) [not null]
+    password            varchar(255) [not null]
+    tipo_documento      varchar(20) [not null]
+    numero_documento    varchar(20) [not null, unique]
+    celular             varchar(20)
 }
 
 Table reclamos {
-    id bigint [primary key, increment, note: 'ID único autoincrementable']
-    tipo_documento varchar [note: 'DNI, CE, RUC, Pasaporte']
-    numero_documento varchar
-    primer_nombre varchar
-    segundo_nombre varchar [null, note: 'Opcional']
-    primer_apellido varchar
-    segundo_apellido varchar
-    correo varchar
-    telefono varchar
-    direccion varchar
-    departamento varchar
-    provincia varchar
-    distrito varchar
-    servicio_contratado varchar
-    numero_orden varchar [null, note: 'Opcional']
+    id                      bigint [primary key, increment, note: 'ID único autoincrementable']
+    tipo_documento          varchar [note: 'DNI, CE, RUC, Pasaporte']
+    numero_documento        varchar
+    primer_nombre           varchar
+    segundo_nombre          varchar [null, note: 'Opcional']
+    primer_apellido         varchar
+    segundo_apellido        varchar
+    correo                  varchar
+    telefono                varchar
+    direccion               varchar
+    departamento            varchar
+    provincia               varchar
+    distrito                varchar
+    servicio_contratado     varchar
+    numero_orden            varchar [null, note: 'Opcional']
     identificacion_servicio varchar [null, note: 'Opcional']
-    monto_reclamado decimal(10,2) [null, note: 'Monto en Soles (S/.)']
-    tipo_reclamo varchar [note: 'Reclamo o Queja']
-    motivo text
-    detalle_solicitud text
-    pedido_concreto text
-    acepto_politicas boolean [default: true]
+    monto_reclamado         decimal(10,2) [null, note: 'Monto en Soles (S/.)']
+    tipo_reclamo            varchar [note: 'Reclamo o Queja']
+    motivo                  text
+    detalle_solicitud       text
+    pedido_concreto         text
+    acepto_politicas        boolean [default: true]
+}
+
+Table proyectos{
+    id              bigint [primary key, increment, note: 'ID único autoincrementable']
+    nombre          varchar
+    descripcion     text
+    ubicacion       varchar
+    estado          varchar [ note: 'En ejecución, Finalizado, Planificado, Cancelado']
+    costo           varchar
+    avance          int
+    clientes_id     int [ref: > clientes.id]
+    areas_id        int [ref: > areas.id]
+}
+
+Table areas{
+    id              bigint [primary key, increment, note: 'ID único autoincrementable']
+    nombre          varchar unique
+    descripcion     text
+    entregables     varchar
+    proceso_trabajo varchar
 }

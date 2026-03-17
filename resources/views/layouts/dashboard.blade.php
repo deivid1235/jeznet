@@ -155,7 +155,7 @@
                                     <rect x="4" y="14" width="6" height="6"/>
                                     <rect x="14" y="14" width="6" height="6"/>
                                 </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">AUTOMATIZACIÓN</span>
+                                <span class="text-xs font-bold uppercase tracking-wide">Investigación y Desarrollo (I+D)</span>
                             </a>
                         </li>
 
@@ -165,7 +165,7 @@
                                     <circle cx="12" cy="12" r="9"/>
                                     <path d="M12 7v5l3 3"/>
                                 </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">ELECTRÓNICA</span>
+                                <span class="text-xs font-bold uppercase tracking-wide">Gestión de Aguas Sostenibles</span>
                             </a>
                         </li>
 
