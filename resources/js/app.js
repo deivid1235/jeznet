@@ -248,7 +248,7 @@ document.querySelectorAll("input, select").forEach(element => {
 
 document.getElementById("celular").addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, '');
-    this.value = this.value.slice(0, 9);
+    this.value = this.value.replace(/[^0-9]/g, '');
 });
 
 
@@ -280,6 +280,23 @@ numeroDocumento.addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, '');
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    const togglePassword = document.getElementById('btnTogglePassword');
+    const passwordInput = document.getElementById('password');
+    const iconPassword = document.getElementById('iconPassword');
+
+    togglePassword.addEventListener('click', function () {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            iconPassword.classList.remove('fa-eye-slash');
+            iconPassword.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            iconPassword.classList.remove('fa-eye');
+            iconPassword.classList.add('fa-eye-slash');
+        }
+    });
+});
 
 
 

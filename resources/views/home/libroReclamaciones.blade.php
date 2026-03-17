@@ -18,7 +18,7 @@
                     <div class="card-body p-4 p-md-5">
                         
                         @if (session('success'))
-                            <div class="alert alert-success alert-dismissible fade show mb-5 shadow-sm" role="alert" style="border-left: 5px solid #198754; background-color: #d1e7dd; color: #0f5132;">
+                            <div class="alert alert-success alert-dismissible fade show mb-5 shadow-sm exito" role="alert">
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-check-circle fs-3 me-3"></i>
                                     <div>
@@ -31,7 +31,7 @@
                         @endif
 
                         @if ($errors->any())
-                            <div class="alert alert-danger alert-dismissible fade show mb-5 shadow-sm" role="alert" style="border-left: 5px solid #dc3545; background-color: #f8d7da; color: #842029;">
+                            <div class="alert alert-danger alert-dismissible fade show mb-5 shadow-sm problema" role="alert">
                                 <div class="d-flex align-items-center">
                                     <i class="fas fa-exclamation-triangle fs-3 me-3"></i>
                                     <div>
@@ -196,10 +196,10 @@
                             <div class="row mb-4 mt-3">
                                 <div class="col-md-12">
                                     <div class="d-flex align-items-start">
-                                        <input class="form-check-input flex-shrink-0 mt-1 me-2" type="checkbox" value="1" id="aceptoPoliticas" name="aceptoPoliticas" required style="cursor: pointer; border-color: #cbd5e1;">
-                                        <label class="form-check-label text-secondary" for="aceptoPoliticas" style="font-size: 0.85rem; line-height: 1.5; cursor: pointer;">
+                                        <input class="form-check-input flex-shrink-0 mt-1 me-2 aceptoPoliticas" type="checkbox" value="1" id="aceptoPoliticas" name="aceptoPoliticas" required>
+                                        <label class="form-check-label text-secondary aceptoPoliticas" for="aceptoPoliticas">
                                             Declaro bajo juramento que la información proporcionada es verdadera y acepto la 
-                                            <a href="{{ route('politicaPrivacidad') }}" target="_blank" class="text-decoration-none" style="color: #0f1d3a; font-weight: 600;">Política de Privacidad</a> 
+                                            <a href="{{ route('politicaPrivacidad') }}" target="_blank" class="fw-semibold link-correo">Política de Privacidad</a> 
                                             para el tratamiento de mis datos personales conforme a la Ley N° 29733. <span class="text-danger">*</span>
                                         </label>
                                     </div>

@@ -480,11 +480,13 @@
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
 
-                <button onclick="history.back()" class="text-white p-2 hover:bg-white/10 rounded-lg transition-colors hidden sm:block">
-                    <svg class="w-6 h-6 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <button onclick="toggleQuickAccess()" class="text-white p-2 hover:bg-white/10 rounded-lg transition-colors hidden sm:block">
+                    <svg id="quickAccessIcon" class="w-6 h-6 stroke-current fill-none transition-transform duration-300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
                 </button>
 
-                <div class="hidden md:flex items-center bg-white rounded-md p-0.5 gap-0.5 shadow-sm">
+                <div id="quickAccessGroup" class="hidden md:flex items-center bg-white rounded-md p-0.5 gap-0.5 shadow-sm transition-all duration-300 origin-left">
                     <button class="flex flex-col items-center px-2 py-1 hover:bg-gray-100 rounded transition-colors">
                         <img src="{{ asset('iconos/nc.svg') }}" class="w-4 h-4" alt="NC">
                         <span class="text-[9px] font-bold text-gray-800 mt-0.5">NC</span>
@@ -547,7 +549,7 @@
                             </form>
                         </div>
                     </div>
-</div>
+                </div>
             </div>
         </header>
 
@@ -590,6 +592,18 @@
                 document.getElementById('profileDropdown').classList.add('hidden');
             }
         });
+
+        function toggleQuickAccess() {
+            const group = document.getElementById('quickAccessGroup');
+            const icon = document.getElementById('quickAccessIcon');
+            
+            icon.classList.toggle('rotate-180');
+            if (group.style.display === 'none') {
+                group.style.display = '';
+            } else {
+                group.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>

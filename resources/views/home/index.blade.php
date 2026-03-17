@@ -2,30 +2,46 @@
 
 @section('content')
 
-<section class="hero" style="background-image: url('{{ asset('images/industrial.jpg') }}');">
-    <div class="container hero-content">
-        <div class="row">
-            <div class="col-lg-12 text-center text-lg-start">
+<section class="hero position-relative overflow-hidden" style="min-height: 80vh; display: flex; align-items: center;">
+    <div id="heroCarousel" class="carousel slide carousel-fade position-absolute w-100 h-100" data-bs-ride="carousel" data-bs-interval="4000" style="top: 0; left: 0; z-index: 0;">
+        <div class="carousel-inner w-100 h-100">
+            <div class="carousel-item active w-100 h-100">
+                <img src="{{ asset('images/carrusel/img1.jpg') }}" class="w-100 h-100" style="object-fit: cover; object-position: center;" alt="Fondo industrial 1">
+            </div>
+            <div class="carousel-item w-100 h-100">
+                <img src="{{ asset('images/carrusel/img2.jpg') }}" class="w-100 h-100" style="object-fit: cover; object-position: center;" alt="Fondo industrial 2">
+            </div>
+            <div class="carousel-item w-100 h-100">
+                <img src="{{ asset('images/carrusel/img3.jpg') }}" class="w-100 h-100" style="object-fit: cover; object-position: center;" alt="Fondo industrial 3">
+            </div>
+            <div class="carousel-item w-100 h-100">
+                <img src="{{ asset('images/carrusel/img4.jpg') }}" class="w-100 h-100" style="object-fit: cover; object-position: center;" alt="Fondo industrial 3">
+            </div>
+            <div class="carousel-item w-100 h-100">
+                <img src="{{ asset('images/carrusel/img5.jpg') }}" class="w-100 h-100" style="object-fit: cover; object-position: center;" alt="Fondo industrial 3">
+            </div>
+        </div>
+    </div>
 
-                <h1 class="text-uppercase mb-4">
+    <div class="position-absolute w-100 h-100 bg-dark" style="top: 0; left: 0; z-index: 1; opacity: 0.6;"></div>
+
+    <div class="container hero-content position-relative" style="z-index: 2;">
+        <div class="row">
+            <div class="col-lg-12 text-center text-lg-start text-white">
+                <h1 class="text-uppercase mb-4 fw-bold">
                     Ingeniería y Soluciones <br>
                     Industriales <br>
                     Sostenible
                 </h1>
-
                 <div class="d-flex flex-column flex-lg-row align-items-center justify-content-between">
-
-                    <p class="mb-4 mb-lg-5 pe-lg-4">
+                    <p class="mb-4 mb-lg-5 pe-lg-4 fs-5">
                         Innovación tecnológica para el sector industrial.
                     </p>
-
                     <div class="d-grid gap-3 d-sm-flex w-100 justify-content-sm-center justify-content-lg-end">
-                        <a href="#" class="btn btn-hero">IR A LA TIENDA</a>
-                        <a href="#servicios" class="btn btn-hero">VER SERVICIOS</a>
+                        <a href="#" class="btn btn-hero btn-primary px-4 py-2">IR A LA TIENDA</a>
+                        <a href="#servicios" class="btn btn-hero btn-outline-light px-4 py-2">VER SERVICIOS</a>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -295,47 +311,53 @@
 </section>
 
 <section class="section-historial py-5">
-    <h1 class="historial-titulo">Historial de Proyectos</h1>
- 
-    <div class="historial-table-wrapper">
-        <table class="historial-table">
-            <thead>
-                <tr>
-                    <th>Cliente</th>
-                    <th>Tipo de Proyecto</th>
-                    <th>Año</th>
-                    <th>Estado</th>
-                    <th>Ficha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- Datos estáticos de ejemplo (eliminar al usar datos reales) --}}
-                <tr>
-                    <td>AgroTech Norte</td>
-                    <td>Planta de Tratamiento (PTARI)</td>
-                    <td>2023</td>
-                    <td><span class="historial-estado"> Operativo <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
-                    <td><a href="#" class="historial-ficha">📋</a></td>
-                </tr>
-                <tr>
-                    <td>FarmaCorp</td>
-                    <td>Red de Tuberías Sanitarias</td>
-                    <td>2024</td>
-                    <td><span class="historial-estado"> En Ejecución <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
-                    <td><a href="#" class="historial-ficha">📋</a></td>
-                </tr>
-                <tr>
-                    <td>Industrial Paper</td>
-                    <td>Subestación Media Tensión</td>
-                    <td>2023</td>
-                    <td><span class="historial-estado"> Entregado <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
-                    <td><a href="#" class="historial-ficha">📋</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <div class="soluciones-header flex items-center py-4">
+            <div class="linea-vertical me-3"></div>
+            <div>
+                <h2 class="titulo-seccion fw-bold mb-1">Historial de Proyectos</h2>
+            </div>
+        </div>
+
+        <div class="historial-table-wrapper">
+            <table class="historial-table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Tipo de Proyecto</th>
+                        <th>Año</th>
+                        <th>Estado</th>
+                        <th>Ficha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- Datos estáticos de ejemplo (eliminar al usar datos reales) --}}
+                    <tr>
+                        <td>AgroTech Norte</td>
+                        <td>Planta de Tratamiento (PTARI)</td>
+                        <td>2023</td>
+                        <td><span class="historial-estado"> Operativo <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                        <td><a href="#" class="historial-ficha">📋</a></td>
+                    </tr>
+                    <tr>
+                        <td>FarmaCorp</td>
+                        <td>Red de Tuberías Sanitarias</td>
+                        <td>2024</td>
+                        <td><span class="historial-estado"> En Ejecución <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                        <td><a href="#" class="historial-ficha">📋</a></td>
+                    </tr>
+                    <tr>
+                        <td>Industrial Paper</td>
+                        <td>Subestación Media Tensión</td>
+                        <td>2023</td>
+                        <td><span class="historial-estado"> Entregado <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                        <td><a href="#" class="historial-ficha">📋</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
-
 
 <section id="contactenos" class="section-contacto py-5">
     <div class="container py-lg-4">

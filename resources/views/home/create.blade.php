@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="min-h-screen flex items-center justify-center p-6">
     <section class="py-5" style="background:#f4f4f4;">
         <div class="container">
@@ -10,101 +9,92 @@
 
                 <!-- FORMULARIO -->
                 <div class="col-lg-6">
-                    <div class="p-4 rounded-4 border bg-light h-100">
-
-                        <h4 class="fw-bold mb-4" style="font-size:1rem;">REGISTAR USUARIO</h4>
+                    <div class="p-4 p-md-5 rounded-4 border bg-light h-100 d-flex flex-column justify-content-center">
+                        <div class="mb-4 text-center text-md-start">
+                            <h4 class="fw-bold mb-1 form-title">REGISTRAR USUARIO</h4>
+                            <p class="text-muted small mb-0">Completa tus datos para crear una cuenta</p>
+                        </div>
 
                         <form action="{{ route('home.create.store') }}" method="POST">
                             @csrf
-
                             <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Correo electrónico</label>
-                                <input type="email" name="correo" id="correo" class="form-control form-control-sm rounded-3">
+                                <label class="form-label fw-semibold text-muted form-label-custom">Correo electrónico</label>
+                                <input type="email" name="correo" id="correo" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm" placeholder="ejemplo@correo.com">
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control form-control-sm rounded-3">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Apellidos</label>
-                                <input type="text" name="apellidos" id="apellidos" class="form-control form-control-sm rounded-3">
-                            </div>
-
-                            <!-- Tipo de documento -->
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Tipo de documento</label>
-
-                                <select id="tipoDocumento" name="tipo_documento"
-                                    class="form-select form-select-sm rounded-3"
-                                    style="font-size:0.78rem;">
-
-                                    <option value="" selected disabled>--- Seleccione ---</option>
-                                    <option value="DNI">DNI</option>
-                                    <option value="RUC">RUC</option>
-                                    <option value="CE">CE (Carnet extranjero)</option>
-
-                                </select>
-
-                                <div id="numeroDocumentoWrapper" class="mt-2" style="display:none;">
-                                    <label id="labelNumDoc" class="form-label" style="font-size:0.78rem;">
-                                        Número de documento
-                                    </label>
-
-                                    <input type="text"
-                                        id="numeroDocumento"
-                                        name="numero_documento"
-                                        class="form-control form-control-sm rounded-3"
-                                        placeholder="Ingresa el número"
-                                        inputmode="numeric">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold text-muted form-label-custom">Nombre</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm" placeholder="Tu nombre">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold text-muted form-label-custom">Apellidos</label>
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm" placeholder="Tus apellidos">
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Celular</label>
-                                <input type="number" name="celular" id="celular" class="form-control form-control-sm rounded-3"maxlength="9"pattern="[0-9]{9}"inputmode="numeric">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-5">
+                                    <label class="form-label fw-semibold text-muted form-label-custom">Tipo de doc.</label>
+                                    <select id="tipoDocumento" name="tipo_documento" class="form-select form-select-sm rounded-3 py-2 px-3 border-0 shadow-sm text-muted form-select-custom">
+                                        <option value="" selected disabled>Seleccione...</option>
+                                        <option value="DNI">DNI</option>
+                                        <option value="RUC">RUC</option>
+                                        <option value="CE">CE (Carnet ext.)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-7">
+                                    <div id="numeroDocumentoWrapper" style="display:none;"> 
+                                        <label id="labelNumDoc" class="form-label fw-semibold text-muted form-label-custom">Número de documento</label>
+                                        <input type="text" id="numeroDocumento" name="numero_documento" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm" placeholder="Ingresa el número" inputmode="numeric">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label" style="font-size:0.78rem;">Contraseña</label>
-                                <input type="password" name="password" id="password" class="form-control form-control-sm rounded-3">
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold text-muted form-label-custom">Celular</label>
+                                    <input type="tel" name="celular" id="celular" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm" maxlength="9" pattern="[0-9]{9}" inputmode="numeric" placeholder="987 654 321">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold text-muted form-label-custom">Contraseña</label>
+                                    <div class="position-relative">
+                                        <input type="password" name="password" id="password" class="form-control form-control-sm rounded-3 py-2 px-3 border-0 shadow-sm pe-5" placeholder="••••••••">
+                                        <button type="button" id="btnTogglePassword" class="btn border-0 position-absolute end-0 top-50 translate-middle-y text-muted px-3 shadow-none btn-toggle-pass">
+                                            <i class="fa-solid fa-eye-slash" id="iconPassword"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-2">
-                                <div class="d-flex align-items-center">
-                                    <input type="checkbox" id="check1" class="form-check-input me-2">
-                                    <span style="font-size:0.75rem;">
+                            <div class="bg-white border border-light-subtle rounded-3 p-3 mb-4 shadow-sm">
+                                <div class="form-check mb-2 d-flex align-items-center">
+                                    <input type="checkbox" id="check1" class="form-check-input mt-0 me-2 border-secondary shadow-none cursor-pointer">
+                                    <label for="check1" class="form-check-label text-muted text-xs cursor-pointer">
                                         Acepto los términos y condiciones de la empresa JEZNET
-                                    </span>
+                                    </label>
                                 </div>
-                            </div>
-
-                            <div class="bg-secondary bg-opacity-10 p-2 rounded-3 mb-4">
-                                <div class="d-flex align-items-center">
-                                    <input type="checkbox" id="check2" class="form-check-input me-2">
-                                    <span style="font-size:0.75rem;">
+                                <div class="form-check d-flex align-items-center">
+                                    <input type="checkbox" id="check2" class="form-check-input mt-0 me-2 border-secondary shadow-none cursor-pointer">
+                                    <label for="check2" class="form-check-label text-muted text-xs cursor-pointer">
                                         Declaro que he leído y acepto términos y condiciones de JEZNET
-                                    </span>
+                                    </label>
                                 </div>
                             </div>
 
                             <div class="d-grid my-4">
-                                <button type="submit"  id="btnRegistrar" class="btn btn-hero w-100 rounded-pill fw-semibold py-1" disabled>
+                                <button type="submit" id="btnRegistrar" class="btn btn-hero w-100 rounded-pill fw-semibold py-1" disabled>
                                     Registrar
                                 </button>
                             </div>
-
-                            <p class="text-center mt-3" style="font-size:0.78rem;">
+                            
+                            <p class="text-center mt-3 text-muted text-sm-custom">
                                 ¿Ya tienes cuenta?
-                                <a class="text-warning fw-semibold"
-                                    href="{{ route('home', ['login' => 'true']) }}">
+                                <a class="fw-semibold link-correo" href="{{ route('home', ['login' => 'true']) }}">
                                     INICIAR SESIÓN
                                 </a>
                             </p>
-
                         </form>
-
                     </div>
                 </div>
 

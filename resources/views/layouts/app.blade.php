@@ -16,8 +16,6 @@
     @vite(['resources/css/style.css','resources/js/app.js'])
 </head>
 
-
-
 <body>
 
 <header>
@@ -67,23 +65,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
-<footer class="jeznet-footer text-white pt-5 pb-3">
+<footer class="jeznet-footer text-white pt-4 pt-lg-5 pb-3">
     <div class="container">
-
-        <div class="row gy-5">
-
-            <div class="col-lg-4 pe-lg-5">
-                <img src="{{ asset('images/logo/logo_jeznet.svg') }}" width="179" class="mb-4" alt="Jeznet Logo">
+        <div class="row gy-4 gy-lg-5">
+            <div class="col-12 col-lg-4 pe-lg-5">
+                <img src="{{ asset('images/logo/logo_jeznet.svg') }}" width="160" class="mb-3 mb-lg-4" alt="Jeznet Logo">
                 
-                <p class="small text-light opacity-75 mb-4" style="line-height: 1.7;">
+                <p class="small text-light opacity-75 mb-3 mb-lg-4" style="line-height: 1.6;">
                     Ingeniería, sostenibilidad y tecnología al servicio del crecimiento 
                     industrial responsable del Perú y la región.
                 </p>
 
-                <div class="mt-4">
+                <div class="mt-3 mt-lg-4">
                     <a href="{{ route('libroReclamaciones') }}" class="link-reclamaciones text-decoration-none d-inline-flex align-items-center gap-3">
                         <div class="img-wrapper">
-                            <img src="{{ asset('iconos/libroReclamaciones.png') }}" alt="Libro de Reclamaciones" width="70">
+                            <img src="{{ asset('iconos/libroReclamaciones.png') }}" alt="Libro de Reclamaciones" width="60" class="w-md-70">
                         </div>
                         <div class="text-start text-wrapper">
                             <span class="d-block text-white fw-bold small lh-1 mb-1 txt-linea-1">Libro de</span>
@@ -93,35 +89,35 @@
                 </div>
             </div>
 
-            <div class="col-lg-3">
-                <h6 class="fw-bold mb-4 text-uppercase">Servicios</h6>
-                <ul class="list-unstyled footer-links">
-                    <li><a href="#">I+D Sostenible</a></li>
-                    <li><a href="#">Tratamiento de Aguas</a></li>
-                    <li><a href="#">Automatización</a></li>
-                    <li><a href="#">Proyectos Eléctricos</a></li>
+            <div class="col-6 col-lg-3">
+                <h6 class="fw-bold mb-3 mb-lg-4 text-uppercase fs-6 fs-md-5">Servicios</h6>
+                <ul class="list-unstyled footer-links small">
+                    <li class="mb-2"><a href="#">I+D Sostenible</a></li>
+                    <li class="mb-2"><a href="#">Tratamiento de Aguas</a></li>
+                    <li class="mb-2"><a href="#">Automatización</a></li>
+                    <li class="mb-2"><a href="#">Proyectos Eléctricos</a></li>
                 </ul>
             </div>
 
-            <div class="col-lg-3">
-                <h6 class="fw-bold mb-4 text-uppercase">Más</h6>
-                <ul class="list-unstyled footer-links">
-                    <li><a href="#">Telecomunicaciones</a></li>
-                    <li><a href="#">Metalmecánica</a></li>
-                    <li><a href="#">Obras Civiles</a></li>
-                    <li><a href="{{ route('home') }}#metodologia">Metodología</a></li>
+            <div class="col-6 col-lg-3">
+                <h6 class="fw-bold mb-3 mb-lg-4 text-uppercase fs-6 fs-md-5">Más</h6>
+                <ul class="list-unstyled footer-links small">
+                    <li class="mb-2"><a href="#">Telecomunicaciones</a></li>
+                    <li class="mb-2"><a href="#">Metalmecánica</a></li>
+                    <li class="mb-2"><a href="#">Obras Civiles</a></li>
+                    <li class="mb-2"><a href="{{ route('home') }}#metodologia">Metodología</a></li>
                 </ul>
             </div>
 
-            <div class="col-lg-2">
-                <h6 class="fw-bold mb-4 text-uppercase">Contacto</h6>
+            <div class="col-12 col-lg-2">
+                <h6 class="fw-bold mb-3 mb-lg-4 text-uppercase fs-6 fs-md-5">Contacto</h6>
                 
-                <ul class="list-unstyled footer-contact mb-4">
-                    <li>
+                <ul class="list-unstyled footer-contact mb-3 mb-lg-4 small">
+                    <li class="mb-2 d-flex align-items-center">
                         <i class="fas fa-envelope me-2 text-gold"></i>
-                        <a href="mailto:jeznet@empresa.com">jeznet@empresa.com</a>
+                        <a href="mailto:jeznet@empresa.com" class="text-break">jeznet@empresa.com</a>
                     </li>
-                    <li>
+                    <li class="mb-2 d-flex align-items-center">
                         <i class="fas fa-phone-alt me-2 text-gold"></i>
                         <a href="https://wa.me/51938237575" target="_blank">+51 938 237 575</a>
                     </li>
@@ -142,16 +138,13 @@
                     </a>
                 </div>
             </div>
-
         </div>
-
-        <hr class="border-light opacity-10 my-4 mt-5">
-
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small opacity-75">
-            <div class="mb-2 mb-md-0">
-                © 2024 JEZNET Soluciones Integrales Sostenibles. Todos los derechos reservados.
+        <hr class="border-light opacity-10 my-4 mt-lg-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small opacity-75 text-center text-md-start gap-3 gap-md-0">
+            <div>
+                © 2024 JEZNET Soluciones Integrales Sostenibles. <br class="d-md-none">Todos los derechos reservados.
             </div>
-            <div class="d-flex gap-3">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="{{ route('politicaPrivacidad') }}" class="text-light text-decoration-none hover-gold">Políticas de Privacidad</a>
                 <a href="#" class="text-light text-decoration-none hover-gold">Términos de Servicio</a>
             </div>
@@ -160,22 +153,20 @@
     </div>
 </footer>
 
-
-
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    @if(session('mensaje'))
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        text: "{{ session('mensaje') }}",
-        showConfirmButton: false,
-        width: '420px',
-        padding: '2em',
-        timer: 2500
+    document.addEventListener("DOMContentLoaded", function() {
+        @if(session('mensaje'))
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            text: "{{ session('mensaje') }}",
+            showConfirmButton: false,
+            width: '420px',
+            padding: '2em',
+            timer: 2500
+        });
+        @endif
     });
-    @endif
-});
 </script>
 
 </body>

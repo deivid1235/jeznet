@@ -371,9 +371,20 @@ body {
     transition: all 0.3s ease;
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+    .section-soluciones .card-solucion,
+    .section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
+    .section-soluciones .card-solucion:last-child:nth-child(3n+2),
+    .section-soluciones .card-solucion:last-child:nth-child(3n+1) {
+        grid-column: span 6; 
+    }
+
+    .section-soluciones .card-solucion:last-child:nth-child(odd) {
+        grid-column: span 12;
+    }
+}
 
 @media (max-width: 767px) {
-
     .titulo-seccion {
         font-size: 1.5rem;
     }
@@ -382,15 +393,11 @@ body {
         font-size: 0.95rem;
     }
 
-    .section-soluciones .grid-soluciones {
-        grid-template-columns: 1fr;
-    }
-
     .section-soluciones .card-solucion,
-    .section-soluciones .card-solucion:last-child:nth-child(3n+1),
     .section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
-    .section-soluciones .card-solucion:last-child:nth-child(3n+2) {
-        grid-column: span 1;
+    .section-soluciones .card-solucion:last-child:nth-child(3n+2),
+    .section-soluciones .card-solucion:last-child:nth-child(3n+1) {
+        grid-column: span 12;
     }
 
     .card-solucion .row {
@@ -399,25 +406,6 @@ body {
 
     .card-solucion .row .col-md-6 {
         width: 100%;
-    }
-}
-
-
-@media (min-width: 768px) and (max-width: 991px) {
-
-    .section-soluciones .grid-soluciones {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .section-soluciones .card-solucion,
-    .section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
-    .section-soluciones .card-solucion:last-child:nth-child(3n+2) {
-        grid-column: span 1;
-    }
-
-
-    .section-soluciones .card-solucion:last-child {
-        grid-column: 1 / -1;
     }
 }
 
@@ -705,14 +693,11 @@ body {
 /* =====================================================
     SECCIÓN: HISTORIAL
 ===================================================== */
-
-
 .section-historial {
-    background-color: #f5f3ee;
-    padding: 48px 32px;
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #f5f3f0;
+    border-top: 1px solid rgba(188, 188, 188, 0.5);
+    border-bottom: 1px solid rgba(188, 188, 188, 0.5);
 }
-
 
 .historial-titulo {
     font-size: 2rem;
@@ -724,12 +709,10 @@ body {
     line-height: 1.2;
 }
 
-
 .historial-table-wrapper {
     overflow-x: auto;
     border-radius: 8px;
 }
-
 
 .historial-table {
     width: 100%;
@@ -740,7 +723,6 @@ body {
     font-size: 0.95rem;
     color: #2c2c2c;
 }
-
 
 .historial-table thead tr {
     background-color: #dce4f0;
@@ -775,13 +757,11 @@ body {
     color: #333;
 }
 
-
 .historial-table thead th:nth-child(3),
 .historial-table tbody td:nth-child(3) {
     text-align: center;
     white-space: nowrap;
 }
-
 
 .historial-estado {
     display: inline-flex;
@@ -809,7 +789,6 @@ body {
     color: #1e7e34;
 }
 
-
 .historial-ficha {
     display: inline-flex;
     align-items: center;
@@ -825,13 +804,10 @@ body {
     opacity: 1;
 }
 
-
 .historial-table thead th:nth-child(5),
 .historial-table tbody td:nth-child(5) {
     text-align: center;
 }
-
-
 
 @media (max-width: 640px) {
     .section-historial {
@@ -1357,3 +1333,55 @@ select.input-reclamaciones option[value=""][disabled] {
     text-align: justify;
 }
 
+.aceptoPoliticas {
+    cursor: pointer;
+    border-color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.exito {
+    border-left: 5px solid #198754;
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.problema {
+    border-left: 5px solid #dc3545;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* =====================================================
+    PÁGINA: crear nuevo usuario
+===================================================== */
+.form-title {
+    color: #0D1B2E;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+}
+
+.form-label-custom {
+    font-size: 0.8rem;
+}
+
+.form-select-custom {
+    font-size: 0.85rem;
+}
+
+.btn-toggle-pass {
+    z-index: 10;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.text-sm-custom {
+    font-size: 0.8rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
