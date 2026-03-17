@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* SUBMENUS */
     document.querySelectorAll(".nav-toggle").forEach(function(btn){
 
         btn.addEventListener("click", function(e){
@@ -16,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
             });
-
             item.classList.toggle("open");
 
         });
@@ -24,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    /* MARCAR MENU ACTIVO */
+
 
     document.querySelectorAll(".nav-link").forEach(function(link){
 

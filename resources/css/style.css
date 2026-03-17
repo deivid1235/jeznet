@@ -371,6 +371,56 @@ body {
     transition: all 0.3s ease;
 }
 
+
+@media (max-width: 767px) {
+
+    .titulo-seccion {
+        font-size: 1.5rem;
+    }
+
+    .subtitulo-seccion {
+        font-size: 0.95rem;
+    }
+
+    .section-soluciones .grid-soluciones {
+        grid-template-columns: 1fr;
+    }
+
+    .section-soluciones .card-solucion,
+    .section-soluciones .card-solucion:last-child:nth-child(3n+1),
+    .section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
+    .section-soluciones .card-solucion:last-child:nth-child(3n+2) {
+        grid-column: span 1;
+    }
+
+    .card-solucion .row {
+        flex-direction: column;
+    }
+
+    .card-solucion .row .col-md-6 {
+        width: 100%;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .section-soluciones .grid-soluciones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-soluciones .card-solucion,
+    .section-soluciones .card-solucion:nth-last-child(2):nth-child(3n+1),
+    .section-soluciones .card-solucion:last-child:nth-child(3n+2) {
+        grid-column: span 1;
+    }
+
+
+    .section-soluciones .card-solucion:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
 /* =====================================================
     SECCIÓN: SERVICIOS DESTACADOS
 ===================================================== */
@@ -655,8 +705,154 @@ body {
 /* =====================================================
     SECCIÓN: HISTORIAL
 ===================================================== */
-/*aqui agrega el ccs*/
 
+
+.section-historial {
+    background-color: #f5f3ee;
+    padding: 48px 32px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+
+.historial-titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    border-left: 5px solid #1a1a1a;
+    padding-left: 14px;
+    margin-bottom: 32px;
+    line-height: 1.2;
+}
+
+
+.historial-table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+
+.historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.95rem;
+    color: #2c2c2c;
+}
+
+
+.historial-table thead tr {
+    background-color: #dce4f0;
+}
+
+.historial-table thead th {
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    white-space: nowrap;
+}
+
+/* Filas del cuerpo */
+.historial-table tbody tr {
+    border-bottom: 1px solid #e8e8e8;
+    transition: background-color 0.15s ease;
+}
+
+.historial-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.historial-table tbody tr:hover {
+    background-color: #f0f4fb;
+}
+
+.historial-table tbody td {
+    padding: 16px 20px;
+    vertical-align: middle;
+    color: #333;
+}
+
+
+.historial-table thead th:nth-child(3),
+.historial-table tbody td:nth-child(3) {
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.historial-estado {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #b7dfbf;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease;
+}
+
+.historial-estado:hover {
+    background-color: #d4edda;
+}
+
+.estado-chevron {
+    flex-shrink: 0;
+    color: #1e7e34;
+}
+
+
+.historial-ficha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    opacity: 0.85;
+}
+
+.historial-ficha:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
+
+
+.historial-table thead th:nth-child(5),
+.historial-table tbody td:nth-child(5) {
+    text-align: center;
+}
+
+
+
+@media (max-width: 640px) {
+    .section-historial {
+        padding: 32px 16px;
+    }
+
+    .historial-titulo {
+        font-size: 1.5rem;
+    }
+
+    .historial-table thead th,
+    .historial-table tbody td {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+
+    .historial-estado {
+        font-size: 0.78rem;
+        padding: 3px 9px;
+    }
+}
 
 /* =====================================================
     SECCIÓN: CONTÁCTENOS

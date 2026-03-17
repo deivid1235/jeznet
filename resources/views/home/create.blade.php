@@ -52,19 +52,18 @@
                                         Número de documento
                                     </label>
 
-                                    <input type="number"
-                                        min="0"
+                                    <input type="text"
                                         id="numeroDocumento"
                                         name="numero_documento"
                                         class="form-control form-control-sm rounded-3"
-                                        placeholder="Ingresa el número">
+                                        placeholder="Ingresa el número"
+                                        inputmode="numeric">
                                 </div>
-
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" style="font-size:0.78rem;">Celular</label>
-                                <input type="text" name="celular" id="celular" class="form-control form-control-sm rounded-3">
+                                <input type="number" name="celular" id="celular" class="form-control form-control-sm rounded-3"maxlength="9"pattern="[0-9]{9}"inputmode="numeric">
                             </div>
 
                             <div class="mb-3">

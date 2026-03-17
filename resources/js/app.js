@@ -246,5 +246,40 @@ document.querySelectorAll("input, select").forEach(element => {
 
 
 
+document.getElementById("celular").addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, '');
+    this.value = this.value.slice(0, 9);
+});
+
+
+const tipoDocumento = document.getElementById("tipoDocumento");
+const numeroDocumento = document.getElementById("numeroDocumento");
+const wrapper = document.getElementById("numeroDocumentoWrapper");
+const label = document.getElementById("labelNumDoc");
+
+tipoDocumento.addEventListener("change", function () {
+    wrapper.style.display = "block";
+
+    if (this.value === "DNI") {
+        label.textContent = "DNI (8 dígitos)";
+        numeroDocumento.maxLength = 8;
+    } 
+    else if (this.value === "RUC") {
+        label.textContent = "RUC (11 dígitos)";
+        numeroDocumento.maxLength = 11;
+    } 
+    else if (this.value === "CE") {
+        label.textContent = "CE (9 dígitos)";
+        numeroDocumento.maxLength = 9;
+    }
+
+    numeroDocumento.value = "";
+});
+
+numeroDocumento.addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, '');
+});
+
+
 
 

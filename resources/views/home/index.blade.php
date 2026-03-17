@@ -295,9 +295,47 @@
 </section>
 
 <section class="section-historial py-5">
-    <h1>Historial de proyectos</h1>
-    
+    <h1 class="historial-titulo">Historial de Proyectos</h1>
+ 
+    <div class="historial-table-wrapper">
+        <table class="historial-table">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Tipo de Proyecto</th>
+                    <th>Año</th>
+                    <th>Estado</th>
+                    <th>Ficha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{-- Datos estáticos de ejemplo (eliminar al usar datos reales) --}}
+                <tr>
+                    <td>AgroTech Norte</td>
+                    <td>Planta de Tratamiento (PTARI)</td>
+                    <td>2023</td>
+                    <td><span class="historial-estado"> Operativo <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                    <td><a href="#" class="historial-ficha">📋</a></td>
+                </tr>
+                <tr>
+                    <td>FarmaCorp</td>
+                    <td>Red de Tuberías Sanitarias</td>
+                    <td>2024</td>
+                    <td><span class="historial-estado"> En Ejecución <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                    <td><a href="#" class="historial-ficha">📋</a></td>
+                </tr>
+                <tr>
+                    <td>Industrial Paper</td>
+                    <td>Subestación Media Tensión</td>
+                    <td>2023</td>
+                    <td><span class="historial-estado"> Entregado <svg class="estado-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></td>
+                    <td><a href="#" class="historial-ficha">📋</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
+
 
 <section id="contactenos" class="section-contacto py-5">
     <div class="container py-lg-4">

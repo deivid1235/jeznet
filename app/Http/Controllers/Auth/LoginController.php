@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    // Método para iniciar sesión
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -16,7 +15,6 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Redirige a la ruta protegida del dashboard
             return redirect()->route('admin.dashboard'); 
         }
 
@@ -25,12 +23,11 @@ class LoginController extends Controller
         ]);
     }
 
-    // Método para cerrar sesión
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/'); // vuelve a la página de inicio
+        return redirect('/'); 
     } 
 }
