@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->text('entregables')->nullable();
             $table->text('proceso_trabajo')->nullable();
+            $table->enum('estado', ['Activo', 'Inactivo'])->default('Activo')->nullable();
             $table->timestamps();
         });
     }

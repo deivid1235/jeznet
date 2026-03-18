@@ -11,20 +11,24 @@ Table clientes {
 
 Table areas {
     id bigint [pk, increment]
-    nombre varchar [unique]
-    descripcion text
-    entregables text
-    proceso_trabajo text
+    nombre varchar [not null, unique]
+    descripcion text [not null]
+    entregables text [not null]
+    proceso_trabajo text [not null]
+    estado "enum('Activo', 'Inactivo')"
 }
 
 Table proyectos {
     id bigint [pk, increment]
-    nombre varchar
-    descripcion text
-    ubicacion varchar
+    nombre varchar [not null]
+    descripcion text [not null]
+    ubicacion varchar [not null]
     estado "enum('En ejecución', 'Finalizado', 'Planificado', 'Cancelado')"
     costo decimal(10,2)
     avance "tinyint unsigned"
+    fecha_inicio date [not null]
+    fecha_fin date
+    plazo date [not null]
     clientes_id int [ref: > clientes.id]
     areas_id bigint [ref: > areas.id]
 }
@@ -52,6 +56,5 @@ Table reclamos {
     detalle_solicitud text
     pedido_concreto text
     acepto_politicas boolean [default: true]
+    clientes_id bigint [ref: > clientes.id]
 }
-
-Ref: reclamos.numero_documento > clientes.numero_documento

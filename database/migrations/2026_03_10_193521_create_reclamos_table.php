@@ -36,9 +36,9 @@ return new class extends Migration
             $table->text('motivo');
             $table->text('detalle_solicitud');
             $table->text('pedido_concreto');
-            
             $table->boolean('acepto_politicas')->default(true);
 
+            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
             $table->timestamps(); 
         });
     }

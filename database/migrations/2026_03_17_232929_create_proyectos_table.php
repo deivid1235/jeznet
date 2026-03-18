@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->enum('estado', ['En ejecución', 'Finalizado', 'Planificado', 'Cancelado']);
+            $table->enum('estado', ['En ejecución', 'Finalizado', 'Planificado', 'Cancelado']) ->default('Planificado');
             $table->decimal('costo', 10, 2)->default(0);
             $table->unsignedTinyInteger('avance')->default(0);
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin');
+            $table->date('plazo')->nullable();
 
             // Relaciones
             $table->foreignId('area_id')->constrained()->onDelete('cascade');
