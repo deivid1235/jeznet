@@ -1,4 +1,5 @@
 import './bootstrap';
+import './area_index';
 
 document.addEventListener("DOMContentLoaded", function () {
 

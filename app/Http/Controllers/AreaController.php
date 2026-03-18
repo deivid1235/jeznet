@@ -12,9 +12,18 @@ class AreaController extends Controller
      */
     public function index()
     {
-        $areas = \App\Models\Area::all(); 
+        $areas = Area::all(); 
         
-        return view('areas.index', compact('areas'));
+        $totalAreas = $areas->count();
+        $activas = $areas->where('estado', 'Activo')->count();
+        $inactivas = $areas->where('estado', 'Inactivo')->count();
+
+        $pctActivas = $totalAreas > 0 ? ($activas / $totalAreas) * 100 : 0;
+        $pctInactivas = $totalAreas > 0 ? ($inactivas / $totalAreas) * 100 : 0;
+        
+        return view('areas.index', compact(
+            'areas', 'totalAreas', 'activas', 'inactivas', 'pctActivas', 'pctInactivas'
+        ));
     }
 
     /**
@@ -60,8 +69,11 @@ class AreaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Area $area)
+    public function toggleStatus(Area $area)
     {
-        //
+        $area->estado = $area->estado === 'Activo' ? 'Inactivo' : 'Activo';
+        $area->save();
+
+        return redirect()->route('areas.index')->with('success', 'El estado del área ha sido actualizado.');
     }
 }

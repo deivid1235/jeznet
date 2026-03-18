@@ -14,7 +14,6 @@
 </head>
 
 <body class="bg-gray-100 flex h-screen overflow-hidden font-sans text-sm">
-
     <div id="mobileOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity"></div>
 
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-[240px] bg-jez-navy flex flex-col transition-transform duration-300 transform -translate-x-full lg:translate-x-0 lg:static lg:inset-0 shadow-2xl">
@@ -295,7 +294,6 @@
                             </a>
                         </li>
 
-                       
                         <li>
                             <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
                                 <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -436,14 +434,12 @@
                 <button onclick="toggleSidebar()" class="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
-
                 <button onclick="toggleQuickAccess()" class="text-white p-2 hover:bg-white/10 rounded-lg transition-colors hidden sm:block">
                     <svg id="quickAccessIcon" class="w-6 h-6 stroke-current fill-none transition-transform duration-300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
-
-                <div id="quickAccessGroup" class="hidden md:flex items-center bg-white rounded-md p-0.5 gap-0.5 shadow-sm transition-all duration-300 origin-left">
+                <div id="quickAccessGroup" class="md:flex items-center bg-white rounded-md p-0.5 gap-0.5 shadow-sm transition-all duration-300 origin-left transform -translate-x-4 opacity-0 pointer-events-none absolute md:relative left-14 md:left-0">
                     <button class="flex flex-col items-center px-2 py-1 hover:bg-gray-100 rounded transition-colors">
                         <img src="{{ asset('iconos/nc.svg') }}" class="w-4 h-4" alt="NC">
                         <span class="text-[9px] font-bold text-gray-800 mt-0.5">NC</span>
@@ -474,21 +470,18 @@
                     </span>
                 </div>
 
-                <div class="relative">
+                <div id="profileContainer" class="relative">
                     <button onclick="toggleProfileMenu()" class="flex items-center justify-center w-9 h-9 rounded-full bg-jez-navy-hover border border-jez-gold/50 text-jez-gold hover:bg-jez-gold hover:text-jez-navy transition-all duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/20">
                         <i class="fa-solid fa-user text-sm"></i>
                     </button>
                     
-                    <div id="profileDropdown" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl hidden z-50 border border-gray-100 overflow-hidden">
-                        
+                    <div id="profileDropdown" class="absolute right-0 mt-3 w-56 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 transform origin-top-right scale-95 opacity-0 invisible pointer-events-none z-50">
                         <div class="bg-gray-50 px-4 py-3 border-b border-gray-100">
                             <p class="text-sm font-bold text-jez-navy truncate" title="{{ auth()->user()->name ?? 'Administrador' }}">
                                 {{ auth()->user()->name ?? 'Administrador' }}
                             </p>
                         </div>
-
                         <div class="border-t border-gray-100"></div>
-
                         <div class="bg-gray-50 border-t border-gray-200">
                             <a href="{{ route('logout') }}" 
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
@@ -514,53 +507,70 @@
             @yield('content')
         </main>
     </div>
-
-    <script>
-        function toggleSubmenu(id, btnElement) {
-            const submenu = document.getElementById(id);
-            const arrow = btnElement.querySelector('.arrow-icon');
-            
-            if (submenu.classList.contains('max-h-0')) {
-                submenu.classList.remove('max-h-0');
-                submenu.classList.add('max-h-[400px]');
-                arrow.classList.add('rotate-180');
-            } else {
-                submenu.classList.add('max-h-0');
-                submenu.classList.remove('max-h-[400px]');
-                arrow.classList.remove('rotate-180');
-            }
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('mobileOverlay');
-            
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-        }
-
-        function toggleProfileMenu() {
-            const dropdown = document.getElementById('profileDropdown');
-            dropdown.classList.toggle('hidden');
-        }
-
-        window.addEventListener('click', function(e) {
-            if (!document.querySelector('.relative').contains(e.target)) {
-                document.getElementById('profileDropdown').classList.add('hidden');
-            }
-        });
-
-        function toggleQuickAccess() {
-            const group = document.getElementById('quickAccessGroup');
-            const icon = document.getElementById('quickAccessIcon');
-            
-            icon.classList.toggle('rotate-180');
-            if (group.style.display === 'none') {
-                group.style.display = '';
-            } else {
-                group.style.display = 'none';
-            }
-        }
-    </script>
 </body>
+
+<script>
+    window.toggleSubmenu = function(id, btnElement) {
+        const submenu = document.getElementById(id);
+        const arrow = btnElement.querySelector('.arrow-icon');
+        
+        if (submenu.classList.contains('max-h-0')) {
+            submenu.classList.remove('max-h-0');
+            submenu.classList.add('max-h-[400px]');
+            if(arrow) arrow.classList.add('rotate-180');
+        } else {
+            submenu.classList.add('max-h-0');
+            submenu.classList.remove('max-h-[400px]');
+            if(arrow) arrow.classList.remove('rotate-180');
+        }
+    };
+
+    window.toggleSidebar = function() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        
+        if(sidebar) sidebar.classList.toggle('-translate-x-full');
+        if(overlay) overlay.classList.toggle('hidden');
+    };
+
+    window.toggleProfileMenu = function() {
+        const dropdown = document.getElementById('profileDropdown');
+        
+        if (dropdown.classList.contains('opacity-0')) {
+            dropdown.classList.remove('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+            dropdown.classList.add('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
+        } else {
+            dropdown.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+            dropdown.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
+        }
+    };
+
+    window.toggleQuickAccess = function() {
+        const group = document.getElementById('quickAccessGroup');
+        const icon = document.getElementById('quickAccessIcon');
+        
+        icon.classList.toggle('rotate-180');
+        
+        if (group.classList.contains('opacity-0')) {
+            group.classList.remove('opacity-0', '-translate-x-4', 'pointer-events-none');
+            group.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
+        } else {
+            group.classList.add('opacity-0', '-translate-x-4', 'pointer-events-none');
+            group.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
+        }
+    };
+
+    window.addEventListener('click', function(e) {
+        const profileContainer = document.getElementById('profileContainer');
+        const profileDropdown = document.getElementById('profileDropdown');
+        
+        if (profileContainer && profileDropdown && !profileContainer.contains(e.target)) {
+            if (profileDropdown.classList.contains('opacity-100')) {
+                profileDropdown.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+                profileDropdown.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
+            }
+        }
+    });
+</script>
+
 </html>

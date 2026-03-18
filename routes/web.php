@@ -27,4 +27,5 @@ Route::middleware('auth')->group(function () {
 
     // Rutas para proyectos
     Route::resource('/admin/proyectos', ProyectoController::class)->names('proyectos');
+    Route::patch('/admin/areas/{area}/toggle-status', [AreaController::class, 'toggleStatus'])->name('areas.toggle-status');
 });
