@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
+use App\Models\Area;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
 class ProyectoController extends Controller
@@ -13,6 +15,8 @@ class ProyectoController extends Controller
     public function index()
     {
         //
+        $proyectos = Proyecto::with(['area', 'cliente'])->get();
+        return view('admin.proyectos.index', compact('proyectos'));
     }
 
     /**
@@ -21,6 +25,9 @@ class ProyectoController extends Controller
     public function create()
     {
         //
+        $areas = Area::all();        
+        $clientes = Cliente::all();  
+        return view('admin.proyectos.create', compact('areas', 'clientes'));
     }
 
     /**
@@ -29,6 +36,19 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre'      => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'ubicacion'   => 'nullable|string|max:255',
+            'estado'      => 'required|string|max:50',
+            'costo'       => 'required|numeric',
+            'avance'      => 'nullable|numeric|min:0|max:100',
+            'area_id'     => 'nullable|exists:areas,id',
+            'cliente_id'  => 'nullable|exists:clientes,id',
+        ]);
+
+        Proyecto::create($request->all());
+        return redirect()->route('proyectos.index')->with('success', 'Proyecto creado correctamente.');
     }
 
     /**

@@ -58,7 +58,7 @@
                 <div id="submenu-gestion-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
                     <ul class="flex flex-col py-2">
                         <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                            <a href="{{ route('proyectos.index') }}" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
                                 <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
                                     <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
                                 </svg>

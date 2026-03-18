@@ -5,6 +5,7 @@ use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\AreaController;
 
 
@@ -23,4 +24,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('/admin/areas', AreaController::class)->names('areas');
+
+    // Rutas para proyectos
+    Route::resource('/admin/proyectos', ProyectoController::class)->names('proyectos');
 });
