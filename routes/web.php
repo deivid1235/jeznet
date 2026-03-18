@@ -5,6 +5,7 @@ use App\Http\Controllers\ReclamoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AreaController;
 
 
 Route::get('/', function () { return view('home.index'); })->name('home');
@@ -21,4 +22,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //Rutas protegidas solo para usuarios autenticados
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('/admin/areas', AreaController::class)->names('areas');
 });

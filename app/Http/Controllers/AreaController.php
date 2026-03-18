@@ -12,7 +12,9 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        $areas = \App\Models\Area::all(); 
+        
+        return view('areas.index', compact('areas'));
     }
 
     /**
