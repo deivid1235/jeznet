@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('login') === 'true') {
+        let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     const select  = document.getElementById('tipoDocumento');
     const wrapper = document.getElementById('numeroDocumentoWrapper');

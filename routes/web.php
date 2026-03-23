@@ -7,25 +7,37 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\AreaController;
+use App\Models\Area;
 
-
-Route::get('/', function () { return view('home.index'); })->name('home');
+//RUTAS PÚBLICAS
+Route::get('/', function () { 
+    $areas = Area::where('estado', 'Activo')->latest()->get(); 
+    return view('home.index', compact('areas')); 
+})->name('home');
 Route::get('/register', function () { return view('home.create'); })->name('register');
 Route::post('/register', [ClienteController::class, 'store'])->name('home.create.store');
 Route::get('/libroReclamaciones', [ReclamoController::class, 'index'])->name('libroReclamaciones');
 Route::post('/libroReclamaciones', [ReclamoController::class, 'store'])->name('libroReclamaciones.store');
 Route::view('/politica-de-privacidad', 'home.politicaPrivacidad')->name('politicaPrivacidad');
+
+//Rutas de Autenticación
 Route::get('/login', function () { return redirect('/'); })->name('login.get'); 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-//Rutas protegidas solo para usuarios autenticados
+//RUTAS PROTEGIDAS (usuarios autenticados)
 Route::middleware('auth')->group(function () {
+    
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    //RUTAS DE ÁREAS
+    Route::get('/admin/areas/trashed', [AreaController::class, 'trashed'])->name('areas.trashed');
+    Route::patch('/admin/areas/{area}/toggle-status', [AreaController::class, 'toggleStatus'])->name('areas.toggle-status');
+    Route::patch('/admin/areas/{id}/restore', [AreaController::class, 'restore'])->name('areas.restore');
     Route::resource('/admin/areas', AreaController::class)->names('areas');
 
-    // Rutas para proyectos
+    //RUTAS DE PROYECTOS
     Route::resource('/admin/proyectos', ProyectoController::class)->names('proyectos');
-    Route::patch('/admin/areas/{area}/toggle-status', [AreaController::class, 'toggleStatus'])->name('areas.toggle-status');
+    
 });

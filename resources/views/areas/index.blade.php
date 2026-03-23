@@ -1,6 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('content')
+
+@if(session('success'))
+    <div id="flash-success-message" data-message="{{ session('success') }}" class="hidden"></div>
+@endif
+
+@if($errors->any())
+    <div id="flash-error-messages" class="hidden">
+        @foreach ($errors->all() as $error)
+            <span class="error-item">{{ $error }}</span>
+        @endforeach
+    </div>
+@endif
+
 <div class="p-1 bg-gray-50 min-h-screen">
 
     {{-- BANNER PRINCIPAL --}}
@@ -109,15 +122,17 @@
             </span>
         </div>
         <div class="flex gap-2 sm:gap-3 w-full md:w-auto flex-wrap sm:flex-nowrap">
-            <button data-filter="todos" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-[#081423] border border-[#081423] text-[#d4af37] shadow-[0_4px_10px_rgba(8,20,35,0.2)] sm:shadow-[0_8px_15px_rgba(8,20,35,0.2)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
-                <i class="fas fa-th text-[10px] sm:text-sm icon-filter group-hover:scale-110 transition-transform duration-300"></i>
+            <button data-filter="todos" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-white border border-gray-200 text-gray-500 hover:text-[#d4af37] hover:border-[#d4af37] shadow-sm hover:shadow-[0_8px_15px_rgba(212,175,55,0.15)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
+                <i class="fas fa-th text-[10px] sm:text-sm icon-filter text-gray-400 group-hover:text-[#d4af37] group-hover:scale-110 transition-colors duration-300"></i>
                 <span class="text-[10px] sm:text-[12px] font-bold uppercase tracking-wide whitespace-nowrap">Todos</span>
             </button>
-            <button data-filter="con-proyecto" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-white border border-gray-200 text-gray-500 hover:text-[#081423] hover:border-[#d4af37] shadow-sm hover:shadow-[0_8px_15px_rgba(212,175,55,0.15)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
+
+            <button data-filter="con-proyecto" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-white border border-gray-200 text-gray-500 hover:text-[#d4af37] hover:border-[#d4af37] shadow-sm hover:shadow-[0_8px_15px_rgba(212,175,55,0.15)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
                 <i class="fas fa-project-diagram text-[10px] sm:text-sm icon-filter text-gray-400 group-hover:text-[#d4af37] group-hover:scale-110 transition-colors duration-300"></i>
                 <span class="text-[10px] sm:text-[12px] font-bold uppercase tracking-wide whitespace-nowrap">Con Proyecto</span>
             </button>
-            <button data-filter="sin-proyecto" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-white border border-gray-200 text-gray-500 hover:text-[#081423] hover:border-[#d4af37] shadow-sm hover:shadow-[0_8px_15px_rgba(212,175,55,0.15)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
+
+            <button data-filter="sin-proyecto" class="btn-filter flex-auto sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 bg-white border border-gray-200 text-gray-500 hover:text-[#d4af37] hover:border-[#d4af37] shadow-sm hover:shadow-[0_8px_15px_rgba(212,175,55,0.15)] rounded-lg sm:rounded-xl hover:-translate-y-1 active:scale-95 transition-all duration-300 group">
                 <i class="fas fa-info-circle text-[10px] sm:text-sm icon-filter text-gray-400 group-hover:text-[#d4af37] group-hover:scale-110 transition-colors duration-300"></i>
                 <span class="text-[10px] sm:text-[12px] font-bold uppercase tracking-wide whitespace-nowrap">Sin Proyecto</span>
             </button>
@@ -131,7 +146,7 @@
         <div class="area-card group relative bg-white rounded-2xl p-5 md:p-6 shadow-[0_4px_10px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(15,29,58,0.1)] flex flex-col h-full overflow-hidden"
             data-id="{{ strtolower($area->id) }}"
             data-nombre="{{ strtolower($area->nombre) }}"
-            data-proyecto="{{ ($area->entregables || $area->proceso_trabajo) ? 'con-proyecto' : 'sin-proyecto' }}"
+            data-proyecto="{{ $area->proyectos_count > 0 ? 'con-proyecto' : 'sin-proyecto' }}"
             data-estado="{{ strtolower($area->estado) }}">
             
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#081423] via-[#d4af37] to-[#081423] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -159,16 +174,30 @@
                 
                 <div class="flex flex-wrap gap-2 mb-3">
                     @if($area->entregables)
-                        <span class="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded uppercase tracking-wider">
-                            <svg class="w-3 h-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
-                            Entregables
-                        </span>
+                        @php
+                            $listaEntregables = array_filter(explode("\n", $area->entregables), 'trim');
+                            $cantidad = count($listaEntregables);
+                        @endphp
+
+                        @if($cantidad > 0)
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded uppercase tracking-wider">
+                                <svg class="w-3 h-3 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                                {{ $cantidad }} Entregables
+                            </span>
+                        @endif
                     @endif
                     @if($area->proceso_trabajo)
-                        <span class="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded uppercase tracking-wider">
-                            <svg class="w-3 h-3 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            Procesos
-                        </span>
+                        @php
+                            $listaProcesos = array_filter(explode("\n", $area->proceso_trabajo), 'trim');
+                            $cantidadProcesos = count($listaProcesos);
+                        @endphp
+
+                        @if($cantidadProcesos > 0)
+                            <span class="inline-flex items-center gap-1 text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded uppercase tracking-wider">
+                                <svg class="w-3 h-3 text-[#003366]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                {{ $cantidadProcesos }} Pasos
+                            </span>
+                        @endif
                     @endif
                 </div>
 
@@ -178,21 +207,24 @@
             </div>
 
             <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between relative z-10">
-                
-                <a href="{{ route('areas.show', $area->id) }}" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-[#081423] transition-colors duration-300 group">
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                <a href="{{ route('areas.show', $area->id) }}" class="inline-flex items-center gap-1.5 text-slate-400 hover:text-[#d4af37] transition-colors duration-300 group">
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
                     <span class="text-[10px] font-bold uppercase tracking-wider mt-0.5">Ver</span>
                 </a>
-                
+
                 <button type="button" 
                     onclick="openAreaModal(true, '{{ route('areas.update', $area->id) }}', this)"
                     data-nombre="{{ $area->nombre }}"
                     data-descripcion="{{ $area->descripcion }}"
                     data-entregables="{{ $area->entregables }}"
                     data-proceso="{{ $area->proceso_trabajo }}"
-                    data-estado="{{ $area->estado }}"
                     class="inline-flex items-center gap-1.5 text-slate-400 hover:text-[#d4af37] transition-colors duration-300 group cursor-pointer">
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
                     <span class="text-[10px] font-bold uppercase tracking-wider mt-0.5">Editar</span>
                 </button>
 
@@ -227,10 +259,10 @@
                 <p class="text-gray-500 mb-8 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
                     Comienza registrando la primera línea de servicio de <span class="font-bold text-[#081423]">JEZNET</span> para empezar a gestionar tus proyectos.
                 </p>
-                <a href="{{ route('areas.create') }}" class="inline-flex items-center justify-center gap-2 bg-[#d4af37] hover:bg-[#c19b2e] text-white px-8 py-3.5 rounded-xl font-bold text-[15px] shadow-[0_8px_15px_rgba(212,175,55,0.2)] hover:shadow-[0_15px_30px_rgba(212,175,55,0.3)] hover:-translate-y-1 active:scale-95 transition-all duration-300 uppercase tracking-wide">
+                <button type="button" onclick="openAreaModal(false, '{{ route('areas.store') }}')" class="inline-flex items-center justify-center gap-2 bg-[#d4af37] hover:bg-[#c19b2e] text-white px-8 py-3.5 rounded-xl font-bold text-[15px] shadow-[0_8px_15px_rgba(212,175,55,0.2)] hover:shadow-[0_15px_30px_rgba(212,175,55,0.3)] hover:-translate-y-1 active:scale-95 transition-all duration-300 uppercase tracking-wide">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
                     Crear Primera Área
-                </a>
+                </button>
             </div>
         </div>
         @endforelse
@@ -245,7 +277,7 @@
 
             <div class="inline-block relative overflow-hidden text-left align-bottom transition-all transform bg-white rounded-2xl shadow-2xl sm:my-8 sm:align-middle sm:max-w-2xl w-full border border-gray-100">
                 
-                <form id="areaForm" method="POST" action="">
+                <form id="areaForm" method="POST" action="{{ route('areas.store') }}">
                     @csrf
                     <div id="methodContainer"></div>
 
@@ -268,33 +300,59 @@
                                     class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 font-medium text-gray-700 shadow-sm"
                                     placeholder="Ej: Desarrollo de Software">
                             </div>
-                            <div>
-                                <label for="estado" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Estado</label>
-                                <select name="estado" id="modal-estado" 
-                                    class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 font-medium text-gray-700 shadow-sm cursor-pointer">
-                                    <option value="Activo">Activo</option>
-                                    <option value="Inactivo">Inactivo</option>
-                                </select>
+
+                            <div class="md:col-span-1">
+                                <label for="icono" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Ícono <span class="text-rose-500">*</span></label>
+                                <div class="relative">
+                                    <select name="icono" id="modal-icono" required
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 font-medium text-gray-700 shadow-sm appearance-none cursor-pointer">
+                                        <option value="bi-briefcase">Maletín (Genérico)</option>
+                                        <option value="bi-lightbulb">Foco (I+D / Ideas)</option>
+                                        <option value="bi-droplet-half">Gota (Aguas)</option>
+                                        <option value="bi-cpu">Chip (Automatización)</option>
+                                        <option value="bi-lightning-charge">Rayo (Eléctrico)</option>
+                                        <option value="bi-wifi">Wi-Fi (Telecomunicaciones)</option>
+                                        <option value="bi-tools">Herramientas (Civil / Metalmecánica)</option>
+                                        <option value="bi-shield-check">Escudo (Seguridad / ISO)</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="grupo-estado" class="hidden md:col-span-1">
+                                <label for="estado" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Estado <span class="text-rose-500">*</span></label>
+                                <div class="relative">
+                                    <select name="estado" id="modal-estado"
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 font-medium text-gray-700 shadow-sm appearance-none cursor-pointer">
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div>
-                            <label for="descripcion" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Descripción General</label>
-                            <textarea name="descripcion" id="modal-descripcion" rows="3"
+                            <label for="descripcion" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Descripción General <span class="text-rose-500">*</span></label>
+                            <textarea name="descripcion" id="modal-descripcion" rows="3" required
                                 class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 text-gray-700 shadow-sm resize-none"
                                 placeholder="Breve descripción del propósito de esta área..."></textarea>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
-                                <label for="entregables" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Entregables (Opcional)</label>
-                                <textarea name="entregables" id="modal-entregables" rows="3"
+                                <label for="entregables" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Entregables <span class="text-rose-500">*</span></label>
+                                <textarea name="entregables" id="modal-entregables" rows="3" required
                                     class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 text-gray-700 shadow-sm resize-none"
                                     placeholder="Lista de entregables principales..."></textarea>
                             </div>
                             <div>
-                                <label for="proceso_trabajo" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Proceso de Trabajo (Opcional)</label>
-                                <textarea name="proceso_trabajo" id="modal-proceso" rows="3"
+                                <label for="proceso_trabajo" class="block text-sm font-bold text-[#0f1d3a] mb-1.5">Proceso de Trabajo <span class="text-rose-500">*</span></label>
+                                <textarea name="proceso_trabajo" id="modal-proceso" rows="3" required
                                     class="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#d4af37]/50 focus:border-[#d4af37] transition-all duration-300 text-gray-700 shadow-sm resize-none"
                                     placeholder="Flujo de trabajo o metodologías..."></textarea>
                             </div>
@@ -315,5 +373,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

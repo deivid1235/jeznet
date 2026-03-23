@@ -9,6 +9,19 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+/* =====================================================
+    OCULTAR SCROLLBAR
+===================================================== */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 /* =====================================================
@@ -54,6 +67,18 @@ body {
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+#main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+    box-shadow: none !important;
 }
 
 /* =====================================================
@@ -222,7 +247,7 @@ body {
 ===================================================== */
 .hero {
     background: url('/images/industrial.jpg') center/cover no-repeat;
-    min-height: 90vh;
+    min-height: calc(100vh - 76px);
     position: relative;
     display: flex;
     align-items: center;
@@ -409,6 +434,69 @@ body {
     }
 }
 
+/* Estado Vacío */
+.empty-state-soluciones {
+    background-color: #fcfcfd;
+    border: 2px dashed rgba(212, 175, 55, 0.4);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+}
+
+.empty-state-soluciones:hover {
+    border-color: rgba(212, 175, 55, 0.7);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    transform: translateY(-3px);
+}
+
+.empty-state-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #081423 0%, #1a2f4f 100%);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 15px rgba(8,20,35,0.15);
+    transition: transform 0.4s ease;
+}
+
+.empty-state-soluciones:hover .empty-state-icon {
+    transform: rotate(15deg) scale(1.05);
+}
+
+.empty-state-icon i {
+    font-size: 2rem;
+    color: #d4af37;
+}
+
+.empty-state-title {
+    font-weight: 700;
+    color: #0f1d3a;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.empty-state-text {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.empty-state-text strong {
+    color: #081423;
+}
+
+.empty-state-container {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
 /* =====================================================
     SECCIÓN: SERVICIOS DESTACADOS
 ===================================================== */
@@ -523,6 +611,9 @@ body {
 .section-metodologia {
     background: linear-gradient(135deg, #081423, #1a2f4f);
     color: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .tag-metodologia {
@@ -835,6 +926,9 @@ body {
 ===================================================== */
 .section-contacto {
     background-color: #f5f3f0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .tag-contacto {
@@ -1126,7 +1220,7 @@ body {
 /* PANTALLAS GRANDES (≥ 1200px) */
 @media (min-width: 1200px) {
     .hero {
-        min-height: 95vh;
+        min-height: calc(100vh - 76px);
         padding: 100px 0;
     }
 
@@ -1143,7 +1237,7 @@ body {
 /* MONITORES EXTRA GRANDES (≥ 1400px) */
 @media (min-width: 1400px) {
     .hero {
-        min-height: 100vh;
+        min-height: calc(100vh - 76px);
     }
 
     .hero-content {

@@ -39,12 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         areaCards.forEach(card => {
             const cardName = (card.getAttribute('data-nombre') || '').toLowerCase(); 
-            const cardId = (card.getAttribute('data-id') || '').toLowerCase(); // <-- Añadido: extraemos el data-id
+            const cardId = (card.getAttribute('data-id') || '').toLowerCase();
             const cardProjectStatus = card.getAttribute('data-proyecto');
             const cardEstado = card.getAttribute('data-estado');
 
             const matchesSearch = cardName.includes(searchTerm) || cardId.includes(searchTerm);
-            
             const matchesProjectFilter = (currentFilter === 'todos') || (currentFilter === cardProjectStatus);
             const matchesStatusFilter = (currentStatusFilter === 'todos') || (currentStatusFilter === cardEstado);
 
@@ -139,55 +138,84 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    window.openAreaModal = function(isEdit, actionUrl, btn = null) {
+    const successElement = document.getElementById('flash-success-message');
+    if (successElement) {
+        const mensaje = successElement.getAttribute('data-message');
+        Swal.fire({
+            showConfirmButton: true,
+            buttonsStyling: false,
+            timer: 4000,
+            timerProgressBar: true,
+            background: '#ffffff',
+            backdrop: `rgba(15, 23, 42, 0.5)`,
+            html: `
+                <div class="flex flex-col items-center pt-2 pb-1">
+                    <div class="flex items-center justify-center w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full mb-6 shadow-inner ring-8 ring-emerald-50">
+                        <svg class="w-10 h-10 animate-[bounce_1s_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-[26px] font-extrabold text-[#0f1d3a] mb-3 tracking-tight">¡Excelente!</h2>
+                    <p class="text-slate-500 text-[15px] px-2 leading-relaxed text-center">
+                        ${mensaje}
+                    </p>
+                </div>
+            `,
+            confirmButtonText: 'Continuar',
+            customClass: {
+                popup: 'rounded-[24px] shadow-[0_20px_50px_rgba(15,29,58,0.12)] border border-slate-100 !w-[26rem]',
+                htmlContainer: '!m-0 !p-0',
+                actions: 'w-full px-8 pb-8 pt-4 flex justify-center',
+                confirmButton: 'w-full px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/40 hover:shadow-emerald-600/60 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 focus:ring-4 focus:ring-emerald-200 focus:outline-none'
+            }
+        });
+    }
+
+    window.openAreaModal = function(isEdit, actionUrl, buttonElement = null) {
         const modal = document.getElementById('areaModal');
         const form = document.getElementById('areaForm');
         const methodContainer = document.getElementById('methodContainer');
-        const title = document.getElementById('modalTitle');
+        const modalTitle = document.getElementById('modalTitle').querySelector('span');
         const btnSubmit = document.getElementById('btnSubmitModal');
+        const grupoEstado = document.getElementById('grupo-estado');
 
-        const inputNombre = document.getElementById('modal-nombre');
-        const selectEstado = document.getElementById('modal-estado');
-        const inputDescripcion = document.getElementById('modal-descripcion');
-        const inputEntregables = document.getElementById('modal-entregables');
-        const inputProceso = document.getElementById('modal-proceso');
+        if (!modal || !form) return;
 
+        form.reset();
         form.action = actionUrl;
 
-        if (isEdit && btn) {
-            title.innerHTML = `
-                <svg class="w-6 h-6 text-[#d4af37]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                <span>Editar Área Técnica</span>
-            `;
+        if (isEdit && buttonElement) {
+            modalTitle.textContent = 'Editar Área Técnica';
             btnSubmit.innerHTML = `
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                 Actualizar Área
             `;
-            
             methodContainer.innerHTML = '<input type="hidden" name="_method" value="PUT">';
+            grupoEstado.classList.remove('hidden');
 
-            inputNombre.value = btn.dataset.nombre || '';
-            inputDescripcion.value = btn.dataset.descripcion || '';
-            inputEntregables.value = btn.dataset.entregables || '';
-            inputProceso.value = btn.dataset.proceso || '';
+            document.getElementById('modal-nombre').value = buttonElement.dataset.nombre || '';
+            document.getElementById('modal-icono').value = buttonElement.dataset.icono || 'bi-briefcase';
+            document.getElementById('modal-descripcion').value = buttonElement.dataset.descripcion || '';
+            document.getElementById('modal-entregables').value = buttonElement.dataset.entregables || '';
+            document.getElementById('modal-proceso').value = buttonElement.dataset.proceso || '';
             
-            if (btn.dataset.estado) {
-                selectEstado.value = btn.dataset.estado;
+            const estadoActual = buttonElement.dataset.estado || 'Activo';
+            const selectEstado = document.getElementById('modal-estado');
+            if (selectEstado) {
+                const estadoFormat = estadoActual.charAt(0).toUpperCase() + estadoActual.slice(1).toLowerCase();
+                selectEstado.value = estadoFormat;
             }
 
         } else {
-            title.innerHTML = `
-                <svg class="w-6 h-6 text-[#d4af37]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                <span>Nueva Área Técnica</span>
-            `;
+            modalTitle.textContent = 'Nueva Área Técnica';
             btnSubmit.innerHTML = `
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 Guardar Área
             `;
-            
             methodContainer.innerHTML = '';
-
-            form.reset();
+            grupoEstado.classList.add('hidden');
+            document.getElementById('modal-estado').value = 'Activo'; 
+            document.getElementById('modal-icono').value = 'bi-briefcase';
         }
 
         modal.classList.remove('hidden');
@@ -195,7 +223,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.closeAreaModal = function() {
         const modal = document.getElementById('areaModal');
-        modal.classList.add('hidden');
+        if (modal) {
+            modal.classList.add('hidden');
+        }
     };
 
+    const errorContainer = document.getElementById('flash-error-messages');
+    if (errorContainer) {
+        const errorItems = errorContainer.querySelectorAll('.error-item');
+        let errorMessages = '';
+        
+        errorItems.forEach(item => {
+            errorMessages += `<li class="text-left text-sm text-slate-600 border-b border-rose-100 last:border-0 py-2"><i class="fas fa-exclamation-circle text-rose-400 mr-2"></i> ${item.textContent}</li>`;
+        });
+
+        Swal.fire({
+            showConfirmButton: true,
+            buttonsStyling: false,
+            background: '#ffffff',
+            backdrop: `rgba(15, 23, 42, 0.5)`,
+            html: `
+                <div class="flex flex-col items-center pt-2 pb-1">
+                    <div class="flex items-center justify-center w-20 h-20 bg-rose-100 text-rose-600 rounded-full mb-6 shadow-inner ring-8 ring-rose-50">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-[26px] font-extrabold text-[#0f1d3a] mb-4 tracking-tight">Datos Inválidos</h2>
+                    <div class="w-full bg-rose-50/50 border border-rose-100 rounded-xl p-4">
+                        <ul class="m-0 p-0 list-none">
+                            ${errorMessages}
+                        </ul>
+                    </div>
+                </div>
+            `,
+            confirmButtonText: 'Entendido, corregir',
+            customClass: {
+                popup: 'rounded-[24px] shadow-[0_20px_50px_rgba(15,29,58,0.12)] border border-slate-100 !w-[28rem]',
+                htmlContainer: '!m-0 !p-0',
+                actions: 'w-full px-8 pb-8 pt-4 flex justify-center',
+                confirmButton: 'w-full px-6 py-3.5 bg-slate-800 text-white font-bold rounded-xl shadow-lg hover:bg-slate-700 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 focus:ring-4 focus:ring-slate-200 focus:outline-none'
+            }
+        }).then(() => {
+            const btnNewArea = document.querySelector('button[onclick*="openAreaModal(false"]');
+            if (btnNewArea) {
+                btnNewArea.click();
+            }
+        });
+    }
 });

@@ -18,7 +18,7 @@
 
 <body>
 
-<header>
+<header id="main-header">
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
 
@@ -50,7 +50,7 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="{{ route('home', ['login' => 'true']) }}">
+                        <a class="nav-link cursor-pointer" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                             INICIAR SESIÓN
                         </a>
                     </li>
@@ -167,7 +167,26 @@
         });
         @endif
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let lastScrollTop = 0;
+        const header = document.getElementById('main-header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
+    });
 </script>
+
+    @include('partials.modales-login')
 
 </body>
 </html>

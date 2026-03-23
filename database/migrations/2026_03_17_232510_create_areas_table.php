@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
-            $table->text('descripcion')->nullable();
-            $table->text('entregables')->nullable();
-            $table->text('proceso_trabajo')->nullable();
-            $table->enum('estado', ['Activo', 'Inactivo'])->default('Activo')->nullable();
+            $table->string('icono')->default('bi-briefcase');
+            $table->text('descripcion');
+            $table->text('entregables');
+            $table->text('proceso_trabajo');
+            $table->enum('estado', ['Activo', 'Inactivo'])->default('Activo');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
