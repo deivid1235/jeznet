@@ -69,7 +69,7 @@
                     
                     <h5>{{ $area->nombre }}</h5>
                     
-                    <p>{{ Str::limit($area->descripcion, 90, '...') }}</p>
+                    <p>{{ Str::limit($area->descripcion, 150, '...') }}</p>
                 </div>
             @empty
                 <div class="empty-state-container text-center py-5">

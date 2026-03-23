@@ -21,7 +21,7 @@ class AreaController extends Controller
 
         $areas = Area::withCount('proyectos')->latest()->get();
 
-        return view('areas.index', compact(
+        return view('admin.areas.index', compact(
             'areas', 'totalAreas', 'activas', 'inactivas', 'pctActivas', 'pctInactivas'
         ));
     }
@@ -53,7 +53,7 @@ class AreaController extends Controller
 
         Area::create($validatedData);
 
-        return redirect()->route('areas.index')
+        return redirect()->route('admin.areas.index')
                         ->with('success', 'El área técnica se ha creado exitosamente.');
     }
 
@@ -80,7 +80,7 @@ class AreaController extends Controller
 
         $area->update($validatedData);
 
-        return redirect()->route('areas.index')
+        return redirect()->route('admin.areas.index')
                         ->with('success', 'El área técnica se ha actualizado correctamente.');
     }
 
@@ -92,13 +92,13 @@ class AreaController extends Controller
         $area->estado = ($area->estado === 'Activo') ? 'Inactivo' : 'Activo';
         $area->save();
 
-        return redirect()->route('areas.index')
+        return redirect()->route('admin.areas.index')
                         ->with('success', 'El estado del área ha sido actualizado.');
     }
 
     public function show(Area $area)
     {
-        return view('areas.show', compact('area'));
+        return view('admin.areas.show', compact('area'));
     }
 
     /**
@@ -108,7 +108,7 @@ class AreaController extends Controller
     {
         $area->delete();
 
-        return redirect()->route('areas.index')
+        return redirect()->route('admin.areas.index')
                         ->with('success', 'Área eliminada correctamente.');
     }
 
@@ -119,7 +119,7 @@ class AreaController extends Controller
     {
         $areas = Area::onlyTrashed()->get();
 
-        return view('areas.trashed', compact('areas'));
+        return view('admin.areas.trashed', compact('areas'));
     }
 
     /**
@@ -130,7 +130,7 @@ class AreaController extends Controller
         $area = Area::withTrashed()->findOrFail($id);
         $area->restore();
 
-        return redirect()->route('areas.index')
+        return redirect()->route('admin.areas.index')
                         ->with('success', 'Área restaurada correctamente.');
     }
 }
