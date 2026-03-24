@@ -1,87 +1,166 @@
 @extends('layouts.dashboard')
 @section('content')
-<div class="p-6 bg-gray-50 min-h-screen">
+
+@if(session('success'))
+    <div id="flash-success-message"
+         data-message="{{ session('success') }}"
+         class="hidden"></div>
+@endif
+
+@if($errors->any())
+    <div id="flash-error-messages" class="hidden">
+        @foreach ($errors->all() as $error)
+            <span class="error-item">{{ $error }}</span>
+        @endforeach
+    </div>
+@endif
+
+<div class="p-6 bg-gray-50 h-full overflow-x-hidden">
+    
     <h1 class="text-2xl font-bold mb-6">Crear Proyecto</h1>
 
-    <form action="{{ route('proyectos.store') }}" method="POST" class="bg-white p-6 rounded-2xl shadow grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form action="{{ route('proyectos.store') }}" method="POST" 
+    class="bg-white p-6 rounded-2xl shadow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @csrf
 
         {{-- Nombre --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Nombre:</label>
-            <input type="text" name="nombre" class="w-full border rounded p-2" required>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-tag text-gray-500"></i>
+                </span>
+                <input type="text" name="nombre" class="w-full p-2 focus:outline-none" required>
+            </div>
         </div>
 
         {{-- Área --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Área:</label>
-            <select name="area_id" class="w-full border rounded p-2" required>
-                <option value="">Seleccione un área</option>
-                @foreach($areas as $area)
-                    <option value="{{ $area->id }}">{{ $area->nombre }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        {{-- Descripción --}}
-        <div class="flex flex-col">
-            <label class="font-bold mb-1">Descripción:</label>
-            <textarea name="descripcion" class="w-full border rounded p-2"></textarea>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-layer-group text-gray-500"></i>
+                </span>
+                <select name="area_id" class="w-full p-2 focus:outline-none" required>
+                    <option value="">Seleccione un área</option>
+                    @foreach($areas as $area)
+                        <option value="{{ $area->id }}">{{ $area->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
 
         {{-- Cliente --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Cliente:</label>
-            <select name="cliente_id" class="w-full border rounded p-2" required>
-                <option value="">Seleccione un cliente</option>
-                @foreach($clientes as $cliente)
-                    <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
-                @endforeach
-            </select>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-user text-gray-500"></i>
+                </span>
+                <select name="cliente_id" class="w-full p-2 focus:outline-none" required>
+                    <option value="">Seleccione un cliente</option>
+                    @foreach($clientes as $cliente)
+                        <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        {{-- Fecha Inicio --}}
+        <div class="flex flex-col">
+            <label class="font-bold mb-1">Fecha Inicio:</label>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-calendar-alt text-gray-500"></i>
+                </span>
+                <input type="date" name="fecha_inicio" class="w-full p-2 focus:outline-none" required>
+            </div>
+        </div>
+
+        {{-- Fecha Fin --}}
+        <div class="flex flex-col">
+            <label class="font-bold mb-1">Fecha Fin:</label>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-calendar-check text-gray-500"></i>
+                </span>
+                <input type="date" name="fecha_fin" class="w-full p-2 focus:outline-none">
+            </div>
         </div>
 
         {{-- Ubicación --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Ubicación:</label>
-            <input type="text" name="ubicacion" class="w-full border rounded p-2">
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-map-marker-alt text-gray-500"></i>
+                </span>
+                <input type="text" name="ubicacion" class="w-full p-2 focus:outline-none">
+            </div>
         </div>
 
         {{-- Estado --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Estado:</label>
-            <select name="estado" class="w-full border rounded p-2" required>
-                <option value="">Seleccione un estado</option>
-                <option value="En ejecución">En ejecución</option>
-                <option value="Finalizado">Finalizado</option>
-                <option value="Planificado">Planificado</option>
-                <option value="Cancelado">Cancelado</option>
-            </select>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-info-circle text-gray-500"></i>
+                </span>
+                <select name="estado" class="w-full p-2 focus:outline-none" required>
+                    <option value="">Seleccione un estado</option>
+                    <option value="En ejecución">En ejecución</option>
+                    <option value="Planificado">Planificado</option>
+                </select>
+            </div>
         </div>
 
         {{-- Costo --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Costo (S/):</label>
-            <input type="number" step="0.01" name="costo" class="w-full border rounded p-2" required>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-coins text-gray-500"></i>
+                </span>
+                <input type="number" step="0.01" name="costo" class="w-full p-2 focus:outline-none" required>
+            </div>
         </div>
 
         {{-- Avance --}}
         <div class="flex flex-col">
             <label class="font-bold mb-1">Avance (%):</label>
-            <input type="number" name="avance" min="0" max="100" class="w-full border rounded p-2" required>
+            <div class="flex items-center border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100">
+                    <i class="fas fa-chart-line text-gray-500"></i>
+                </span>
+                <input type="number" name="avance" min="0" max="100" class="w-full p-2 focus:outline-none" required>
+            </div>
         </div>
 
-        {{-- Botones --}}
-        <div class="md:col-span-2 flex justify-between items-center">
-            {{-- Cancelar / Volver --}}
-            <a href="{{ route('proyectos.index') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded font-bold transition-all duration-200">
-                Volver
+        {{-- Descripción (ANCHO COMPLETO) --}}
+        <div class="flex flex-col lg:col-span-3">
+            <label class="font-bold mb-1">Descripción:</label>
+            <div class="flex border rounded overflow-hidden">
+                <span class="px-3 bg-gray-100 pt-2">
+                    <i class="fas fa-align-left text-gray-500"></i>
+                </span>
+                <textarea name="descripcion" class="w-full p-2 focus:outline-none"></textarea>
+            </div>
+        </div>
+
+        {{-- BOTONES --}}
+        <div class="lg:col-span-3 flex justify-between items-center">
+            <a href="{{ route('proyectos.index') }}" 
+            class="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded font-bold">
+                <i class="fas fa-arrow-left mr-1"></i> Volver
             </a>
 
-            {{-- Crear Proyecto --}}
-            <button type="submit" class="bg-[#d4af37] hover:bg-[#c19b2e] text-white px-4 py-2 rounded font-bold transition-all duration-200">
-                Crear
+            <button type="submit" 
+            class="bg-[#d4af37] hover:bg-[#c19b2e] text-white px-4 py-2 rounded font-bold">
+                <i class="fas fa-save mr-1"></i> Crear
             </button>
         </div>
+
     </form>
 </div>
+
 @endsection

@@ -38,6 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/areas', AreaController::class)->names('areas');
 
     //RUTAS DE PROYECTOS
+    Route::get('/admin/proyectos/historial', [ProyectoController::class, 'historial'])->name('proyectos.historial');
+    Route::post('/admin/proyectos/{id}/finalizar', [ProyectoController::class, 'finalizar'])->name('proyectos.finalizar');
+    Route::post('/admin/proyectos/{id}/cancelar', [ProyectoController::class, 'cancelar'])->name('proyectos.cancelar');
     Route::resource('/admin/proyectos', ProyectoController::class)->names('proyectos');
+    Route::post('/admin/proyectos/{id}/reactivar', [ProyectoController::class, 'reactivar'])->name('proyectos.reactivar');
     
 });

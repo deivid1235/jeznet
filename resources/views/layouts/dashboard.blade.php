@@ -14,6 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+
 <body class="bg-gray-100 flex h-screen overflow-hidden font-sans text-sm">
     <div id="mobileOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity"></div>
 
@@ -47,26 +48,47 @@
 
             <div>
                 {{-- GESTIÓN DE PROYECTOS --}}
-                <button onclick="toggleSubmenu('submenu-gestion-proyectos', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
+                <button onclick="toggleSubmenu('submenu-gestion-proyectos', this)" 
+                    class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group
+                    {{ request()->routeIs('proyectos.*') ? 'bg-jez-navy text-white' : '' }}">
+                    
                     <div class="flex items-center gap-3 text-left">
-                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">GESTIÓN DE<br>PROYECTOS</span>
+                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="8" y1="13" x2="16" y2="13"/>
+                            <line x1="8" y1="17" x2="16" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">
+                            GESTIÓN DE<br>PROYECTOS
+                        </span>
                     </div>
-                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon {{ request()->routeIs('proyectos.*') ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                 </button>
-                
-                <div id="submenu-gestion-proyectos" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
+
+                <div id="submenu-gestion-proyectos" 
+                    class="overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner 
+                    {{ request()->routeIs('proyectos.*') ? 'max-h-[1000px]' : 'max-h-0' }}">
                     <ul class="flex flex-col py-2">
                         <li>
-                            <a href="{{ route('proyectos.index') }}" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                            <a href="{{ route('proyectos.index') }}" 
+                            class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
+                            {{ request()->routeIs('proyectos.index') ? 'bg-black/20' : '' }}">
                                 <svg class="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
                                     <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
                                 </svg>
-                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Todos<br>los proyectos</span>
+                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">
+                                    Todos<br>los proyectos
+                                </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                            <a href="" 
+                            class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
+                            {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
                                 <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="9"/>
                                     <path d="M12 7v5l3 3"/>
@@ -75,7 +97,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
+                            <a href="" 
+                            class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
+                            {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
                                 <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
                                     <circle cx="12" cy="12" r="9"/>
                                     <path d="M8 12l3 3 5-6"/>
@@ -83,50 +107,8 @@
                                 <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
                             </a>
                         </li>
-                        <div class="mx-5 my-1 border-b border-white/40"></div>
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Cronogramas</span>
-                            </a>
-                        </li>
-                        <div class="mx-5 my-1 border-b border-white/40"></div>
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                    <polyline points="14 2 14 8 20 8"/>
-                                    <line x1="8" y1="13" x2="16" y2="13"/>
-                                    <line x1="8" y1="17" x2="16" y2="17"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase leading-tight tracking-wide">Documentación<br>técnica</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                    <line x1="12" y1="22.08" x2="12" y2="12"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Entregables</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="9"/>
-                                    <path d="M12 7v10"/>
-                                    <path d="M14.5 10.5a2.5 2.5 0 0 0-5 0c0 1.5 5 1.5 5 3a2.5 2.5 0 0 1-5 0"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Valorizaciones</span>
-                            </a>
-                        </li>
+
+                        {{-- Puedes seguir el mismo patrón para los demás submenús --}}
                     </ul>
                 </div>
             </div>

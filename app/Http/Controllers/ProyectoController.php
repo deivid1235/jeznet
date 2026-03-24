@@ -15,8 +15,11 @@ class ProyectoController extends Controller
     public function index()
     {
         //
-        $proyectos = Proyecto::with(['area', 'cliente'])->get();
-        return view('admin.proyectos.index', compact('proyectos'));
+       $proyectos = Proyecto::with(['area', 'cliente'])
+            ->whereNotIn('estado', ['Finalizado', 'Cancelado'])
+            ->get();
+            $todosLosProyectos = Proyecto::all();
+        return view('admin.proyectos.index', compact('proyectos', 'todosLosProyectos'));
     }
 
     /**
@@ -43,12 +46,14 @@ class ProyectoController extends Controller
             'estado'      => 'required|string|max:50',
             'costo'       => 'required|numeric',
             'avance'      => 'nullable|numeric|min:0|max:100',
+            'fecha_inicio' => 'nullable|date',
+            'fecha_fin'   => 'required|date|after_or_equal:fecha_inicio',
             'area_id'     => 'nullable|exists:areas,id',
             'cliente_id'  => 'nullable|exists:clientes,id',
         ]);
 
         Proyecto::create($request->all());
-        return redirect()->route('proyectos.index')->with('success', 'Proyecto creado correctamente.');
+        return back()->with('success', 'Proyecto creado correctamente.');
     }
 
     /**
@@ -81,5 +86,44 @@ class ProyectoController extends Controller
     public function destroy(Proyecto $proyecto)
     {
         //
+    }
+
+    public function finalizar($id)
+    {
+        $proyecto = Proyecto::findOrFail($id);
+        $proyecto->estado = 'Finalizado';
+        $proyecto->save();
+
+        return redirect()->route('proyectos.index')
+            ->with('success', 'Proyecto finalizado correctamente');
+    }
+
+    public function cancelar($id)
+    {
+        $proyecto = Proyecto::findOrFail($id);
+        $proyecto->estado = 'Cancelado';
+        $proyecto->save();
+
+        return redirect()->route('proyectos.index')
+            ->with('success', 'Proyecto cancelado correctamente');
+    }
+
+    public function historial()
+    {
+        $proyectos = Proyecto::whereIn('estado', ['Finalizado', 'Cancelado'])
+            ->with('cliente')
+            ->get();
+
+        return view('admin.proyectos.historial', compact('proyectos'));
+    }
+
+    public function reactivar($id)
+    {
+        $proyecto = Proyecto::findOrFail($id);
+        $proyecto->estado = 'En ejecución'; 
+        $proyecto->save();
+
+        return redirect()->route('proyectos.historial')
+            ->with('success', 'Proyecto reactivado correctamente');
     }
 }

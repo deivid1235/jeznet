@@ -16,6 +16,8 @@ class Proyecto extends Model
         'estado',
         'costo',
         'avance',
+        'fecha_inicio',
+        'fecha_fin',
         'area_id',
         'cliente_id',
     ];
