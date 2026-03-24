@@ -7,7 +7,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProyectoController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\CronogramaController;
 use App\Models\Area;
+use Symfony\Component\Routing\Router;
 
 //RUTAS PÚBLICAS
 Route::get('/', function () { 
@@ -46,5 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/proyectos/{id}/cancelar', [ProyectoController::class, 'cancelar'])->name('proyectos.cancelar');
     Route::resource('/admin/proyectos', ProyectoController::class)->names('proyectos');
     Route::post('/admin/proyectos/{id}/reactivar', [ProyectoController::class, 'reactivar'])->name('proyectos.reactivar');
+
+    //RUTAS DE CRONOGRAMA
+    Route::get('/admin/cronograma', [CronogramaController::class, 'index'])->name('cronograma.index');
     
+
 });

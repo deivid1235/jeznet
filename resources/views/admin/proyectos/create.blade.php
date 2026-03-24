@@ -132,7 +132,15 @@
                 <span class="px-3 bg-gray-100">
                     <i class="fas fa-chart-line text-gray-500"></i>
                 </span>
-                <input type="number" name="avance" min="0" max="100" class="w-full p-2 focus:outline-none" required>
+                <input 
+                    type="text"
+                    name="avance"
+                    maxlength="2"
+                    pattern="^(10|[0-9])$"
+                    class="w-full p-2 focus:outline-none"
+                    placeholder="0-10"
+                    required
+                >
             </div>
         </div>
 
@@ -143,7 +151,13 @@
                 <span class="px-3 bg-gray-100 pt-2">
                     <i class="fas fa-align-left text-gray-500"></i>
                 </span>
-                <textarea name="descripcion" class="w-full p-2 focus:outline-none"></textarea>
+                <textarea 
+                    name="descripcion" 
+                    maxlength="500"
+                    class="w-full p-2 focus:outline-none"
+                    placeholder="Máximo 500 caracteres"
+                    required
+                ></textarea>
             </div>
         </div>
 

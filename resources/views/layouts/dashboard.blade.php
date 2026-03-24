@@ -46,11 +46,12 @@
                 <span class="text-xs uppercase font-bold tracking-wide">DASHBOARD</span>
             </a>
 
+    
+            {{-- GESTIÓN DE PROYECTOS --}}
             <div>
-                {{-- GESTIÓN DE PROYECTOS --}}
                 <button onclick="toggleSubmenu('submenu-gestion-proyectos', this)" 
                     class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group
-                    {{ request()->routeIs('proyectos.*') ? 'bg-jez-navy text-white' : '' }}">
+                    {{ request()->routeIs('proyectos.*') || request()->routeIs('admin.ejecucion*') ? 'bg-jez-navy text-white' : '' }}">
                     
                     <div class="flex items-center gap-3 text-left">
                         <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -64,15 +65,21 @@
                             GESTIÓN DE<br>PROYECTOS
                         </span>
                     </div>
-                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon {{ request()->routeIs('proyectos.*') ? 'rotate-180' : '' }}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+
+                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon 
+                        {{ request()->routeIs('proyectos.*') || request()->routeIs('admin.ejecucion*') ? 'rotate-180' : '' }}" 
+                        fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <polyline points="6 9 12 15 18 9"/>
                     </svg>
                 </button>
 
+                {{-- Submenú --}}
                 <div id="submenu-gestion-proyectos" 
-                    class="overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner 
-                    {{ request()->routeIs('proyectos.*') ? 'max-h-[1000px]' : 'max-h-0' }}">
+                    class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner
+                    {{ request()->routeIs('proyectos.*') || request()->routeIs('cronograma*') ? 'max-h-[500px]' : '' }}">
+                    
                     <ul class="flex flex-col py-2">
+                        {{-- Todos los proyectos --}}
                         <li>
                             <a href="{{ route('proyectos.index') }}" 
                             class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
@@ -81,34 +88,77 @@
                                     <path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/>
                                 </svg>
                                 <span class="text-xs font-bold uppercase leading-tight tracking-wide">
-                                    Todos<br>los proyectos
+                                    TODOS LOS PROYECTOS
                                 </span>
                             </a>
                         </li>
+
+                        {{-- En ejecución --}}
                         <li>
-                            <a href="" 
+                            <a href="{{ route('cronograma.index')}}" 
                             class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
-                            {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="9"/>
-                                    <path d="M12 7v5l3 3"/>
+                            {{ request()->routeIs('cronograma.index') ? 'bg-black/20' : '' }}">
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="3" y="5" width="18" height="16" rx="2"/>
+                                    <line x1="16" y1="3" x2="16" y2="7"/>
+                                    <line x1="8" y1="3" x2="8" y2="7"/>
+                                    <line x1="3" y1="11" x2="21" y2="11"/>
+                                    <circle cx="8" cy="15" r="1"/>
+                                    <line x1="10" y1="15" x2="16" y2="15"/>
+                                    <circle cx="8" cy="18" r="1"/>
+                                    <line x1="10" y1="18" x2="14" y2="18"/>
                                 </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">En ejecución</span>
+                                <span class="text-xs font-bold uppercase tracking-wide">CRONOGRAMAS</span>
                             </a>
                         </li>
+                        {{-- Documentación Técnica --}}
                         <li>
                             <a href="" 
                             class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
                             {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="9"/>
-                                    <path d="M8 12l3 3 5-6"/>
+                                
+                                <!-- ICONO DOCUMENTO -->
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
                                 </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Finalizados</span>
+
+                                <span class="text-xs font-bold uppercase tracking-wide">DOCUMENTACIÓN TÉCNICA</span>
                             </a>
                         </li>
 
-                        {{-- Puedes seguir el mismo patrón para los demás submenús --}}
+                        {{-- Entregables --}}
+                        <li>
+                            <a href="" 
+                            class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
+                            {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
+                                
+                                <!-- ICONO CAJA -->
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    <polyline points="3 8 12 13 21 8"/>
+                                </svg>
+
+                                <span class="text-xs font-bold uppercase tracking-wide">ENTREGABLES</span>
+                            </a>
+                        </li>
+
+                        {{-- Valorización --}}
+                        <li>
+                            <a href="" 
+                            class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors
+                            {{ request()->routeIs('') ? 'bg-black/20' : '' }}">
+                                
+                                <!-- ICONO DINERO -->
+                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" viewBox="0 0 24 24">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+
+                                <span class="text-xs font-bold uppercase tracking-wide">VALORIZACIÓNES</span>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>

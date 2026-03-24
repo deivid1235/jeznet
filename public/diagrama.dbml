@@ -58,3 +58,4 @@ Table reclamos {
     acepto_politicas boolean [default: true]
     clientes_id bigint [ref: > clientes.id]
 }
+

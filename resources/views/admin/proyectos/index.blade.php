@@ -12,6 +12,7 @@
          data-message="{{ session('error') }}"
          class="hidden"></div>
 @endif
+
 <div class="p-6 bg-gray-50 h-full overflow-x-hidden"> 
 
     {{-- BANNER PRINCIPAL --}}
@@ -191,35 +192,43 @@
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
 
         {{-- Buscador --}}
-        <div class="relative w-full sm:max-w-sm">
+        <form action="{{ route('proyectos.index') }}" method="GET" class="relative w-full sm:max-w-sm">
             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 0 5 11a6 6 0 0 0 12 0z"/>
                 </svg>
             </div>
-            <input id="buscadorProyecto"
+            <input
                 type="text"
+                name="buscar"
+                value="{{ request()->query('buscar') }}" 
                 placeholder="Buscar por nombre de proyecto..."
-                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d4af37]/40 focus:border-[#d4af37] transition"/>
-        </div>
-
+                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d4af37]/40 focus:border-[#d4af37] transition"
+            />
+        </form>
         {{-- Botones filtro por estado --}}
+        @php $currentEstado = request()->query('estado', 'todos'); @endphp
+
         <div class="flex flex-wrap gap-2">
-            <button data-filtro="todos"
-                    class="btn-filtro active-filtro inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-600 shadow-sm hover:border-[#081423] hover:text-[#081423] transition-all">
+            <a href="{{ route('proyectos.index', ['estado' => 'todos']) }}"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold shadow-sm transition-all
+            {{ $currentEstado == 'todos' ? 'active-filtro bg-white text-gray-600 border-[#081423]' : 'bg-white text-gray-600 hover:border-[#081423] hover:text-[#081423]' }}">
                 Todos
-            </button>
+            </a>
 
-            <button data-filtro="en ejecución"
-                    class="btn-filtro inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-600 shadow-sm hover:border-blue-500 hover:text-blue-600 transition-all">
+            <a href="{{ route('proyectos.index', ['estado' => 'En ejecución']) }}"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold shadow-sm transition-all
+            {{ $currentEstado == 'En ejecución' ? 'active-filtro bg-white text-gray-600 border-blue-500' : 'bg-white text-gray-600 hover:border-blue-500 hover:text-blue-600' }}">
                 En Ejecución
-            </button>
+            </a>
 
-            <button data-filtro="planificado"
-                    class="btn-filtro inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-600 shadow-sm hover:border-amber-400 hover:text-amber-600 transition-all">
+            <a href="{{ route('proyectos.index', ['estado' => 'Planificado']) }}"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 text-sm font-semibold shadow-sm transition-all
+            {{ $currentEstado == 'Planificado' ? 'active-filtro bg-white text-gray-600 border-amber-400' : 'bg-white text-gray-600 hover:border-amber-400 hover:text-amber-600' }}">
                 Planificado
-            </button>
+            </a>
         </div>
+
     </div>
 
     {{-- TABLA DE PROYECTOS --}}

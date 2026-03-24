@@ -12,13 +12,28 @@ class ProyectoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-       $proyectos = Proyecto::with(['area', 'cliente'])
-            ->whereNotIn('estado', ['Finalizado', 'Cancelado'])
-            ->get();
-            $todosLosProyectos = Proyecto::all();
+        $estado = $request->query('estado'); 
+        $buscar = $request->query('buscar'); 
+
+        $query = Proyecto::with(['area', 'cliente']);
+
+       
+        if ($estado && $estado !== 'todos') {
+            $query->where('estado', $estado);
+        } else {
+            $query->whereNotIn('estado', ['Finalizado', 'Cancelado']);
+        }
+
+        if ($buscar && $buscar !== '') {
+            $buscar = strtolower(trim($buscar));
+            $query->whereRaw('LOWER(nombre) LIKE ?', ["%{$buscar}%"]);
+        }
+
+        $proyectos = $query->get();
+        $todosLosProyectos = Proyecto::all(); 
+
         return view('admin.proyectos.index', compact('proyectos', 'todosLosProyectos'));
     }
 
@@ -45,7 +60,7 @@ class ProyectoController extends Controller
             'ubicacion'   => 'nullable|string|max:255',
             'estado'      => 'required|string|max:50',
             'costo'       => 'required|numeric',
-            'avance'      => 'nullable|numeric|min:0|max:100',
+            'avance' => 'nullable|integer|min:0|max:10',
             'fecha_inicio' => 'nullable|date',
             'fecha_fin'   => 'required|date|after_or_equal:fecha_inicio',
             'area_id'     => 'nullable|exists:areas,id',
@@ -92,6 +107,7 @@ class ProyectoController extends Controller
     {
         $proyecto = Proyecto::findOrFail($id);
         $proyecto->estado = 'Finalizado';
+        $proyecto->avance = 100; 
         $proyecto->save();
 
         return redirect()->route('proyectos.index')
@@ -108,11 +124,20 @@ class ProyectoController extends Controller
             ->with('success', 'Proyecto cancelado correctamente');
     }
 
-    public function historial()
+    public function historial(Request $request)
     {
-        $proyectos = Proyecto::whereIn('estado', ['Finalizado', 'Cancelado'])
-            ->with('cliente')
-            ->get();
+        $buscar = $request->query('buscar');
+
+        $query = Proyecto::with('cliente')
+            ->whereIn('estado', ['Finalizado', 'Cancelado']);
+
+        if ($buscar && $buscar !== '') {
+            $buscar = strtolower(trim($buscar));
+
+            $query->whereRaw('LOWER(nombre) LIKE ?', ["%{$buscar}%"]);
+        }
+
+        $proyectos = $query->get();
 
         return view('admin.proyectos.historial', compact('proyectos'));
     }

@@ -18,11 +18,9 @@
     {{-- BANNER PRINCIPAL --}}
     <div class="bg-gradient-to-br from-[#081423] to-[#1a2f4f] rounded-2xl p-5 sm:p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center mb-8 shadow-xl relative overflow-hidden border-l-[6px] border-[#d4af37]">
 
-        {{-- Glow decorativo --}}
         <div class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-[#d4af37] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
 
         <div class="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-5 z-10 w-full mb-6 md:mb-0 text-center md:text-left">
-            {{-- Ícono --}}
             <div class="p-3 sm:p-4 bg-white/5 text-[#d4af37] rounded-xl sm:rounded-2xl border border-[#d4af37]/20 shadow-inner shrink-0">
                 <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/>
@@ -42,7 +40,6 @@
             </div>
         </div>
 
-        {{-- Botón regresar --}}
         <div class="z-10 w-full md:w-auto shrink-0 mt-4 md:mt-0">
             <a href="{{ route('proyectos.index') }}"
                class="w-full md:w-auto bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg hover:-translate-y-1">
@@ -54,10 +51,33 @@
         </div>
     </div>
 
+    {{-- BUSCADOR (sin JS, GET puro) --}}
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <form action="{{ route('proyectos.historial') }}" method="GET" class="relative w-full sm:max-w-sm flex gap-2">
+            <div class="relative flex-1">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 0 5 11a6 6 0 0 0 12 0z"/>
+                    </svg>
+                </div>
+                <input
+                    type="text"
+                    name="buscar"
+                    value="{{ request()->query('buscar') }}"
+                    placeholder="Buscar por nombre de proyecto..."
+                    class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d4af37]/40 focus:border-[#d4af37] transition"
+                />
+            </div>
+            <button type="submit"
+                class="px-4 py-2.5 bg-[#d4af37] hover:bg-[#c19b2e] text-white rounded-xl font-bold text-sm shadow-sm transition-all">
+                Buscar
+            </button>
+        </form>
+    </div>
+
     {{-- TABLA --}}
     <div class="bg-white rounded-2xl shadow-[0_4px_10px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden">
 
-        {{-- Cabecera — solo visible en md+ --}}
         <div class="hidden md:grid grid-cols-[2fr_2fr_1.5fr_1.5fr_1.5fr_1fr_1fr_1fr_1fr_1fr_1fr] gap-2 px-6 py-4 bg-gradient-to-r from-[#081423] to-[#1a2f4f] text-white text-[11px] font-bold uppercase tracking-widest text-center">
             <span>Proyecto</span>
             <span>Descripción</span>
@@ -72,13 +92,11 @@
             <span>Acción</span>
         </div>
 
-        {{-- Filas --}}
         @forelse($proyectos as $proyecto)
 
         {{-- ═══════════════ DESKTOP (md+) ═══════════════ --}}
         <div class="hidden md:grid grid-cols-[2fr_2fr_1.5fr_1.5fr_1.5fr_1fr_1fr_1fr_1fr_1fr_1fr] gap-2 items-center px-6 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200 text-center">
 
-            {{-- Proyecto --}}
             <div class="flex flex-col items-center justify-center gap-1">
                 <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#081423] to-[#1a2f4f] flex items-center justify-center shrink-0 shadow-sm">
                     <svg class="w-4 h-4 text-[#d4af37]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -95,27 +113,22 @@
                 </p>
             </div>
 
-            {{-- Descripción --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-sm text-gray-600">{{ $proyecto->descripcion }}</span>
             </div>
 
-            {{-- Ubicación --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-sm text-gray-600">{{ $proyecto->ubicacion }}</span>
             </div>
 
-            {{-- Área --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-sm text-gray-600">{{ $proyecto->area?->nombre ?? '-' }}</span>
             </div>
 
-            {{-- Cliente --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-sm text-gray-600">{{ $proyecto->cliente?->nombre ?? '-' }}</span>
             </div>
 
-            {{-- Estado --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 @php
                     $badgeClass = match(true) {
@@ -137,12 +150,10 @@
                 </span>
             </div>
 
-            {{-- Costo --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-sm font-bold text-[#0f1d3a]">S/ {{ number_format($proyecto->costo, 2, '.', ',') }}</span>
             </div>
 
-            {{-- Avance --}}
             <div class="flex items-center justify-center gap-2 border-l border-gray-200">
                 <div class="flex-1 bg-gray-100 h-2 rounded-full overflow-hidden min-w-[50px]">
                     <div class="bg-[#d4af37] h-full rounded-full" style="width: {{ $proyecto->avance }}%"></div>
@@ -150,17 +161,14 @@
                 <span class="text-xs font-bold text-gray-500 shrink-0">{{ $proyecto->avance }}%</span>
             </div>
 
-            {{-- Inicio --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-xs text-gray-500">{{ $proyecto->fecha_inicio }}</span>
             </div>
 
-            {{-- Fin --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <span class="text-xs text-gray-500">{{ $proyecto->fecha_fin }}</span>
             </div>
 
-            {{-- Acción --}}
             <div class="flex items-center justify-center border-l border-gray-200">
                 <form action="{{ route('proyectos.reactivar', $proyecto->id) }}" method="POST">
                     @csrf
@@ -175,7 +183,6 @@
         {{-- ═══════════════ MÓVIL (< md) ═══════════════ --}}
         <div class="md:hidden border-b border-gray-100 p-4 hover:bg-gray-50 transition">
 
-            {{-- Fila 1: ícono + nombre + badge --}}
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#081423] to-[#1a2f4f] flex items-center justify-center shrink-0 shadow-sm">
@@ -199,7 +206,6 @@
                 </span>
             </div>
 
-            {{-- Fila 2: datos en grid 2 columnas --}}
             <div class="grid grid-cols-2 gap-2 text-xs mb-3">
                 <div class="bg-gray-50 rounded-lg px-3 py-2">
                     <p class="text-gray-400 font-medium uppercase tracking-wide text-[10px] mb-0.5">Descripción</p>
@@ -227,7 +233,6 @@
                 </div>
             </div>
 
-            {{-- Fila 3: barra de avance --}}
             <div class="mb-3">
                 <div class="flex justify-between text-[10px] font-semibold text-gray-500 mb-1">
                     <span class="uppercase tracking-wide">Avance</span>
@@ -238,7 +243,6 @@
                 </div>
             </div>
 
-            {{-- Fila 4: botón acción --}}
             <div class="flex justify-end">
                 <form action="{{ route('proyectos.reactivar', $proyecto->id) }}" method="POST">
                     @csrf
@@ -251,7 +255,6 @@
         </div>
 
         @empty
-        {{-- EMPTY STATE --}}
         <div class="p-10 md:p-14 text-center border-t-2 border-dashed border-[#d4af37]/30">
             <div class="w-14 h-14 bg-gradient-to-br from-[#081423] to-[#1a2f4f] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow">
                 <svg class="w-7 h-7 text-[#d4af37]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -259,8 +262,20 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4a8 8 0 100 16 8 8 0 000-16z"/>
                 </svg>
             </div>
-            <h3 class="text-xl font-extrabold text-[#0f1d3a] mb-2">Sin historial de proyectos</h3>
-            <p class="text-gray-500 text-sm max-w-xs mx-auto">Los proyectos finalizados o cancelados aparecerán aquí.</p>
+            <h3 class="text-xl font-extrabold text-[#0f1d3a] mb-2">
+                @if(request()->query('buscar'))
+                    Sin resultados para "{{ request()->query('buscar') }}"
+                @else
+                    Sin historial de proyectos
+                @endif
+            </h3>
+            <p class="text-gray-500 text-sm max-w-xs mx-auto">
+                @if(request()->query('buscar'))
+                    Intenta con otro término de búsqueda.
+                @else
+                    Los proyectos finalizados o cancelados aparecerán aquí.
+                @endif
+            </p>
         </div>
         @endforelse
 
