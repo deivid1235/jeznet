@@ -1,5 +1,6 @@
 import './bootstrap';
 import './area_index';
+import './reclamos';
 
 document.addEventListener("DOMContentLoaded", function () {
 

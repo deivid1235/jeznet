@@ -93,7 +93,12 @@
         </div>
 
         @if ($totalReclamos > 0)
-            <div class="bg-gradient-to-r from-rose-50 to-white border-l-[5px] border-rose-500 rounded-r-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm relative overflow-hidden">
+            <div id="alert-reclamos" class="bg-gradient-to-r from-rose-50 to-white border-l-[5px] border-rose-500 rounded-r-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm relative overflow-hidden transition-all duration-500 ease-in-out">
+                
+                <button onclick="cerrarAlertaReclamos()" class="absolute top-3 right-3 text-rose-300 hover:text-rose-600 transition-colors duration-200 outline-none" title="Cerrar aviso">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
                 <div class="flex items-center gap-4 relative z-10">
                     <div class="w-12 h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center text-xl shrink-0 relative">
                         <div class="absolute inset-0 bg-rose-400 rounded-full animate-ping opacity-20"></div>
@@ -107,7 +112,8 @@
                         <p class="text-rose-600/80 text-sm mt-0.5">Se han registrado nuevas solicitudes en el libro de reclamaciones.</p>
                     </div>
                 </div>
-                <a href="#" class="relative z-10 shrink-0 px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg text-sm transition-colors shadow-sm flex items-center gap-2 group">
+
+                <a href="{{ route('reclamos.index') }}" class="relative z-10 shrink-0 px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg text-sm transition-colors shadow-sm flex items-center gap-2 group">
                     Atender ahora <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
@@ -412,5 +418,17 @@
             }
         });
     });
+
+    function cerrarAlertaReclamos() {
+        const alerta = document.getElementById('alert-reclamos');
+        if (alerta) {
+            alerta.style.opacity = '0';
+            alerta.style.transform = 'translateY(-10px)';
+            
+            setTimeout(() => {
+                alerta.remove();
+            }, 500);
+        }
+    }
 </script>
 @endsection

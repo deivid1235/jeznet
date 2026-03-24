@@ -16,7 +16,6 @@
 
 <div class="p-1 bg-gray-50 min-h-screen">
 
-    {{-- BANNER PRINCIPAL --}}
     <div class="bg-gradient-to-br from-[#081423] to-[#1a2f4f] rounded-2xl p-5 sm:p-6 md:p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center mb-8 shadow-xl relative overflow-hidden border-l-[6px] border-[#d4af37]">
         
         <div class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-[#d4af37] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
@@ -47,9 +46,7 @@
         </div>
     </div>
 
-    {{-- TARJETAS DE ESTADÍSTICAS --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
-        {{-- Total Áreas --}}
         <div class="stat-card-filter cursor-pointer group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_10px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(15,29,58,0.1)] flex flex-col justify-between" data-status-filter="todos">
             <div class="flex items-center gap-3 sm:gap-5">
                 <div class="p-2.5 sm:p-3.5 bg-gradient-to-br from-[#081423] to-[#1a2f4f] text-[#d4af37] rounded-lg sm:rounded-xl shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
@@ -67,7 +64,6 @@
             </div>
         </div>
 
-        {{-- Áreas Activas --}}
         <div class="stat-card-filter cursor-pointer group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_10px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(16,185,129,0.15)] flex flex-col justify-between" data-status-filter="activo">
             <div class="flex items-center gap-3 sm:gap-5">
                 <div class="p-2.5 sm:p-3.5 bg-emerald-50 text-emerald-600 rounded-lg sm:rounded-xl border border-emerald-100 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 shrink-0">
@@ -89,7 +85,6 @@
             </div>
         </div>
 
-        {{-- Áreas Inactivas --}}
         <div class="stat-card-filter cursor-pointer group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_10px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(244,63,94,0.15)] flex flex-col justify-between" data-status-filter="inactivo">
             <div class="flex items-center gap-3 sm:gap-5">
                 <div class="p-2.5 sm:p-3.5 bg-rose-50 text-rose-500 rounded-lg sm:rounded-xl border border-rose-100 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 shrink-0">
@@ -112,7 +107,6 @@
         </div>
     </div>
 
-    {{-- BUSCADOR Y FILTROS --}}
     <div class="flex flex-col md:flex-row gap-4 justify-between items-center mb-8">
         <div class="relative w-full md:w-2/3 lg:w-1/3">
             <input type="text" id="searchInput" placeholder="Buscar por nombre de área..." 
@@ -139,7 +133,6 @@
         </div>
     </div>
 
-    {{-- GRILLA DE TARJETAS (CARDS) --}}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="areasContainer">
         
         @forelse ($areas as $area)
@@ -268,7 +261,6 @@
         @endforelse
     </div>
 
-    {{-- MODAL CREAR / EDITAR ÁREA --}}
     <div id="areaModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
             <div class="fixed inset-0 transition-opacity bg-[#081423]/60 backdrop-blur-sm" aria-hidden="true" onclick="closeAreaModal()"></div>

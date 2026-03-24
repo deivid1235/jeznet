@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reclamo;
 use App\Models\Cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReclamoController extends Controller
 {
@@ -67,5 +68,60 @@ class ReclamoController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Su documento ha sido registrado exitosamente. En breve nos comunicaremos con usted.');
+    }
+
+    public function adminIndex(Request $request)
+    {
+        $totalDocumentos = Reclamo::count();
+        $totalReclamosCard = Reclamo::where('tipo_reclamo', 'Reclamo')->count();
+        $totalQuejasCard = Reclamo::where('tipo_reclamo', 'Queja')->count();
+
+        $pctReclamos = $totalDocumentos > 0 ? ($totalReclamosCard / $totalDocumentos) * 100 : 0;
+        $pctQuejas = $totalDocumentos > 0 ? ($totalQuejasCard / $totalDocumentos) * 100 : 0;
+
+        $query = Reclamo::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('numero_documento', 'like', "%{$search}%")
+                ->orWhere('correo', 'like', "%{$search}%")
+                ->orWhere('primer_nombre', 'like', "%{$search}%")
+                ->orWhere('primer_apellido', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('tipo')) {
+            $query->where('tipo_reclamo', $request->tipo);
+        }
+
+        $reclamos = $query->latest()->paginate(10);
+        $reclamos->withQueryString();
+
+        return view('admin.reclamos.index', compact(
+            'reclamos', 'totalDocumentos', 'totalReclamosCard', 'totalQuejasCard', 'pctReclamos', 'pctQuejas'
+        ));
+    }
+
+    public function show($id)
+    {
+        $reclamo = Reclamo::findOrFail($id);
+        return view('admin.reclamos.show', compact('reclamo'));
+    }
+
+    public function generarPDF($id)
+    {
+        $reclamo = Reclamo::findOrFail($id);
+        $pdf = Pdf::loadView('admin.reclamos.pdf', compact('reclamo'));
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->download('Jeznet_Documento_00' . $reclamo->id . '.pdf');
+    }
+
+    public function imprimir($id)
+    {
+        $reclamo = Reclamo::findOrFail($id);
+        
+        return view('admin.reclamos.pdf', compact('reclamo'))->with('imprimir', true);
     }
 }

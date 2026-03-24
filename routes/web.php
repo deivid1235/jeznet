@@ -52,5 +52,10 @@ Route::middleware('auth')->group(function () {
     //RUTAS DE CRONOGRAMA
     Route::get('/admin/cronograma', [CronogramaController::class, 'index'])->name('cronograma.index');
     
+    //RUTAS DE RECLAMOS 
+    Route::get('/admin/reclamos', [App\Http\Controllers\ReclamoController::class, 'adminIndex'])->name('reclamos.index');
+    Route::get('/admin/reclamos/{id}/show', [App\Http\Controllers\ReclamoController::class, 'show'])->name('reclamos.show');
+    Route::get('/admin/reclamos/{id}/pdf', [App\Http\Controllers\ReclamoController::class, 'generarPDF'])->name('reclamos.pdf');
+    Route::get('/admin/reclamos/{id}/imprimir', [App\Http\Controllers\ReclamoController::class, 'imprimir'])->name('reclamos.imprimir');
 
 });

@@ -46,7 +46,6 @@
                 <span class="text-xs uppercase font-bold tracking-wide">DASHBOARD</span>
             </a>
 
-    
             {{-- GESTIÓN DE PROYECTOS --}}
             <div>
                 <button onclick="toggleSubmenu('submenu-gestion-proyectos', this)" 
@@ -165,7 +164,7 @@
 
             {{-- ÁREAS TÉCNICAS --}}
             <a href="{{ route('areas.index') }}" 
-            class="group relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 outline-none
+                class="group relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 outline-none
                     {{-- Estado por defecto y Hover --}}
                     text-gray-300 hover:bg-[#1a2f4f] hover:text-[#d4af37] hover:shadow-[0_0_15px_rgba(212,175,55,0.15)]
                     {{-- Estado al hacer Clic (Iluminación) --}}
@@ -389,58 +388,23 @@
                 </div>
             </div>
 
-            {{-- Icidencias y Reporrtes--}}
-            <div>
-                <button onclick="toggleSubmenu('submenu-icidentes-reportes', this)" class="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors group">
-                    <div class="flex items-center gap-3 text-left">
-                        
-                        <!-- Incidencias & Reportes (alerta) -->
-                        <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                            <path d="M12 9v4"/>
-                            <path d="M12 17h.01"/>
-                            <path d="M10 2l-8 14a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L14 2a2 2 0 0 0-3.5 0z"/>
-                        </svg>
-
-                        <span class="text-xs uppercase font-bold tracking-wide leading-tight">
-                            INCIDENCIAS &<br>REPORTES
-                        </span>
-                    </div>
-
-                    <!-- Flecha -->
-                    <svg class="w-4 h-4 text-jez-text-dim transition-transform duration-200 transform arrow-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                        <polyline points="6 9 12 15 18 9"/>
-                    </svg>
-                </button>
+            {{-- INCIDENCIAS & REPORTES --}}
+            <a href="{{ route('reclamos.index') }}" 
+                class="group relative flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-300 outline-none
+                    text-gray-300 hover:bg-[#1a2f4f] hover:text-[#d4af37] hover:shadow-[0_0_15px_rgba(212,175,55,0.15)]
+                    active:scale-95 active:bg-[#d4af37] active:text-[#081423] active:shadow-[0_0_30px_rgba(212,175,55,0.6)]
+                    {{ request()->routeIs('reclamos.*') ? 'bg-[#1a2f4f] text-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.2)] border border-[#d4af37]/30' : '' }}">
                 
-                <div id="submenu-icidentes-reportes" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-jez-gold rounded-b-lg shadow-inner">
-                    <ul class="flex flex-col py-2">
-
-                        <!-- Tickets -->
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <path d="M3 7h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V7z"/>
-                                    <path d="M12 7v10"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Tickets</span>
-                            </a>
-                        </li>
-
-                        <!-- Soporte -->
-                        <li>
-                            <a href="#" class="flex items-center gap-3 px-5 py-2.5 text-white hover:bg-black/10 transition-colors">
-                                <svg class="w-6 h-6 stroke-current fill-none shrink-0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                    <path d="M18 8a6 6 0 0 0-12 0v4a2 2 0 0 0 2 2h1"/>
-                                    <path d="M15 16h2a2 2 0 0 0 2-2v-4"/>
-                                    <path d="M9 16h6"/>
-                                </svg>
-                                <span class="text-xs font-bold uppercase tracking-wide">Soporte</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+                <svg class="w-5 h-5 stroke-current fill-none shrink-0 transition-transform duration-300 group-hover:scale-110 group-active:scale-100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M12 9v4"/>
+                    <path d="M12 17h.01"/>
+                    <path d="M10 2l-8 14a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L14 2a2 2 0 0 0-3.5 0z"/>
+                </svg>
+                
+                <span class="text-xs uppercase font-bold tracking-wide leading-tight">
+                    INCIDENCIAS &<br>REPORTES
+                </span>
+            </a>
 
             {{-- ADMINISTRACIÓN --}}
             <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-jez-text hover:bg-jez-navy-hover hover:text-white transition-colors">
