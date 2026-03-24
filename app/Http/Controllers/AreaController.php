@@ -53,7 +53,7 @@ class AreaController extends Controller
 
         Area::create($validatedData);
 
-        return redirect()->route('admin.areas.index')
+        return redirect()->route('areas.index')
                         ->with('success', 'El área técnica se ha creado exitosamente.');
     }
 
@@ -72,6 +72,7 @@ class AreaController extends Controller
     {
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255|unique:areas,nombre,' . $area->id,
+            'icono' => 'required|string',
             'descripcion' => 'required|string',
             'entregables' => 'required|string',
             'proceso_trabajo' => 'required|string',
@@ -80,7 +81,7 @@ class AreaController extends Controller
 
         $area->update($validatedData);
 
-        return redirect()->route('admin.areas.index')
+        return redirect()->route('areas.index')
                         ->with('success', 'El área técnica se ha actualizado correctamente.');
     }
 
@@ -92,7 +93,7 @@ class AreaController extends Controller
         $area->estado = ($area->estado === 'Activo') ? 'Inactivo' : 'Activo';
         $area->save();
 
-        return redirect()->route('admin.areas.index')
+        return redirect()->route('areas.index')
                         ->with('success', 'El estado del área ha sido actualizado.');
     }
 
@@ -108,7 +109,7 @@ class AreaController extends Controller
     {
         $area->delete();
 
-        return redirect()->route('admin.areas.index')
+        return redirect()->route('areas.index')
                         ->with('success', 'Área eliminada correctamente.');
     }
 
@@ -119,7 +120,7 @@ class AreaController extends Controller
     {
         $areas = Area::onlyTrashed()->get();
 
-        return view('admin.areas.trashed', compact('areas'));
+        return view('areas.trashed', compact('areas'));
     }
 
     /**
@@ -130,7 +131,32 @@ class AreaController extends Controller
         $area = Area::withTrashed()->findOrFail($id);
         $area->restore();
 
-        return redirect()->route('admin.areas.index')
+        return redirect()->route('areas.index')
                         ->with('success', 'Área restaurada correctamente.');
+    }
+
+    public function detallePublico(Area $area)
+    {
+        return view('home.ficha_soluciones', compact('area'));
+    }
+
+    public function solicitarServicio(Request $request)
+    {
+        $datosValidados = $request->validate([
+            'area_id' => 'required|integer',
+            'area_nombre' => 'required|string',
+            'empresa' => 'required|string|max:255',
+            'ingeniero' => 'required|string|max:255',
+            'correo' => 'required|email|max:255',
+            'detalles' => 'nullable|string', 
+        ]);
+
+        return back()->with('success', '¡Gracias! Hemos recibido tu solicitud para el servicio de ' . $datosValidados['area_nombre'] . '. Nos comunicaremos contigo pronto.');
+    }
+
+    public function tienda()
+    {
+        $areas = Area::where('estado', 'Activo')->get();
+        return view('home.tienda', compact('areas'));
     }
 }

@@ -61,6 +61,13 @@ html, body {
     transform: translateY(-3px);
 }
 
+.nav-link.active {
+    background-color: transparent;
+    border: 2px solid #d1ac40;
+    border-radius: 8px;
+    color: #d1ac40 !important;
+}
+
 .navbar-toggler {
     border: none;
 }
@@ -1197,9 +1204,17 @@ html, body {
         padding: 14px 0 !important;
         font-size: 16px;
         letter-spacing: 0.5px;
+        border: 2px solid transparent;
     }
 
-    .nav-link:hover {
+    .nav-link.active {
+        border: 2px solid #d1ac40;
+        border-radius: 8px;
+        color: #d1ac40 !important;
+        background: rgba(255,255,255,0.06);
+    }
+
+    .nav-link:not(.active):hover {
         background: rgba(255,255,255,0.06);
         border-radius: 8px;
         color: #e8b931 !important;
@@ -1478,4 +1493,61 @@ select.input-reclamaciones option[value=""][disabled] {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+/* =====================================================
+    PÁGINA: Tienda
+===================================================== */
+.card-catalogo-horizontal {
+    background-color: #e9edf4;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.card-catalogo-horizontal:hover {
+    background-color: #e8cf6a;
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.box-detalles-inner {
+    background-color: rgba(15, 29, 58, 0.08);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.card-catalogo-horizontal:hover .box-detalles-inner {
+    background-color: #f0e4b7;
+}
+
+.btn-catalogo {
+    background-color: #0f1d3a;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 14px 32px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.card-catalogo-horizontal:hover .btn-catalogo {
+    background-color: #ffffff; 
+    color: #e8cf6a;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transform: scale(1.02);
+}
+
+.card-catalogo-horizontal:hover .icono {
+    background: #f0e4b7;
+    color: #cfa80f;
+    transform: scale(1.05);
 }

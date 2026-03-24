@@ -10,6 +10,7 @@ class Reclamo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cliente_id',
         'tipo_documento',
         'numero_documento',
         'primer_nombre',

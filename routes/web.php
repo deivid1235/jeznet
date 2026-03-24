@@ -19,6 +19,9 @@ Route::post('/register', [ClienteController::class, 'store'])->name('home.create
 Route::get('/libroReclamaciones', [ReclamoController::class, 'index'])->name('libroReclamaciones');
 Route::post('/libroReclamaciones', [ReclamoController::class, 'store'])->name('libroReclamaciones.store');
 Route::view('/politica-de-privacidad', 'home.politicaPrivacidad')->name('politicaPrivacidad');
+Route::get('/soluciones/{area}', [AreaController::class, 'detallePublico'])->name('soluciones.ficha');
+Route::post('/soluciones/solicitar', [AreaController::class, 'solicitarServicio'])->name('soluciones.solicitar');
+Route::get('/tienda', [AreaController::class, 'tienda'])->name('tienda');
 
 //Rutas de Autenticación
 Route::get('/login', function () { return redirect('/'); })->name('login.get'); 

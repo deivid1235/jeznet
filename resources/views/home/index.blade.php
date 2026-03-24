@@ -38,8 +38,8 @@
                         Innovación tecnológica para el sector industrial.
                     </p>
                     <div class="d-grid gap-3 d-sm-flex w-100 justify-content-sm-center justify-content-lg-end">
-                        <a href="#" class="btn btn-hero ">IR A LA TIENDA</a>
-                        <a href="#servicios" class="btn btn-hero ">VER SERVICIOS</a>
+                        <a href="{{ route('tienda') }}" class="btn btn-hero">IR A LA TIENDA</a>
+                        <a href="#servicios" class="btn btn-hero">VER SERVICIOS</a>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,8 @@
         <div class="grid-soluciones">
             @forelse($areas as $area)
                 <div class="card-solucion position-relative">
-                    <a href="#" class="stretched-link" aria-label="Ver detalles de {{ $area->nombre }}"></a>
                     
+                    <a href="{{ route('soluciones.ficha', $area->id) }}" class="stretched-link" aria-label="Ver detalles de {{ $area->nombre }}"></a>
                     <div class="icono">
                         <i class="bi {{ $area->icono }}"></i>
                     </div>

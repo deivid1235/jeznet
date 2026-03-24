@@ -96,9 +96,11 @@
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden relative transition-all duration-300 hover:shadow-md">
                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                 <div class="p-6 sm:p-8">
-                    
+
                     @php
-                        $listaProcesos = $area->proceso_trabajo ? array_filter(explode("\n", $area->proceso_trabajo), 'trim') : [];
+                        $listaProcesos = $area->proceso_trabajo 
+                            ? array_filter(explode("\n", $area->proceso_trabajo), 'trim') 
+                            : [];
                         $cantidadProcesos = count($listaProcesos);
                     @endphp
 
@@ -107,38 +109,35 @@
                             <i class="fas fa-project-diagram text-sm"></i>
                         </div>
                         Proceso de Trabajo
-
                         @if($cantidadProcesos > 0)
                             <span class="ml-auto inline-flex items-center justify-center bg-blue-100 text-blue-700 px-2.5 py-1 rounded-lg text-[11px] font-extrabold uppercase tracking-wider">
                                 {{ $cantidadProcesos }} {{ $cantidadProcesos === 1 ? 'Paso' : 'Pasos' }}
                             </span>
                         @endif
                     </h3>
-                    
                     <div class="text-[14px] text-slate-600 bg-blue-50/30 p-5 rounded-xl border border-blue-100/50">
                         @if($cantidadProcesos > 0)
-                            {{-- Contenedor Flex para alinear todo uno al lado del otro, saltando de línea si no cabe --}}
-                            <div class="flex flex-wrap items-center gap-y-3 gap-x-2">
-                                
+                            <div class="flex flex-col gap-3">
                                 @foreach($listaProcesos as $proceso)
-                                    <div class="flex items-center gap-2">
-                                        {{-- El recuadro de cada paso --}}
-                                        <span class="bg-white border border-blue-200 text-blue-800 font-medium px-3.5 py-1.5 rounded-lg shadow-sm">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-6 h-6 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-[11px] font-bold shrink-0 mt-0.5">
+                                            {{ $loop->iteration }}
+                                        </div>
+                                        <span class="bg-white border border-blue-200 text-blue-800 
+                                                    text-[12px] leading-tight
+                                                    px-3 py-2 rounded-lg shadow-sm w-full">
                                             {{ ucfirst(trim($proceso)) }}
                                         </span>
-                                        
-                                        {{-- Solo dibuja la flecha SI NO ES el último elemento --}}
-                                        @if(!$loop->last)
-                                            <svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                            </svg>
-                                        @endif
                                     </div>
+                                    @if(!$loop->last)
+                                        <div class="ml-[11px] w-px h-4 bg-blue-200"></div>
+                                    @endif
                                 @endforeach
-                                
                             </div>
                         @else
-                            <p class="text-blue-700/60 italic font-medium">No se registró un proceso de trabajo.</p>
+                            <p class="text-blue-700/60 italic font-medium">
+                                No se registró un proceso de trabajo.
+                            </p>
                         @endif
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reclamo;
+use App\Models\Cliente;
 
 class ReclamoController extends Controller
 {
@@ -27,6 +28,7 @@ class ReclamoController extends Controller
             'provincia' => 'required|string',
             'distrito' => 'required|string',
             'servicioContratado' => 'required|string|max:255',
+            'montoReclamado' => 'nullable|numeric|max:9999999999',
             'tipo_reclamo' => 'required|string|in:Reclamo,Queja',
             'motivo' => 'required|string',
             'detalleSolicitud' => 'required|string',
@@ -34,7 +36,11 @@ class ReclamoController extends Controller
             'aceptoPoliticas' => 'accepted'
         ]);
 
+        $cliente = Cliente::where('numero_documento', $request->numeroDocumento)->first();
+
         Reclamo::create([
+            'cliente_id' => $cliente ? $cliente->id : null,
+            
             'tipo_documento' => $request->tipoDocumento,
             'numero_documento' => $request->numeroDocumento,
             'primer_nombre' => $request->primerNombre,

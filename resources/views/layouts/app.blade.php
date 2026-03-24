@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @vite(['resources/css/style.css','resources/js/app.js'])
+    @vite(['resources/css/style.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
 
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
                 <img src="{{ asset('images/logo/logo_jeznet.svg') }}" class="me-2" alt="Jeznet Logo">
             </a>
 
@@ -42,7 +42,10 @@
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
-                        <a class="nav-link" href="#">TIENDA</a>
+                        <a href="{{ route('tienda') }}" 
+                        class="nav-link {{ request()->routeIs('tienda') || request()->is('soluciones/*') ? 'active' : '' }}">
+                            TIENDA
+                        </a>
                     </li>
 
                     <li class="nav-item mx-lg-3 my-2 my-lg-0">
@@ -146,7 +149,6 @@
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-3">
                 <a href="{{ route('politicaPrivacidad') }}" class="text-light text-decoration-none hover-gold">Políticas de Privacidad</a>
-                <a href="#" class="text-light text-decoration-none hover-gold">Términos de Servicio</a>
             </div>
         </div>
 
@@ -182,6 +184,17 @@
             }
             
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
     });
 </script>

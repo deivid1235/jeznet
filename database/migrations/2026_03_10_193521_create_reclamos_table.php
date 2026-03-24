@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('servicio_contratado');
             $table->string('numero_orden')->nullable();
             $table->string('identificacion_servicio')->nullable();
-            $table->decimal('monto_reclamado', 10, 2)->nullable();
+            $table->decimal('monto_reclamado', 12, 2)->nullable();
 
             $table->string('tipo_reclamo');
             $table->text('motivo');
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->text('pedido_concreto');
             $table->boolean('acepto_politicas')->default(true);
 
-            $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cliente_id')->nullable()->constrained('clientes')->nullOnDelete();
             $table->timestamps(); 
         });
     }

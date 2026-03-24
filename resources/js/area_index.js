@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function applyFilters() {
+        if (!searchInput) return;
+        
         const searchTerm = searchInput.value.toLowerCase().trim();
 
         areaCards.forEach(card => {
@@ -171,63 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    window.openAreaModal = function(isEdit, actionUrl, buttonElement = null) {
-        const modal = document.getElementById('areaModal');
-        const form = document.getElementById('areaForm');
-        const methodContainer = document.getElementById('methodContainer');
-        const modalTitle = document.getElementById('modalTitle').querySelector('span');
-        const btnSubmit = document.getElementById('btnSubmitModal');
-        const grupoEstado = document.getElementById('grupo-estado');
-
-        if (!modal || !form) return;
-
-        form.reset();
-        form.action = actionUrl;
-
-        if (isEdit && buttonElement) {
-            modalTitle.textContent = 'Editar Área Técnica';
-            btnSubmit.innerHTML = `
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                Actualizar Área
-            `;
-            methodContainer.innerHTML = '<input type="hidden" name="_method" value="PUT">';
-            grupoEstado.classList.remove('hidden');
-
-            document.getElementById('modal-nombre').value = buttonElement.dataset.nombre || '';
-            document.getElementById('modal-icono').value = buttonElement.dataset.icono || 'bi-briefcase';
-            document.getElementById('modal-descripcion').value = buttonElement.dataset.descripcion || '';
-            document.getElementById('modal-entregables').value = buttonElement.dataset.entregables || '';
-            document.getElementById('modal-proceso').value = buttonElement.dataset.proceso || '';
-            
-            const estadoActual = buttonElement.dataset.estado || 'Activo';
-            const selectEstado = document.getElementById('modal-estado');
-            if (selectEstado) {
-                const estadoFormat = estadoActual.charAt(0).toUpperCase() + estadoActual.slice(1).toLowerCase();
-                selectEstado.value = estadoFormat;
-            }
-
-        } else {
-            modalTitle.textContent = 'Nueva Área Técnica';
-            btnSubmit.innerHTML = `
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                Guardar Área
-            `;
-            methodContainer.innerHTML = '';
-            grupoEstado.classList.add('hidden');
-            document.getElementById('modal-estado').value = 'Activo'; 
-            document.getElementById('modal-icono').value = 'bi-briefcase';
-        }
-
-        modal.classList.remove('hidden');
-    };
-
-    window.closeAreaModal = function() {
-        const modal = document.getElementById('areaModal');
-        if (modal) {
-            modal.classList.add('hidden');
-        }
-    };
-
     const errorContainer = document.getElementById('flash-error-messages');
     if (errorContainer) {
         const errorItems = errorContainer.querySelectorAll('.error-item');
@@ -271,6 +216,108 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    window.openAreaModal = function(isEdit, actionUrl, buttonElement = null) {
+        const modal = document.getElementById('areaModal');
+        const form = document.getElementById('areaForm');
+        const methodContainer = document.getElementById('methodContainer');
+        const modalTitle = document.getElementById('modalTitle').querySelector('span');
+        const btnSubmit = document.getElementById('btnSubmitModal');
+        const grupoEstado = document.getElementById('grupo-estado');
+
+        if (!modal || !form) return;
+
+        form.reset();
+        form.action = actionUrl;
+
+        if (isEdit && buttonElement) {
+            modalTitle.textContent = 'Editar Área Técnica';
+            btnSubmit.innerHTML = `
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                Actualizar Área
+            `;
+            methodContainer.innerHTML = '<input type="hidden" name="_method" value="PUT">';
+            grupoEstado.classList.remove('hidden');
+
+            document.getElementById('modal-nombre').value = buttonElement.dataset.nombre || '';
+            document.getElementById('modal-icono').value = buttonElement.dataset.icono || 'bi-briefcase';
+            document.getElementById('modal-descripcion').value = buttonElement.dataset.descripcion || '';
+            document.getElementById('modal-entregables').value = buttonElement.dataset.entregables || '';
+            document.getElementById('modal-proceso').value = buttonElement.dataset.proceso || '';
+            
+            const estadoActual = buttonElement.dataset.estado || 'Activo';
+            const selectEstado = document.getElementById('modal-estado');
+            if (selectEstado) {
+                const estadoFormat = estadoActual.charAt(0).toUpperCase() + estadoActual.slice(1).toLowerCase();
+                selectEstado.value = estadoFormat;
+            }
+
+        } else {
+            modalTitle.textContent = 'Nueva Área Técnica';
+            btnSubmit.innerHTML = `
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Guardar Área
+            `;
+            methodContainer.innerHTML = '';
+            grupoEstado.classList.add('hidden');
+            const selectEstado = document.getElementById('modal-estado');
+            if (selectEstado) selectEstado.value = 'Activo'; 
+            
+            const selectIcono = document.getElementById('modal-icono');
+            if (selectIcono) selectIcono.value = 'bi-briefcase';
+        }
+
+        modal.classList.remove('hidden');
+    };
+
+    window.closeAreaModal = function() {
+        const modal = document.getElementById('areaModal');
+        if (modal) {
+            modal.classList.add('hidden');
+        }
+    };
+
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const items = document.querySelectorAll('.item-servicio');
+    const mensajeNoResultados = document.getElementById('mensaje-no-resultados');
+    const btnLimpiar = document.getElementById('btn-limpiar-filtros');
+
+    if (checkboxes.length > 0) {
+        checkboxes.forEach(box => {
+            box.addEventListener('change', filtrarServicios);
+        });
+
+        if (btnLimpiar) {
+            btnLimpiar.addEventListener('click', function() {
+                checkboxes.forEach(box => box.checked = false);
+                filtrarServicios();
+            });
+        }
+
+        function filtrarServicios() {
+            const categoriasMarcadas = Array.from(checkboxes)
+                                            .filter(box => box.checked)
+                                            .map(box => box.value);
+            
+            let visibles = 0;
+
+            items.forEach(item => {
+                const iconoItem = item.getAttribute('data-icono');
+                
+                if (categoriasMarcadas.length === 0 || categoriasMarcadas.includes(iconoItem)) {
+                    item.style.display = 'block';
+                    visibles++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (mensajeNoResultados) {
+                mensajeNoResultados.style.display = (visibles === 0) ? 'block' : 'none';
+            }
+            if (btnLimpiar) {
+                btnLimpiar.style.display = (categoriasMarcadas.length > 0) ? 'block' : 'none';
+            }
+        }
+    }
 });
-
-

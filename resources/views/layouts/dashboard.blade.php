@@ -436,14 +436,6 @@
             </div>
 
             <div class="flex items-center gap-3">
-                <div class="hidden md:flex items-center gap-2 bg-white px-3 py-1.5 rounded-md shadow-sm">
-                    <img src="{{ asset('iconos/sunat-logo.svg') }}" alt="SUNAT" class="h-5">
-                    <div class="flex flex-col leading-none">
-                        <span class="text-[9px] font-bold text-gray-800">MODO: DEMO</span>
-                        <span class="text-[9px] font-bold text-gray-500">CONECTADO A SUNAT</span>
-                    </div>
-                </div>
-
                 <div class="flex flex-col leading-none bg-[#d1dfef] px-3 py-1.5 rounded-md max-w-[150px] truncate">
                     <span class="text-[10px] font-bold text-jez-navy uppercase truncate" title="{{ auth()->user()->name ?? 'Usuario' }}">
                         {{ auth()->user()->name ?? 'Usuario' }}
